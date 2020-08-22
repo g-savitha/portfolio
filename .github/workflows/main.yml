@@ -21,10 +21,15 @@ jobs:
 
       - name: Build
         run: hugo --minify
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          publish_branch: master
+      - name: Push changes to the repository
+        run: |
+         ls
+         git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/g-savitha/g-savitha.github.io.git
+         cp ./public/* g-savitha.github.io
+         cd g-savitha.github.io
+         ls
+         git config user.email "${{ github.actor }}@users.noreply.github.com"
+         git config user.name "${{ github.actor }}"        
+         git add .
+         git commit -am "Site updated"
+         git push -f -q https://${{ secrets.GITHUB_TOKEN }}@github.com/g-savitha/g-savitha.github.io.git master
