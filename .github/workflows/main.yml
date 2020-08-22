@@ -25,7 +25,7 @@ jobs:
         run: |
          ls
          git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/g-savitha/g-savitha.github.io.git
-         cp ./public/* g-savitha.github.io
+         cp -r ./public/* g-savitha.github.io
          cd g-savitha.github.io
          ls
          git config user.email "${{ github.actor }}@users.noreply.github.com"
