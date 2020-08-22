@@ -1,0 +1,43 @@
+{{ $current_url := .Permalink | relURL }}
+<small class="top-nav">
+  {{ if eq $current_url "/" }}
+  <a class="active" href="/">~/</a>
+  {{ else }}
+  <a href="/">~/</a>
+  {{ end }}
+  <!--.-->
+  {{ if eq $current_url "/me/" }}
+  <a class="active" href="/me/">~/about</a>
+  {{ else }}
+  <a href="/me/">~/about</a>
+  {{ end }}
+  <!--.-->
+  {{ if eq $current_url "/categories/" }}
+  <a class="active" href="/categories/">~/categories</a>
+  {{ else }}
+  <a href="/categories/">~/categories</a>
+  {{ end }}
+  <!--.-->
+  <!--.-->
+  {{ if eq $current_url "/notes/" }}
+  <a class="active" href="/notes/">~/notes</a>
+  {{ else }}
+  <a href="/notes/">~/notes</a>
+  {{ end }}
+  <!--.-->
+  {{ if eq $current_url "/work/" }}
+  <a class="active" href="/work/">~/work</a>
+  {{ else }}
+  <a href="/work/">~/work</a>
+  {{ end }}
+  <!--.-->
+</small>
+
+<a
+  href='{{ "/" | absURL }} '
+  style="text-align: center; display: block; margin-top: 3rem;"
+>
+  <div class="logo">
+    <span>#"</span><span>Savitha Gollamudi</span><span>"</span>
+  </div>
+</a>

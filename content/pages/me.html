@@ -1,0 +1,129 @@
+---
+title: "About Me"
+---
+
+<!--<h1 style="margin-top: 0;">About.</h1>-->
+<img
+  src="https://avatars1.githubusercontent.com/u/31612459?s=460&u=0aa5423759e1864a5592d6ed4f111f98b5373ee3&v=4"
+  alt=""
+  id="image-me"
+  style="
+    float: right;
+    border-radius: 50%;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+      0 100px 80px rgba(0, 0, 0, 0.07);
+  "
+/>
+
+<span class="drop-cap">H</span>ello. I am Savitha
+<span>&#128075;&#127995;</span>, a passionate web developer. I have been working
+with web technologies for around 4+ years with 2 years of experience in software
+industry <span>&#129299;</span>. I've gotten my hands dirty in various languages
+and frameworks. I mostly worked on backend development, but i'm comfortable in
+coding frontend as well. My goal is to become a full stack engineer.
+
+<p>
+  I am <a href="https://github.com/g-savitha">good at JavaScript</a> and its
+  ecosystem <span>&#128170;&#127995;</span>. I am well-versed in coding back-end
+  with Node.js and Java. For database I prefer to use MongoDB, but I am educated
+  in SQL as well.I love problem solving alot. Data structures and algorithms is
+  my favourite.
+  <span>&#128513;</span>
+</p>
+
+<p>
+  If you are an employer looking to hire or a friend who just wanna say hi, feel
+  free to
+  <a href="mailto:mailto@gsavitha.in?subject=Hello">drop an email </a> or tweet
+  me <a href="https://twitter.com/gsavitha_">@gsavitha_ </a>
+  <span>&#128512;</span>
+</p>
+
+<h3>Social.</h3>
+
+I have profiles in couple of social media platforms. Here I am listing them for
+your convenience.
+
+<div class="social-links">
+  <a href="mailto:mailto@gsavitha.in?subject=Hello"
+    ><i class="fas fa-envelope-square"></i
+  ></a>
+  <a href="https://github.com/g-savitha"
+    ><i class="fab fa-github-square"></i
+  ></a>
+  <a href="https://twitter.com/gsavitha_"
+    ><i class="fab fa-twitter-square"></i
+  ></a>
+  <a href="https://linkedin.com/in/g-savitha"
+    ><i class="fab fa-linkedin"></i
+  ></a>
+  <a href="https://dev.to/gsavitha"><i class="fab fa-dev"></i></a>
+  <a href="https://www.hackerrank.com/gsavitha"
+    ><i class="fab fa-hackerrank"></i
+  ></a>
+  <a href="https://codepen.io/gsavitha"><i class="fab fa-codepen"></i></a>
+</div>
+
+<h3>Skills.</h3>
+
+{{< skill-listing >}}
+
+<!-- -->
+<script>
+  (function () {
+    const head = document.querySelector("head");
+    const css = `
+      .drop-cap {
+        font-size: 4.5rem;
+        float: left;
+        line-height: 0.8;
+        font-family: "Charter", serif;
+      }
+
+      .social-links a {
+        border: none;
+        margin-right: 8px;
+        font-size: 1.5em;
+        transition: 0.3s ease color;
+      }
+
+      #image-me {
+        max-width: 200px;
+        margin-left: 3px;
+      }
+
+      @media (max-width: 700px) {
+        #image-me {
+          max-width: 150px;
+        }
+      }
+ 
+      #recommendations p {
+        margin: 4rem 0 0.3rem 0;
+        display: flex;
+        font-style: oblique;
+      }
+
+      #recommendations p {
+        font-size: 1em;
+      }
+      
+      #recommendations em {
+        font-weight: bold;
+        font-size: 0.9em;
+      }
+
+      #recommendations p i {
+        color: lightgray;
+        font-size: 3rem;
+        margin-right: 0.5rem;
+      }
+    `;
+    const style = document.createElement("style");
+
+    style.innerHTML = css;
+    head.appendChild(style);
+  })();
+</script>

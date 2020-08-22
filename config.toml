@@ -1,0 +1,30 @@
+baseURL = "g-savitha.github.io"
+languageCode = "en-us"
+title = "Savitha Gollamudi"
+
+theme = "0x32"              # theme name
+disableKinds = []           # disable stuffs
+enableGitInfo = true        # valuable git information
+enableEmoji = true          # enables emoji support in content files
+
+[markup]
+[markup.tableOfContents]
+endLevel = 6
+ordered = false
+startLevel = 1
+
+[markup.highlight]
+codeFences = true
+guessSyntax = false
+hl_Lines = ''
+lineNoStart = 1
+lineNos = false
+lineNumbersInTable = false
+noClasses = false
+tabWidth = 2
+
+
+[permalinks]
+pages = "/:filename"
+posts = "/:year/:title/"
+notes = "/notes/:filename"
