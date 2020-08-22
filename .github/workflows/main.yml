@@ -28,8 +28,8 @@ jobs:
          cp -r ./public/* g-savitha.github.io
          cd g-savitha.github.io
          ls
-         git config user.email "${{ github.actor }}@users.noreply.github.com"
-         git config user.name "${{ github.actor }}"        
+         git config --local user.email "g-savitha@github.com"
+         git config --local user.name "g-savitha"
          git add .
          git commit -am "Site updated"
          git push -f -q https://${{ secrets.GITHUB_TOKEN }}@github.com/g-savitha/g-savitha.github.io.git master
