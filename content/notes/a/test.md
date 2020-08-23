@@ -1,7 +1,7 @@
 ---
 title: "Test"
 date: 2020-08-23T17:29:31+05:30
-draft: false
+draft: true
 tags: []
 categories: []
 sources: []

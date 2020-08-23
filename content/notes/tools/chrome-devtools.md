@@ -1,7 +1,7 @@
 ---
 title: "Chrome Devtools"
 date: 2020-08-22T23:17:25+05:30
-draft: false
+draft: true
 tags: []
 categories: []
 sources: []
