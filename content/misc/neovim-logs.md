@@ -1,5 +1,5 @@
 ---
-title: 'Neovim Logs'
+title: "Neovim Logs"
 date: 2020-08-15T00:56:09+05:30
 draft: true
 meta:
