@@ -157,4 +157,4 @@ If you have hosted it on github pages.
 
 ---
 
-[source](https://www.netguru.com/blog/what-are-static-site-generators)
+[Learn more about SSGs here](https://www.netguru.com/blog/what-are-static-site-generators)
