@@ -1,7 +1,7 @@
 ---
 title: "Js Resources"
 date: 2020-08-22T23:11:21+05:30
-draft: true
+draft: false
 meta:
   image: # url to image. Important for blog listing and seo
   description: # overrides .Summary
