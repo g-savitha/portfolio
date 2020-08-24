@@ -1,9 +1,9 @@
 ---
-title: "Analysis of Algorithms"
-date: 2020-08-23T17:20:43+05:30
+title: "Math required for problem solving"
+date: 2020-08-23T21:53:06+05:30
 draft: true
-tags: ["ds-algo", "programming", "competitive-programming"]
-categories: [dsa]
+tags: ["math", "ds-algo", "programming", "competitive-programming"]
+categories: [dsa, math]
 sources: []
 ---
 
@@ -22,5 +22,3 @@ sources: []
 5. em > strong (_**text**_) - lawngreen box
 6. em > del (_~~text~~_) - red cross-off
 -->
-
-# Why do I need to learn this?

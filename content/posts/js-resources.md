@@ -1,5 +1,5 @@
 ---
-title: "Js Resources"
+title: "Best resources to learn javascript"
 date: 2020-08-22T23:11:21+05:30
 draft: true
 meta:
