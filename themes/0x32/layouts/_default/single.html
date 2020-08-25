@@ -57,17 +57,17 @@
 </div>
 {{ end }}
 <!--  List prev post and next post -->
-<!-- <div style="margin-top: 5rem;">
-  {{ if .NextInSection }}
-  <a href="{{ .NextInSection.Permalink }}" class="prev-next newer"
-    >&Larr;{{ .NextInSection.Title }}</a
-  >
-  {{ end }} {{ if .PrevInSection }}
+<div style="margin-top: 5rem;">
+  {{ if .PrevInSection }}
   <a href="{{ .PrevInSection.Permalink }}" class="prev-next older"
     >{{ .PrevInSection.Title }}&Rarr;</a
   >
+  {{ end }} {{ if .NextInSection }}
+  <a href="{{ .NextInSection.Permalink }}" class="prev-next newer"
+    >&Larr;{{ .NextInSection.Title }}</a
+  >
   {{ end }}
-</div> -->
+</div>
 
 {{ partial "json-ld.html" . }}
 

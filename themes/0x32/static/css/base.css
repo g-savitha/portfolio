@@ -1,6 +1,6 @@
 @font-face {
   font-family: Monaco;
-  src: url('/fonts/monaco.ttf');
+  src: url("/fonts/monaco.ttf");
 }
 
 * {
@@ -13,13 +13,13 @@
   --max-content-width: 40rem;
 }
 
- body {
+body {
   margin: 0;
   padding: 0;
   line-height: 1.8;
   font-size: 1.1rem;
-  font-family: Oxygen, 'Helvetica Neue', sans-serif;
- }
+  font-family: Oxygen, "Helvetica Neue", sans-serif;
+}
 
 a:hover {
   color: gray;
@@ -69,7 +69,7 @@ blockquote * {
 }
 
 li:hover {
-  background: #EEEEEE;
+  background: #eeeeee;
 }
 
 table {
@@ -82,7 +82,8 @@ thead {
   background: #c3c3c3;
 }
 
-td, th {
+td,
+th {
   padding: 7px;
   border-right: 1px solid lightgray;
 }
@@ -92,10 +93,10 @@ tr:nth-child(even) {
 }
 
 #content {
-   max-width: var(--max-content-width);
-   margin: auto;
-   padding: 0 1rem;
- }
+  max-width: var(--max-content-width);
+  margin: auto;
+  padding: 0 1rem;
+}
 
 .prev-next {
   display: block;
@@ -105,60 +106,59 @@ tr:nth-child(even) {
   text-align: right;
 }
 
-
 .taxonomy-term {
-    padding: 0.3rem 0.7rem;
-    margin: 0.2rem auto;
-    border: 1px solid lightgray;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 0.4rem;
-  }
+  padding: 0.3rem 0.7rem;
+  margin: 0.2rem auto;
+  border: 1px solid lightgray;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 0.4rem;
+}
 
-  .taxonomy-term small {
-    border-radius: 50%;
-    display: inline-block;
-    font-weight: bold;
-    font-size: 1.1em;
-    color: red;
-  }
+.taxonomy-term small {
+  border-radius: 50%;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: red;
+}
 
-  div.logo {
-    padding: 0.7rem 1rem;
-    font-family: monaco;
-    display: inline-block;
-    border-radius: 0.4rem;
-    text-align: center;
-    margin: 1rem auto;
-    text-shadow: 6px 6px 3px #bdbdbd;
-    font-size: 1.3em;
-  }
+div.logo {
+  padding: 0.7rem 1rem;
+  font-family: monaco;
+  display: inline-block;
+  border-radius: 0.4rem;
+  text-align: center;
+  margin: 1rem auto;
+  text-shadow: 6px 6px 3px #bdbdbd;
+  font-size: 1.3em;
+}
 
-  div.logo span {
-    color: #00ff00;
-  }
+div.logo span {
+  color: #00ff00;
+}
 
-  div.logo span:nth-child(2) {
-    color: #796b01;
-  }
+div.logo span:nth-child(2) {
+  color: #796b01;
+}
 
-  .top-nav {
-    display: block;
-    max-width: var(--max-content-width);
-    text-align: left;
-    padding: 0.3rem;
-    font-family: Monaco, monospace;
-    margin: auto;
-  }
+.top-nav {
+  display: block;
+  max-width: var(--max-content-width);
+  text-align: left;
+  padding: 0.3rem;
+  font-family: Monaco, monospace;
+  margin: auto;
+}
 
-  .top-nav a {
-    font-size: 0.8em;
-    margin: 0 10px;
-    color: gray;
-    text-decoration: none;
-  }
+.top-nav a {
+  font-size: 0.8em;
+  margin: 0 10px;
+  color: gray;
+  text-decoration: none;
+}
 
-  .top-nav a.active {
-    color: #a70000;
-    font-weight: bold;
-  }
+.top-nav a.active {
+  color: #a70000;
+  font-weight: bold;
+}

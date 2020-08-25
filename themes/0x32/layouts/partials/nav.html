@@ -6,6 +6,12 @@
   <a href="/">~/</a>
   {{ end }}
   <!--.-->
+  {{ if eq $current_url "/work/" }}
+  <a class="active" href="/work/">~/work</a>
+  {{ else }}
+  <a href="/work/">~/work</a>
+  {{ end }}
+  <!---->
   {{ if eq $current_url "/me/" }}
   <a class="active" href="/me/">~/about</a>
   {{ else }}
@@ -25,11 +31,6 @@
   <a href="/notes/">~/notes</a>
   {{ end }}
   <!--.-->
-  {{ if eq $current_url "/work/" }}
-  <a class="active" href="/work/">~/work</a>
-  {{ else }}
-  <a href="/work/">~/work</a>
-  {{ end }}
   <!--.-->
 </small>
 

@@ -1,6 +1,21 @@
 <footer style="padding: 6rem 1rem 2rem 1rem; text-align: center; color: gray;">
   {{ partial "tiny-letter.html" }}
   <!--.-->
+  {{ if .GitInfo }}
+
+  <small style="display: block;">
+    <code>{{ .File.LogicalName }}</code> was last updated on
+    <code>{{ .GitInfo.AuthorDate.Format "2 January, 2006" }}</code>. Generated
+    from
+    <a
+      target="_blank"
+      href="https://github.com/g-savitha/portfolio/tree/{{ .GitInfo.Hash }}"
+      style="text-decoration: none;"
+      ><code>{{ .GitInfo.AbbreviatedHash }}</code></a
+    >
+    because of <code>{{ .GitInfo.Subject }}</code>
+  </small>
+  {{ end }}
 
   <small>
     built with <a href="https://gohugo.io">hugo</a> and
