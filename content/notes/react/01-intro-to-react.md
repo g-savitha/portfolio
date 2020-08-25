@@ -3,7 +3,7 @@ title: "Intro to React"
 date: 2020-08-24T12:28:38+05:30
 draft: false
 tags: [react, javascript, es6]
-categories: [react, javascript]
+categories: [react]
 sources: ["https://www.udemy.com/course/modern-react-bootcamp/"]
 ---
 
