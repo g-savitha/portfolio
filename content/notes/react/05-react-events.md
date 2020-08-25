@@ -25,7 +25,7 @@ sources: ["https://www.udemy.com/course/modern-react-bootcamp/"]
 
 ## React Events Review
 
-### React Events
+### Commonly used React Events
 
 You can attach event handlers to HTML elements in React via special reserved attributes. (You can do this in vanilla JS too, though the syntax is a bit different.)
 
@@ -35,9 +35,9 @@ Any event you can listen for in JS, you can listen for in React.
 
 _Examples:_
 
-- Mouse events: onClick, onMouseOver, etc
-- Form events: onSubmit, etc
-- Keyboard events: onKeyDown, onKeyUp, onKeyPress
+- Mouse events: `onClick`, `onMouseOver`, etc
+- Form events: `onSubmit`, etc
+- Keyboard events: `onKeyDown`, `onKeyUp`, `onKeyPress`
 - [Full list](https://reactjs.org/docs/events.html#supported-events)
 
 #### Example:
@@ -69,11 +69,13 @@ class WiseSquare extends Component {
 export default WiseSquare;
 ```
 
-### Method Binding
+---
+
+### The Joys of Method Binding :weary:
 
 #### The keyword `this`:
 
-When your event handlers reference the keyword _`this`_, watch out! You will lose the _`this`_ context **when you pass a function as a handler**. Let’s see what happens when we try to _move our quotes into **defaultProps**._
+> When your event handlers reference the keyword _this_, watch out! You will lose the _this_ context **when you pass a function as a handler**. Let’s see what happens when we try to move our quotes into _defaultProps_.
 
 #### Example Revisited
 
@@ -126,8 +128,9 @@ _Pros:_
 
 _Cons:_
 
-- What if you need to _pass `this.dispenseWisdom` to multiple components?_
-- _new function_ created on _every render_
+_Performance Issues:_
+
+- What if you need to _pass `this.dispenseWisdom` to multiple components?_ A _new function_ is created on _every render_
 
 ##### Arrow Functions
 
@@ -139,13 +142,15 @@ _Cons:_
 
 _Pros:_
 
-- No mention of ~~bind!~~
+- No mention of ~~bind()!~~
 
 _Cons:_
 
-- Intent less clear.
-- Again, What if you need to _pass `this.dispenseWisdom` to multiple components?_
-- _new function_ created on _every render_
+- Intention is less clear.
+
+_Performance Issues:_
+
+- Again, What if you need to _pass `this.dispenseWisdom` to multiple components?_ A _new function_ is created on _every render_
 
 ##### In the constructor
 
@@ -166,7 +171,39 @@ _Pros:_
 
 _Cons:_
 
-- ~~Hot reloading~~ won’t apply.
+- Looks Ugly
+- ~~HOT RELOADING~~ won’t apply.
+
+> Note : This method is being used since the introduction of ES6, previously we used to bind _this_ using above two methods. Even though syntax looks ugly, its better to use this approach for better performance.
+
+If calling bind annoys you, there are two ways to get around this. One is _Arrow functions_, which we already saw . Other method is [experimental public class fields](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/) syntax, you can use _*class fields*_ _to correctly set bind_ callbacks.
+
+[Source:](https://reactjs.org/docs/handling-events.html)
+
+```js
+class LoggingButton extends React.Component {
+  // This syntax ensures `this` is bound within handleClick.
+  // Warning: this is *experimental* syntax.
+
+  // babel will bind this in a constructor
+
+/*BEHIND THE SCENES ...*/
+
+  // constructor(){
+  //   this.handleClick = () =>{
+  //     /**/
+  //   }
+
+  }
+  handleClick = () => {
+    console.log("this is:", this);
+  };
+
+  render() {
+    return <button onClick={this.handleClick}>Click me</button>;
+  }
+}
+```
 
 ### Method Binding with Arguments
 
@@ -210,17 +247,19 @@ Inside of a _loop_, you can _bind and pass in additional arguments_. Also possib
 
 - A very _common pattern in React_
 - _The idea_: **children are often not stateful**, but _need to tell parents to change state_
-- How we _**send data “back up” to a parent**_ component
+- How do we _**send data “back up” to a parent**_ component ?
 
 #### How data flows
 
 - A **parent** component _defines_ a **function**
 - The _*function*_ is _passed as_ a _*prop*_ to a _child_ component
-- The _*child*_ component _invokes_ the _*prop*_
-- The **parent function** is called, usually _*setting new state*_
-- The **parent** component is _*re-rendered*_ along **with its children**
+- Now , the _*child*_ component has the function and it can _invoke_ it as a the _*prop*_
+- That calls the **parent function** , where usually _*a new state is set or update the exisisting state*_
+- As the state causes the change in the parent state, the **parent** component is _*re-rendered*_ along **with its children**
 
 #### What it looks like?
+
+_Not an ideal way:_
 
 _NumberList.js_ :
 
@@ -261,7 +300,7 @@ class NumberItem extends Component {
 }
 ```
 
-- We could also method _**bind inside of the map**_
+- We could also _**method bind inside of the map**_
 - In fact, we can do even better!
 
 #### Using a single bound function
@@ -317,19 +356,22 @@ class NumberItem extends Component {
 
 #### Where to bind?
 
-- The higher the better - _**don’t bind in the child component**_ _if not needed_.
-- If you need a parameter, _pass it down to the child as a **prop** ._, _**then bind in parent and child**_
-- _**Avoid inline arrow functions / binding**_ if possible
-- _**No need to bind in the constructor**_ and make an inline function
+- _**The higher the better**_ - **don’t bind in the child component** if not needed.
+- If you need a parameter, _**pass it down to the child as a prop**_, _**then bind in parent and child**_
+- _**Avoid inline arrow functions and binding inside of render**_ **if possible** -> for performance reasons.
+- _No need to bind in the constructor_ _*and*_ _make an inline function_ -> Do either one of them. I always prefer _**in the constructor**_
 - If you get stuck, don’t worry about performance, just try to get the communication working
   - You can always refactor later!
 
 #### Naming Conventions
 
 - You can call these handlers whatever you want - React doesn’t care
-- For consistency, _try to follow the `action / handleAction` pattern_:
-  - In the parent, give the function a name corresponding to the behavior (`remove`, `add`, `open`, `toggle`, etc.)
+- For consistency, _try to follow the `action/handleAction`_ ( `action` in parent and `handleAction` in child) pattern:
+
+  - In the parent, give the function a name corresponding to the behavior (`remove`, `add`, `open`, `toggle`, etc.) [send as props]
   - In the child, use the name of the action along with “handle” to name the event handler (`handleRemove`, `handleAdd`, `handleOpen`, `handleToggle`, etc.)
+
+---
 
 ### Lists and Keys
 
@@ -348,6 +390,8 @@ class BetterNumList extends Component {
 
 When mapping over data and returning components, you get a warning about keys for list items._*key*_ is a _special string attr_ to _include when creating lists of elements_
 
+> When choosing a **key**it is important to note that, it need to be **unique**.
+
 #### Adding keys
 
 Let’s assign a key to our list items inside _nums.map()_:
@@ -365,13 +409,11 @@ class NumberList extends Component {
 
 #### Keys
 
-- **Keys** help React _**identify which items are changed/added/removed**_.
-- Keys _**should be given to repeated elems**_ to provide a stable identity.
+> **Keys** help React _**identify which items are changed/added/removed**_. Keys _**should be given to repeated elems**_ to provide a stable identity.
 
 #### Picking a key
 
-- _Best way_: _*use string*_ that **uniquely** identifies item **among siblings**.
-- Most often you would _*use IDs*_ from your _data_ as keys:
+> _Best way_: _*use string*_ that **uniquely** identifies item **among siblings**. Most often you would _*use IDs*_ from your _data_ [data from db or api etc.] as keys:
 
 ```js
 let todoItems = this.state.todos.map((todo) => (
@@ -381,7 +423,7 @@ let todoItems = this.state.todos.map((todo) => (
 
 #### Last resort
 
-When you don’t have stable IDs for rendered items, you may **use the iteration index** as a key as a last resort:
+> When you don’t have stable IDs for rendered items, you may _*use the iteration index*_ as a key as a last resort
 
 ```js
 // Only do this if items have no stable IDs
@@ -391,5 +433,12 @@ const todoItems = this.state.todos.map((todo, index) => (
 ));
 ```
 
-- Don’t use ~~indexes~~ for keys _if item order may change or items can be deleted_.
-- This can cause _performance problems_ or bugs with component state.
+_A good rule of thumb:_
+
+> Don’t use ~~indexes~~ for keys _if item order may change or items can be deleted_. This can cause _performance problems_ or bugs with component state.
+
+> _A goodread:_ [Index as a key is an anti-pattern](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318)
+
+---
+
+> [shortid](https://www.npmjs.com/package/shortid) &[uuid](https://www.npmjs.com/package/uuid) npm packages helps us to create unique ids
