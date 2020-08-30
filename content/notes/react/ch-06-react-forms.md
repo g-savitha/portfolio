@@ -1,7 +1,7 @@
 ---
 title: "React Forms"
 date: 2020-08-30T17:51:50+05:30
-draft: true
+draft: false
 tags: [react, javascript, es6]
 categories: [react]
 sources: ["https://www.udemy.com/course/modern-react-bootcamp/"]
