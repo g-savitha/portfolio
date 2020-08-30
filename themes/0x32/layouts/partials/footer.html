@@ -13,7 +13,7 @@
       style="text-decoration: none;"
       ><code>{{ .GitInfo.AbbreviatedHash }}</code></a
     >
-    because of <code>{{ .GitInfo.Subject }}</code>
+    because of <code>{{ .GitInfo.Subject | emojify }}</code>
   </small>
   {{ end }}
 
