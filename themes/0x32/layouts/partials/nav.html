@@ -12,10 +12,10 @@
   <a href="/work/">~/work</a>
   {{ end }}
   <!---->
-  {{ if eq $current_url "/me/" }}
-  <a class="active" href="/me/">~/about</a>
+  {{ if eq $current_url "/about/" }}
+  <a class="active" href="/about/">~/about</a>
   {{ else }}
-  <a href="/me/">~/about</a>
+  <a href="/about/">~/about</a>
   {{ end }}
   <!--.-->
   {{ if eq $current_url "/categories/" }}
@@ -36,7 +36,7 @@
 
 <a
   href='{{ "/" | absURL }} '
-  style="text-align: center; display: block; margin-top: 3rem;"
+  style="text-align: center; display: block; margin-top: 3rem"
 >
   <div class="logo">
     <span>#"</span><span>Savitha Gollamudi</span><span>"</span>
