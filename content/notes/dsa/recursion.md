@@ -83,7 +83,7 @@ int main(int argc, char const *argv[])
 
 (Assuming: You are not using global vars or some other tricks to stop recursion ).
 
-```
+```plaintext
 returntype function(parameters){
     Base cases
     //some other code.....
@@ -103,7 +103,8 @@ Now the question is if we can write equivalent iterative code for every recursiv
     - In DP, generally _first solution is to write a recursive solution_. If we see overlapping subproblems (apply memoization or tabulation), we use DP to optimise it.
     - _Example:_ Finding diff between two files (solved using LCS approach)
   - **Backtracking**
-    - These problems are _inherently recursive_ in nature. - _Example_ : Rat in a maze, n-queens problem. (Its easy to write recursive solns than iterative for problems like this)
+    - These problems are _inherently recursive_ in nature.
+      - _Example_ : Rat in a maze, n-queens problem. (Its easy to write recursive solns than iterative for problems like this)
   - **Divide and conquer**
     - _Examples:_ Binary search, quicksort and mergesort
 - Many problems which are _inherently recursive_ (Easy to write recursive than iterative)
@@ -148,7 +149,7 @@ void fun1(int n)
 {
 
     if (n == 0)
-        return; //Base Cas
+        return; //Base Case
     fun1(n - 1);
     cout << n << endl;
     fun1(n - 1);
