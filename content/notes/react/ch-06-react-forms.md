@@ -112,14 +112,14 @@ class NameForm extends Component {
 
 Here is the method that updates state based on input.
 
-```js
+```js {hl_lines=[7]}
 class NameForm extends Component {
   // ...
 
   handleChange(evt) {
     // runs on every keystroke
     this.setState({
-      fullName: evt.target.value, //focus here
+      fullName: evt.target.value,
     });
   }
 
@@ -185,9 +185,8 @@ this.state = { firstName: "", lastName: "" };
 
 _NameForm.js;_
 
-```js
+```js {hl_lines=[3,14,22]}
 class NameForm extends Component {
-  // ... focus here
   handleChange(evt) {
     this.setState({ [evt.target.name]: evt.target.value });
   }
@@ -200,7 +199,7 @@ class NameForm extends Component {
           id="firstName"
           name="firstName"
           value={this.state.firstName}
-          onChange={this.handleChange} //focus here
+          onChange={this.handleChange}
         />
 
         <label htmlFor="lastName">Last:</label>
@@ -208,7 +207,7 @@ class NameForm extends Component {
           id="lastName"
           name="lastName"
           value={this.state.lastName}
-          onChange={this.handleChange} //focus here
+          onChange={this.handleChange}
         />
         <button>Add a new person!</button>
       </form>
@@ -234,7 +233,7 @@ In React we generally have downward data flow. _“Smart” parent_ components w
 
 _ShoppingList.js_
 
-```js
+```js {hl_lines=[13]}
 class ShoppingList extends Component {
   /* Add new item object to cart. */
   addItem(item) {
@@ -247,7 +246,7 @@ class ShoppingList extends Component {
   render() {
     return (
       <div className="ShoppingList">
-        <NewListItemForm addItem={this.addItem} /> {/*focus here*/}
+        <NewListItemForm addItem={this.addItem} />
         {this.renderItems()}
       </div>
     );
@@ -257,7 +256,7 @@ class ShoppingList extends Component {
 
 _NewListItemForm.js_
 
-```js
+```js{hl_lines=[6]}
 class NewListItemForm extends Component {
   // Send {name, quantity} to parent - & clear form.
 
@@ -288,8 +287,24 @@ import uuid from "uuid/v4";
 
 _ShoppingList.js_
 
-```js
+```js {hl_lines=[6,7,13,22]}
 class ShoppingList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: [
+        { name: "Milk", qty: "2 gallons", id: uuid() },
+        { name: "Bread", qty: "2 loaves", id: uuid() },
+      ],
+    };
+    this.addItem = this.addItem.bind(this);
+  }
+  addItem(item) {
+    let newItem = { ...item, id: uuid() };
+    this.setState((st) => ({
+      items: [...st.items, newItem],
+    }));
+  }
   renderItems() {
     return (
       <ul>

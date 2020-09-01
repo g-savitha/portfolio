@@ -213,7 +213,7 @@ In our previous examples, `this.dispenseWisdom` didn’t take any arguments. But
 
 _ButtonList.js_
 
-```js
+```js {hl_lines=[16]}
 class ButtonList extends Component {
   static defaultProps = {
     colors: ["green", "red", "blue", "peachpuff"],
@@ -229,7 +229,6 @@ class ButtonList extends Component {
         {this.props.colors.map((c) => {
           const colorObj = { backgroundColor: c };
           return (
-            /* Focus on this line*/
             <button style={colorObj} onClick={this.handleClick.bind(this, c)}>
               Click on me!
             </button>
