@@ -1,3 +1,3 @@
-This website is built using [Hugo](https://gohugo.io/) and hosted on [GoDaddy](https://in.godaddy.com/)
+This website is built using [Hugo](https://gohugo.io/) and hosted on [Github pages](https://pages.github.com/).
 
-[gsavitha.in](https://www.gsavitha.in)
+Visit website here : [gsavitha.in](https://www.gsavitha.in)
