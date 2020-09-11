@@ -71,7 +71,7 @@ git fetch upstream
 >  * [new branch]      master     -> upstream/master
 ```
 
-    - Note : Commits to the original repo(`master`) will be stored in a local branch, `upstream/master`
+**Note :** Commits to the original repo(`master`) will be stored in a local branch, `upstream/master`
 
 - Make sure you are on your local (fork's) `master` branch
 
@@ -89,7 +89,7 @@ git merge upstream/master
 >  ...
 ```
 
-    - This step brings changes of forked repo in sync with original repo, without losing any uncommited changes :D
+This step brings changes of forked repo in sync with original repo, without losing any uncommited changes :D
 
 ## Optional Step
 
