@@ -1,7 +1,7 @@
 ---
 title: "React Lifecycle Methods"
 date: 2020-09-01T18:20:33+05:30
-draft: true
+draft: false
 tags: [react, javascript, es6]
 categories: [react]
 sources: ["https://www.udemy.com/course/modern-react-bootcamp/"]
