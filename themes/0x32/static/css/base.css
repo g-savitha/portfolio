@@ -1,8 +1,4 @@
 @font-face {
-  font-family: "Fira Code";
-  src: url("/fonts/FiraCode-Regular.ttf");
-}
-@font-face {
   font-family: "Operator SSM Book Regular";
   src: url("/fonts/Operator SSm Book Regular.otf");
 }
@@ -10,6 +6,11 @@
   font-family: "Oneplus Slate";
   src: url("/fonts/SlateForOnePlus-Regular.ttf");
 }
+@font-face {
+  font-family: "Monaco";
+  src: url("/fonts/monaco.ttf");
+}
+
 * {
   font-family: inherit;
   color: inherit;
@@ -20,6 +21,18 @@
   --max-content-width: 40rem;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+em,
+del,
+blockquote {
+  font-family: "Operator SSM Book Regular";
+}
 body {
   margin: 0;
   padding: 0;
@@ -28,7 +41,6 @@ body {
   /* font-family: Oxygen, "Helvetica Neue", sans-serif; */
   font-family: "Oneplus Slate", monospace;
   font-weight: 400;
-  /* font-family: "Monaco", sans-serif; */
 }
 
 a:hover {
@@ -48,14 +60,13 @@ img {
 }
 
 code {
-  font-family: "Fira Code", monospace;
+  font-family: "Operator SSM Book Regular", monospace;
   font-variant-ligatures: common-ligatures;
   padding: 1px 4px;
   color: #a70000;
   background: #dedede8f;
   font-size: 1em;
   border-radius: 0.2rem;
-  font-weight: 400;
 }
 
 pre code {
@@ -160,7 +171,7 @@ div.logo span:nth-child(2) {
   max-width: var(--max-content-width);
   text-align: left;
   padding: 0.3rem;
-  font-family: "Fira Code", monospace;
+  font-family: "Monaco", monospace;
   margin: auto;
 }
 
