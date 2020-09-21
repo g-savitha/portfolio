@@ -1,14 +1,14 @@
 @font-face {
-  font-family: "Operator SSM Book Regular";
+  font-family: "Operator SSM";
   src: url("/fonts/Operator SSm Book Regular.otf");
 }
 @font-face {
-  font-family: "Oneplus Slate";
-  src: url("/fonts/SlateForOnePlus-Regular.ttf");
+  font-family: "FiraSans";
+  src: url("/fonts/FiraSans-Regular.ttf");
 }
 @font-face {
-  font-family: "Monaco";
-  src: url("/fonts/monaco.ttf");
+  font-family: "FiraCode";
+  src: url("/fonts/FiraCode-Regular.ttf");
 }
 
 * {
@@ -21,21 +21,13 @@
   --max-content-width: 40rem;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Operator SSM Book Regular";
-}
 body {
   margin: 0;
   padding: 0;
   line-height: 1.8;
   font-size: 1.1rem;
   /* font-family: Oxygen, "Helvetica Neue", sans-serif; */
-  font-family: "Oneplus Slate", monospace;
+  font-family: "FiraSans", sans-serif;
   font-weight: 400;
 }
 
@@ -56,8 +48,8 @@ img {
 }
 
 code {
-  font-family: "Operator SSM Book Regular", monospace;
-  font-variant-ligatures: common-ligatures;
+  font-family: "Operator SSM", monospace;
+  font-variant-ligatures: discretionary-ligatures;
   padding: 1px 4px;
   color: #a70000;
   background: #dedede8f;
@@ -144,7 +136,7 @@ tr:nth-child(even) {
 
 div.logo {
   padding: 0.7rem 1rem;
-  font-family: "Operator SSM Book Regular", open-sans;
+  font-family: "Operator SSM", open-sans;
   display: inline-block;
   border-radius: 0.4rem;
   text-align: center;
@@ -167,7 +159,7 @@ div.logo span:nth-child(2) {
   max-width: var(--max-content-width);
   text-align: left;
   padding: 0.3rem;
-  font-family: "Monaco", monospace;
+  font-family: "FiraCode", monospace;
   margin: auto;
 }
 
