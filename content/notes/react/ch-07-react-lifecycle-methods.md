@@ -25,7 +25,7 @@ sources: ["https://www.udemy.com/course/modern-react-bootcamp/"]
 
 ## React Component Lifecycle
 
--Each component has several “lifecycle methods” that one can override to run code at particular times in the process.
+- Each component has several “lifecycle methods” that one can override to run code at particular times in the process.
 
 - These components comes with methods which allows developers to update application state and reflect the changes to the UI before/after key react “events”.
 - There are three main phases in a component's lifecycle:
