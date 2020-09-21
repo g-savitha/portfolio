@@ -13,19 +13,33 @@ categories: [ci-cd, devops]
 
 <!--  Start Typing... -->
 
+## TL;DR :rocket:
+
+These are the only commands you need to sync your forked repo with the original repo
+
+```sh
+git remote add upstream https://github.com/<Original Owner Username>/<Original Repository>.git
+git fetch upstream
+git checkout master
+git merge upstream/master
+git push
+```
+
+---
+
 ## Why should I do this? :smirk:
 
-Before submitting any pull request, syncing your forked repository with original repository is an important step to perform, as you may want to get the bug fixes or additional features to merge with your code since the time you forked the original repo.
+Before submitting any pull request, _syncing your forked repository with original repository is an important step to perform_, as you may want to get the bug fixes or additional features to merge with your code since the time you forked the original repo.
 
 ## But I can do a PR instead.. :information_desk_person:
 
-You can, but that adds an extra commit into your forked repo instead of matching it with the original repo.
+You can, but _that adds an extra commit into your forked repo_ instead of matching it with the original repo.
 
 Inorder to sync without any additional changes as a part of the process,
 
-- Configure the original repo as upstream remote.
-- Merge changes from original repo
-- Push the merged version back to Github.
+- **Configure the original repo as upstream remote**.
+- **Merge changes from original repo**
+- **Push the merged version back to Github**.
 
 ## Adding original repo as an upstream
 
@@ -59,7 +73,7 @@ You can now pull the changes from original repo.
 ## Merge changes from upstream
 
 - Open the forked repo in your Git Bash or command prompt or terminal.
-- First things first, fetch the changes (branches and their commits) from upstream
+- First things first, **fetch the changes (branches and their commits) from upstream**
 
 ```sh
 git fetch upstream
@@ -80,7 +94,7 @@ git checkout master
 > Switched to branch 'master'
 ```
 
-- The last step, which achieves our goal: Merge changes from original repo (`upstream/master`) into your forked repo(`master`).
+- The last step, which achieves our goal: **Merge changes from original repo (`upstream/master`) into your forked repo(`master`).**
 
 ```sh
 git merge upstream/master
@@ -97,16 +111,4 @@ If you made changes to your repo and want to push them back to Github
 
 ```sh
 git push origin master
-```
-
-## To sum up:
-
-These are the only commands you need to sync your forked repo with original repo :rocket:
-
-```sh
-git remote add upstream https://github.com/<Original Owner Username>/<Original Repository>.git
-git fetch upstream
-git checkout master
-git merge upstream/master
-git push
 ```

@@ -1,8 +1,15 @@
 @font-face {
+  font-family: "Operator SSM Book Italic";
+  src: url("/fonts/Operator SSm Book Italic.otf");
+}
+@font-face {
   font-family: Monaco;
   src: url("/fonts/monaco.ttf");
 }
-
+@font-face {
+  font-family: "Operator SSM Book Regular";
+  src: url("/fonts/Operator SSm Book Regular.otf");
+}
 * {
   font-family: inherit;
   color: inherit;
@@ -13,12 +20,20 @@
   --max-content-width: 40rem;
 }
 
+strong,
+em,
+del,
+blockquote {
+  font-family: "Operator SSM Book Italic", sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
   line-height: 1.8;
-  font-size: 1.1rem;
-  font-family: Oxygen, "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  /* font-family: Oxygen, "Helvetica Neue", sans-serif; */
+  font-family: "Operator SSM Book Regular", sans-serif;
 }
 
 a:hover {
@@ -38,7 +53,7 @@ img {
 }
 
 code {
-  font-family: Monaco, monospace;
+  font-family: "Operator SSM Book Regular", monospace;
   padding: 1px 4px;
   color: #a70000;
   background: #dedede8f;
@@ -125,7 +140,7 @@ tr:nth-child(even) {
 
 div.logo {
   padding: 0.7rem 1rem;
-  font-family: monaco;
+  font-family: Operator SSM Book Regular;
   display: inline-block;
   border-radius: 0.4rem;
   text-align: center;
@@ -147,7 +162,7 @@ div.logo span:nth-child(2) {
   max-width: var(--max-content-width);
   text-align: left;
   padding: 0.3rem;
-  font-family: Monaco, monospace;
+  font-family: "Operator SSM Book Italic", monospace;
   margin: auto;
 }
 
