@@ -3,8 +3,8 @@
   src: url("/fonts/Operator SSm Book Italic.otf");
 }
 @font-face {
-  font-family: Monaco;
-  src: url("/fonts/monaco.ttf");
+  font-family: "Fira Code";
+  src: url("/fonts/FiraCode-Regular.ttf");
 }
 @font-face {
   font-family: "Operator SSM Book Regular";
@@ -53,12 +53,14 @@ img {
 }
 
 code {
-  font-family: "Operator SSM Book Regular", monospace;
+  font-family: "Fira Code", monospace;
+  font-variant-ligatures: common-ligatures;
   padding: 1px 4px;
   color: #a70000;
   background: #dedede8f;
-  font-size: 0.9em;
+  font-size: 1em;
   border-radius: 0.2rem;
+  font-weight: bold;
 }
 
 pre code {
@@ -150,11 +152,11 @@ div.logo {
 }
 
 div.logo span {
-  color: #00ff00;
+  color: #00ff05;
 }
 
 div.logo span:nth-child(2) {
-  color: #796b01;
+  color: #000;
 }
 
 .top-nav {
