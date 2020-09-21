@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Operator SSM Book Italic";
-  src: url("/fonts/Operator SSm Book Italic.otf");
+  src: url("/fonts/Operator SSm Light Italic.otf");
 }
 @font-face {
   font-family: "Fira Code";
@@ -8,7 +8,7 @@
 }
 @font-face {
   font-family: "Operator SSM Book Regular";
-  src: url("/fonts/Operator SSm Book Regular.otf");
+  src: url("/fonts/Operator SSm Light Regular.otf");
 }
 * {
   font-family: inherit;
@@ -31,9 +31,10 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.8;
-  font-size: 1rem;
+  font-size: 1.1rem;
   /* font-family: Oxygen, "Helvetica Neue", sans-serif; */
-  font-family: "Operator SSM Book Regular", sans-serif;
+  font-family: "Operator SSM Book Regular", monospace;
+  /* font-family: "Monaco", sans-serif; */
 }
 
 a:hover {
@@ -60,7 +61,7 @@ code {
   background: #dedede8f;
   font-size: 1em;
   border-radius: 0.2rem;
-  font-weight: bold;
+  font-weight: 300;
 }
 
 pre code {
