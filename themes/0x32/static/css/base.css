@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "Operator SSM";
-  src: url("/fonts/Operator SSm Book Regular.otf");
+  font-family: "Operator Mono";
+  src: url("/fonts/OperatorMonoLig-Book.otf");
 }
 @font-face {
   font-family: "FiraSans";
@@ -48,12 +48,12 @@ img {
 }
 
 code {
-  font-family: "Operator SSM", monospace;
-  font-variant-ligatures: discretionary-ligatures;
+  font-family: "Operator Mono", monospace;
+  font-variant-ligatures: common-ligatures;
   padding: 1px 4px;
   color: #a70000;
   background: #dedede8f;
-  font-size: 0.8em;
+  font-size: 0.9em;
   border-radius: 0.2rem;
 }
 
@@ -136,14 +136,14 @@ tr:nth-child(even) {
 
 div.logo {
   padding: 0.7rem 1rem;
-  font-family: "Operator SSM", open-sans;
+  font-family: "Operator Mono", open-sans;
   display: inline-block;
   border-radius: 0.4rem;
   text-align: center;
   margin: 1rem auto;
   text-shadow: 6px 6px 3px #bdbdbd;
   font-size: 1.3em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 div.logo span {
