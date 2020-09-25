@@ -1,16 +1,16 @@
-<footer style="padding: 6rem 1rem 2rem 1rem; text-align: center; color: gray;">
+<footer style="padding: 6rem 1rem 2rem 1rem; text-align: center; color: gray">
   {{ partial "tiny-letter.html" }}
   <!--.-->
   {{ if .GitInfo }}
 
-  <small style="display: block;">
+  <small style="display: block">
     <code>{{ .File.LogicalName }}</code> was last updated on
     <code>{{ .GitInfo.AuthorDate.Format "2 January, 2006" }}</code>. Generated
     from
     <a
       target="_blank"
       href="https://github.com/g-savitha/portfolio/tree/{{ .GitInfo.Hash }}"
-      style="text-decoration: none;"
+      style="text-decoration: none"
       ><code>{{ .GitInfo.AbbreviatedHash }}</code></a
     >
     because of <code>{{ .GitInfo.Subject | emojify }}</code>
@@ -19,7 +19,7 @@
 
   <small>
     built with <a href="https://gohugo.io">hugo</a> and
-    <span style="color: red;">❤️ </span>
+    <span style="color: red">❤️ </span>
   </small>
 </footer>
 
@@ -39,10 +39,10 @@
         handler.style.top = "10px";
         handler.style.right = "10px";
         handler.style.padding = "0.25rem 0.5rem";
-        handler.style.background = "#ffffff";
+        handler.style.background = "#272822";
         handler.style.borderRadius = "4px";
         handler.style.border = "1px solid #C9D5DE";
-        handler.style.color = "#2d3748";
+        handler.style.color = "#ffffff";
 
         handler.addEventListener("click", () => {
           const textarea = document.createElement("textarea");

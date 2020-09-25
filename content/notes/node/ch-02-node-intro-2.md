@@ -124,3 +124,43 @@ const server = http.createServer((req, res) => {
   }
 });
 ```
+
+## Build a simple API
+
+- **API** : A service from which we can request data.
+
+- _First Way_:
+  - Read data from json file and parse data to JS
+  - Send result back to client
+
+```js {hl_lines=[3,4,6]}
+if (pathName === "/api") {
+  //__dirname translates directory in which script that we're currently executing is located
+  fs.readFile(`${__dirname}/dev-data/data.json`, "utf-8", (err, data) => {
+    const productData = JSON.parse(data); //Turns JSON string to JS object
+    console.log(productData);
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(data);
+  });
+}
+```
+
+This is _not 100% efficient_, because each time a user hits `/api` file have to be read and then sent back. Instead we can _read the file once in the beginning_ and then each time someone hits this route, _simply send back the data without having to read it each time that a user requested_
+
+- _Efficient way_:
+  - _Use sync version of readFile_ (But sync version blocks code right?)
+    - In this case, its not a problem at all coz top level code gets executed only once in the beginning.
+    - The code outside callback(so called top-level code) gets executed only once.
+
+```js
+//top-level code
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
+
+//inside callback
+if (pathName === "/api") {
+  res.writeHead(200, { "Content-Type": "application/json" });
+  res.end(data);
+}
+```
+
+### Parse variables from URL
