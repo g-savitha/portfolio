@@ -164,3 +164,10 @@ if (pathName === "/api") {
 ```
 
 ### Parse variables from URL
+
+- lets say from url : 'https://localhost:8080/api&id=0' and we want query string ie., 'id=0'
+
+```js
+const url = require("url");
+console.log(url.parse(req.url, true));
+```

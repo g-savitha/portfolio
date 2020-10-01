@@ -41,6 +41,8 @@ void fun1(){
 
 _Indirectly:_ Not a very common approach (Mostly direct recursive approach is used)
 
+fun1() -> fun2() -> fun1()
+
 ```cpp
 void fun1(){
     //somecode ...
@@ -162,3 +164,61 @@ int main(int argc, char const *argv[])
 }
 //Output : 1213121
 ```
+
+```cpp
+int fn(int n)
+{
+    if (n == 1)
+        return 0;
+    else
+        return 1 + fn(n / 2);
+}
+//TC: O(floor(logn base2))
+//SC: O(n/2)
+//fn(16) -> O/p: 4 => (1+f(8)) ->(1+1+f(4)) ->(1+1+1+f(2)) -> (1+1+1+1+f(1))
+//fn(20) -> o/p: 4 =>(1+f(10)) -> (1+1+f(5)) -> (1+1+1+f(2)) -> (1+1+1+1+f(1))
+//fn(19) -> o/p:4 => (1+f(9)) -> (1+1+f(4)) -> ->(1+1+1+f(2)) -> (1+1+1+1+f(1))
+
+//output remains same until we get to next power of 2.
+```
+
+> Binary representation of a number(n > 0) using recursion
+
+```cpp
+int fn(int n)
+{
+    if (n == 0)
+        return;
+    fn(n / 2);
+    cout << n % 2 << endl;
+}
+//TC:
+```
+
+> print 1 to N using recursion
+
+```java
+private static void fn(int n) {
+    if (n == 0)
+        return;
+    fn(n - 1);
+    System.out.println(n);
+}//TC; O(n) AS: O(n+1)
+```
+
+> print N to 1 using recursion
+
+```java
+private static void fn(int n) {
+    if (n == 0)
+        return;
+    System.out.println(n);
+        n(n - 1);
+}// TC: theta(n)
+//SC: (Auxillary space) : O(n)
+```
+
+- **Note:** We can reduce the auxillary space using _*tail recursion*_.
+  - The above fn takes less time on modern compilers because of tail recursion
+
+## Tail Recursion
