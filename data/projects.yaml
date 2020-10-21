@@ -1,14 +1,14 @@
 - name: Node Manager
   source: "https://github.com/g-savitha/Node-manager"
   demo:
-  description: This is a clone of nodemon npm's package. I built this project to understand node and its file system. Used `chokidar` library to track the changes in a file and `caporal` library for command line tools.
+  description: A package manger and also dynamic code deployment engine for code in production. This understand the complete node file system and tracks the file modifications with the help of Chokidar. Also has caporal integration for handy command line tools. This helps in reducing the deployment downtime of any application.
   stack:
     - node-dot-js
 
 - name: E-buy
   source: "https://github.com/g-savitha/E-Buy"
   demo:
-  description: An E-commerce website built without using any JS frameworks. I built this project to strengthen my ES6 JS skills
+  description: An E-commerce clothing website built without using any JS frameworks.
   stack:
     - html5
     - bulma
@@ -18,21 +18,21 @@
 - name: Authenticity Meter
   source: "https://github.com/g-savitha/Authenticity-meter"
   demo:
-  description: Tells the user how vulnerable his/her password is and is eligible to get hacked. Used `haveibeenpwned` API.
+  description: A Password assistant engine which assists the user in setting up a robust password. This algorithm accepts user password, encodes(utf-8) it before encrypting it into SHA1. The encrypted password would be converted to hex format and this would be compared with historical persistent storage of `haveibeenpwned` API.
   stack:
     - python
 
 - name: Twitter bot
   source: "https://github.com/g-savitha/twitter_bot"
   demo:
-  description: A twitter bot, which likes, retweets and follows back a particular person from list of followers. Uses tweepy library.
+  description: Based on given keywords bot would automatically retweets and automatically follows the followers.
   stack:
     - python
 
 - name: Maze Generator
   source: "https://github.com/g-savitha/Maze-generator"
   demo: "https://g-savitha.github.io/Maze-generator/"
-  description: A classic rat and maze puzzle game. A random maze is generated every time. I have built this game to strengthen by DSA skills and also explored Canvas API and Matter.js along with it :).
+  description: A classic rat and maze puzzle game. A random maze is generated every time. Used Canvas API for generating the maze walls and Matter.js to simulate gravitation for the ball.
   stack:
     - javascript
     - html5
@@ -41,7 +41,7 @@
 - name: BlogIt
   source: "https://github.com/g-savitha/BlogIt"
   demo:
-  description: A blogging website. I have built this application to learn to design RESTful APIs
+  description: A blogging website similar to Medium or Dev.to which follows RESTful conventions.
   stack:
     - html5
     - css3
@@ -52,7 +52,7 @@
 - name: Color Game
   source: "https://github.com/g-savitha/ColorGame"
   demo: "https://g-savitha.github.io/ColorGame/"
-  description: User has to guess the color based on the given RGB values. I have created this game to strengthen my knowledge on DOM manipulation and event listeners
+  description: User has to guess the color based on the given RGB values. Built using DOM Manipulation and Event Handling techniques
   stack:
     - javascript
     - html5
@@ -96,7 +96,7 @@
 - name: Movie Fight
   source: "https://github.com/g-savitha/MovieFight"
   demo:
-  description: An application which compares stats of two movies or series using OMDB API. I have built this application to understand `debounce` design pattern and `promises` in javascript.
+  description: An application which compares stats of two movies or series using OMDB API. Used `debounce` design pattern and `promises` in javascript.
   stack:
     - html5
     - bulma
@@ -114,7 +114,7 @@
 - name: Pokedex
   source: https://github.com/g-savitha/React-Pokedex
   demo: https://g-savitha.github.io/React-Pokedex/
-  description: A fun project that compares skills on two teams of pokemon
+  description: A fun project that compares skills on two teams of pokemon.
   stack:
     - react
     - html5
@@ -131,14 +131,14 @@
     - bootstrap
     - javascript
 
-- name: Notebook
-  source: "https://github.com/g-savitha/notebook"
-  demo: "https://g-savitha.github.io/notebook/"
-  description: As the name says, this is the place where I write all my notes (apart from short snippets) into. This site is built on top of `docusaurus` and hosted on github.
-  stack:
-    - git
-    - markdown
-    - react
+# - name: Notebook
+#   source: "https://github.com/g-savitha/notebook"
+#   demo: "https://g-savitha.github.io/notebook/"
+#   description: As the name says, this is the place where I write all my notes (apart from short snippets) into. This site is built on top of `docusaurus` and hosted on github.
+#   stack:
+#     - git
+#     - markdown
+#     - react
 
 - name: Snakes and Ladders
   source: "https://github.com/g-savitha/SnakesAndLadders"
