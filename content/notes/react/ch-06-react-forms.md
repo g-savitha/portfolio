@@ -256,13 +256,13 @@ class ShoppingList extends Component {
 
 _NewListItemForm.js_
 
-```js{hl_lines=[6]}
+```js {hl_lines=[6]}
 class NewListItemForm extends Component {
   // Send {name, quantity} to parent - & clear form.
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.addItem(this.state); /*focus here*/
+    this.props.addItem(this.state);
     this.setState({ name: "", qty: 0 });
   }
 }
