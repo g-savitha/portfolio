@@ -23,6 +23,31 @@ In this post let's see how to host a react project on GH Pages.
 
 Before continuing further, I assume that you know what is Github and how to create a react app. Let's get started...
 
+## TL;DR :rocket:
+
+These are the only commands you need to execute
+
+```sh
+npm install gh-pages --save-dev
+```
+
+_Package.json_
+
+```json
+"scripts": {
+"start": "react-scripts start",
+"predeploy": "npm run build",
+"deploy": "gh-pages -d build",
+"build": "react-scripts build",
+},
+//add homepage property
+"homepage": "https://g-savitha.github.io/projectname"
+```
+
+```sh
+npm run deploy
+```
+
 ## Create a repository
 
 First things first, create a repository in your Github profile. For instance I'd like to create an app with name `deploy-react-app`
@@ -61,11 +86,11 @@ Once you pushed your code to Github...
    npm install gh-pages --save-dev
    ```
 2. Add the `homepage` property in your `package.json` file. `homepage` attribute value should be String. `http://{username}.github.io/{repo-name}` (`username` must be your Github username and `repo-name` must be your GitHub repository)
-   ```sh
-   “homepage”: “http://g-savitha.github.io/deploy-react-app"
+   ```json
+   "homepage": "https://g-savitha.github.io/deploy-react-app"
    ```
 3. Add the `predeploy` and `deploy` properties with existing `scripts` property in your project's `package.json`
-   ```sh
+   ```json
    "scripts": {
    "start": "react-scripts start",
    "predeploy": "npm run build",
