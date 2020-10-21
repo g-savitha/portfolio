@@ -1,11 +1,53 @@
-- name: Maze game
-  source: "https://github.com/g-savitha/mazegame"
-  demo: "https://g-savitha.github.io/mazegame/"
+- name: Node Manager
+  source: "https://github.com/g-savitha/Node-manager"
+  demo:
+  description: This is a clone of nodemon npm's package. I built this project to understand node and its file system. Used `chokidar` library to track the changes in a file and `caporal` library for command line tools.
+  stack:
+    - node-dot-js
+
+- name: E-buy
+  source: "https://github.com/g-savitha/E-Buy"
+  demo:
+  description: An E-commerce website built without using any JS frameworks. I built this project to strengthen my ES6 JS skills
+  stack:
+    - html5
+    - bulma
+    - javascript
+    - node-dot-js
+
+- name: Authenticity Meter
+  source: "https://github.com/g-savitha/Authenticity-meter"
+  demo:
+  description: Tells the user how vulnerable his/her password is and is eligible to get hacked. Used `haveibeenpwned` API.
+  stack:
+    - python
+
+- name: Twitter bot
+  source: "https://github.com/g-savitha/twitter_bot"
+  demo:
+  description: A twitter bot, which likes, retweets and follows back a particular person from list of followers. Uses tweepy library.
+  stack:
+    - python
+
+- name: Maze Generator
+  source: "https://github.com/g-savitha/Maze-generator"
+  demo: "https://g-savitha.github.io/Maze-generator/"
   description: A classic rat and maze puzzle game. A random maze is generated every time. I have built this game to strengthen by DSA skills and also explored Canvas API and Matter.js along with it :).
   stack:
     - javascript
     - html5
     - css3
+
+- name: BlogIt
+  source: "https://github.com/g-savitha/BlogIt"
+  demo:
+  description: A blogging website. I have built this application to learn to design RESTful APIs
+  stack:
+    - html5
+    - css3
+    - node-dot-js
+    - bootstrap
+    - javascript
 
 - name: Color Game
   source: "https://github.com/g-savitha/ColorGame"
@@ -24,32 +66,6 @@
     - html5
     - javascript
 
-- name: Notebook
-  source: "https://github.com/g-savitha/notebook"
-  demo: "https://g-savitha.github.io/notebook/"
-  description: As the name says, this is the place where I write all my notes (apart from short snippets) into. This site is built on top of `docusaurus` and hosted on github.
-  stack:
-    - git
-    - markdown
-    - react
-
-- name: E-buy
-  source: "https://github.com/g-savitha/E-Buy"
-  demo:
-  description: An E-commerce website built without using any JS frameworks. I built this project to strengthen my ES6 JS skills
-  stack:
-    - html5
-    - bulma
-    - javascript
-    - node-dot-js
-
-- name: Node runner
-  source: "https://github.com/g-savitha/noderunner"
-  demo:
-  description: This is a clone of nodemon npm's package. I built this project to understand node and its file system. Used `chokidar` library to track the changes in a file and `caporal` library for command line tools.
-  stack:
-    - node-dot-js
-
 - name: Movie Fight
   source: "https://github.com/g-savitha/MovieFight"
   demo:
@@ -58,20 +74,6 @@
     - html5
     - bulma
     - javascript
-
-- name: Twitter bot
-  source: "https://github.com/g-savitha/twitter_bot"
-  demo:
-  description: A twitter bot, which likes, retweets and follows back a particular person from list of followers. Uses tweepy library.
-  stack:
-    - python
-
-- name: Password checker
-  source: "https://github.com/g-savitha/password_checker"
-  demo:
-  description: Tells the user how vulnerable his/her password is and is eligible to get hacked. Used `haveibeenpwned` API.
-  stack:
-    - python
 
 - name: Yelpcamp
   source: "https://github.com/g-savitha/YelpCamp"
@@ -84,16 +86,14 @@
     - bootstrap
     - javascript
 
-- name: BlogIt
-  source: "https://github.com/g-savitha/BlogIt"
-  demo:
-  description: A blogging website. I have built this application to learn to design RESTful APIs
+- name: Notebook
+  source: "https://github.com/g-savitha/notebook"
+  demo: "https://g-savitha.github.io/notebook/"
+  description: As the name says, this is the place where I write all my notes (apart from short snippets) into. This site is built on top of `docusaurus` and hosted on github.
   stack:
-    - html5
-    - css3
-    - node-dot-js
-    - bootstrap
-    - javascript
+    - git
+    - markdown
+    - react
 
 - name: Snakes and Ladders
   source: "https://github.com/g-savitha/SnakesAndLadders"
