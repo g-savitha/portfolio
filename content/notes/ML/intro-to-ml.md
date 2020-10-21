@@ -4,7 +4,10 @@ date: 2020-09-30T18:32:58+05:30
 draft: false
 tags: [ml]
 categories: ["machine-learning"]
-sources: []
+sources:
+  [
+    "https://www.udemy.com/course/complete-machine-learning-and-data-science-zero-to-mastery/",
+  ]
 ---
 
 <!--
@@ -173,6 +176,8 @@ Data is split into 3 parts
 
 - [ML for everyone](https://vas3k.com/blog/machine_learning/)
 - [elements of ai](https://www.elementsofai.com/)
+- [Confusion matrix](https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62)
+- [AUC- ROC curve](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
 
 **Experiment with tools:**
 
