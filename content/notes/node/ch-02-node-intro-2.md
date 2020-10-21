@@ -165,9 +165,33 @@ if (pathName === "/api") {
 
 ### Parse variables from URL
 
-- lets say from url : 'https://localhost:8080/api&id=0' and we want query string ie., 'id=0'
+- lets say from this url : 'https://localhost:8080/api&id=0' we want to extract query string ie., 'id=0' and pathname = '/product'
 
 ```js
 const url = require("url");
-console.log(url.parse(req.url, true));
+//pass true here to actually parse the url
+const { query, pathname } = url.parse(req.url, true);
+```
+
+### Create your own modules:
+
+If you want to use a function or class in multiple files, Make it as a **module**. Export it from that file and import it in another.
+
+**Note**: In Node every single file is a module.
+
+One of the many ways...
+
+_Steps to create a module:_
+
+1. Extract the piece of code which you want to make it as a module.
+2. Export it using `export.modules`
+3. Import it in the file in which you want to use this module using `require`
+
+```js
+//sum.js
+module.exports = (x, y) => {
+  return x + y;
+};
+//index.js
+const sum = require("./modules/sum");
 ```
