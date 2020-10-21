@@ -66,6 +66,33 @@
     - html5
     - javascript
 
+- name: Hangman
+  source: https://github.com/g-savitha/hangman
+  demo: https://gsavitha-hangman.herokuapp.com/
+  description: Hangman is a guessing game played between 2 players. One player thinks of a word, phrase or sentence and the other(s) tries to guess it by suggesting letters within a certain number of guesses.
+  stack:
+    - react
+    - html5
+    - css3
+
+- name: Yahtzee
+  source: https://github.com/g-savitha/Yahtzee
+  demo: https://g-savitha.github.io/Yahtzee/
+  description: Yahtzee is a dice game whose objective is to score points by 5 dice to make certain combinations. Read more about it here https://en.wikipedia.org/wiki/Yahtzee
+  stack:
+    - react
+    - html5
+    - css3
+
+- name: Lights Out
+  source: https://github.com/g-savitha/LightsOut
+  demo: https://gsavitha-lightsout.herokuapp.com/
+  description: Lights Out is a logic/puzzle game, played on a gird of individual lights, which can either be lit or unlit. The puzzle is won when all of the lights are turned off. You can click on a cell to toggle that light — but it also toggles the light above it, to the left of it, to the right of it, and below it.
+  stack:
+    - react
+    - html5
+    - css3
+
 - name: Movie Fight
   source: "https://github.com/g-savitha/MovieFight"
   demo:
@@ -74,6 +101,24 @@
     - html5
     - bulma
     - javascript
+
+- name: Todo App
+  source: https://github.com/g-savitha/react-todo
+  demo: https://g-savitha.github.io/react-todo/
+  description: Todo App.
+  stack:
+    - react
+    - html5
+    - css3
+
+- name: Pokedex
+  source: https://github.com/g-savitha/React-Pokedex
+  demo: https://g-savitha.github.io/React-Pokedex/
+  description: A fun project that compares skills on two teams of pokemon
+  stack:
+    - react
+    - html5
+    - css3
 
 - name: Yelpcamp
   source: "https://github.com/g-savitha/YelpCamp"
