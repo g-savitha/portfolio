@@ -4,7 +4,7 @@ date: 2020-09-11T12:31:59+05:30
 draft: false
 meta:
   image: # url to image. Important for blog listing and seo
-  description: # overrides .Summary
+  description: Host react apps for free on Github Pages.
 featured: false # feature a post in homepage
 tableofcontents: true # whether to generate ToC
 tags: [ghpages, react, hosting]
