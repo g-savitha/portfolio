@@ -4,7 +4,7 @@ date: 2020-09-26T15:18:15+05:30
 draft: false
 tags: ["javascript", "DOM", "es6", "events"]
 categories: ["javascript"]
-sources: []
+sources: ["https://www.udemy.com/course/modern-javascript/"]
 ---
 
 <!--

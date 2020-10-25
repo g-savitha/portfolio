@@ -4,7 +4,7 @@ date: 2020-08-24T11:26:25+05:30
 draft: true
 tags: ["javascript", "es6"]
 categories: ["javascript", "es6"]
-sources: []
+sources: ["https://www.udemy.com/course/modern-javascript/"]
 ---
 
 <!--
