@@ -1,7 +1,7 @@
 ---
 title: "React Events"
 date: 2020-08-25T14:55:24+05:30
-draft: false
+draft: true
 tags: [react, javascript, es6]
 categories: [react]
 sources: ["https://www.udemy.com/course/modern-react-bootcamp/"]

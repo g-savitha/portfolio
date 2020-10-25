@@ -1,7 +1,7 @@
 ---
 title: "Intro to State"
 date: 2020-08-24T14:57:47+05:30
-draft: false
+draft: true
 tags: [react, javascript, es6]
 categories: [react]
 sources: ["https://www.udemy.com/course/modern-react-bootcamp/"]
