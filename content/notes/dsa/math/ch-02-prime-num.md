@@ -57,7 +57,7 @@ _A better approach:_
     - if x < =y , x^2 = n, x = sqrt(n).
 - we dont need to traverse numbers from 1 to n, just traverse from 2 to sqrt(n)
 
-```cpp
+```cpp {hl_lines=[3]}
 bool isPrime(n){
     if(n<2) return false;
     for(i = 2 i * i<= n; i++){
@@ -71,12 +71,14 @@ _Max efficient method (for large values of 'n')_ :
 
 We can save many iterations for large 'n' by checking if n % 2==0 and n%3 ==0. If we check for these two we dont need to check for multiples of 2 and 3.
 
-```cpp
+```cpp {hl_lines=[5,7]}
 bool isPrime(n){
     if(n<2) return false;
     if(n==2 || n==3) return true;
+    //optimisation: skip multiples of 2 and 3
     if(n%2==0 || n%3==0) return false;
-    for(i = 5 i * i<= n; i += 6){
+    // here i (will be) i = 5,7,11,17,23,29...
+    for(i = 5; i * i<= n; i += 6){
         if(n%i==0 || n%(i+2) ==0) return false;
     return true;
     }
@@ -86,7 +88,16 @@ bool isPrime(n){
 ### Prime Factors
 
 > print all prime factors of n.
-> If n =12 -> 2,2,3. n =13 -> 13. n = 315 -> 3,3,5,7
+```
+Input: n =12 
+Output: 2,2,3. 
+
+Input: n =13 
+Output: 13. 
+
+Input: n = 315
+Out: 3,3,5,7
+```
 
 _Naive approach:_
 
@@ -101,12 +112,14 @@ void primefactors(int n){
             }
         }
     }
-} //total TC ::O(n*sqrt(n) logn)
+} //total TC ::O(n^2 logn)
 ```
 
 _Efficient solution:_
 
 - Divisors always appear in pairs. (If we traverse from 2 to sqrt(n) we get a prime divisor)
+  - let (x,y) be a pair. x \* y = n. 
+    - if x<=y, x \*x <=n, x <= sqrt(n)
 - A number 'n' can be written as multiplication of power of prime factors
   - 12 = 2^2 \* 3
   - 450 = 2 \* 3^2 \* 5^2
