@@ -47,6 +47,7 @@ _Naive approach:_
 
 ```js
 const GCD = (a, b) => {
+  //WKT., Max GCD can be min of two given numbers, so begin with min of a & b.
   let res = Math.min(a, b);
   while (res > 0) {
     if (a % res == 0 && b % res == 0) break;
@@ -61,16 +62,18 @@ const GCD = (a, b) => {
 The Euclidean algorithm is based on the below facts:
 
 - GCD doesn't change, if we _subtract the smaller number from larger_ (we reduce larger number). So if we _keep subtracting repeatedly the larger of two, we end up with GCD_.
-- Now _instead of subtraction_, if we _divide the smaller number_, the algorithm stops when the remainder is found to be 0
+
 
 - If b is smaller than a. gcd(a,b) = gcd(a-b)
-  - Let g be the gcd of a,b . where a = gx, b = gy & gcd(x,y) = 1 - (a-b) = gcd(x-y)
+  - Let g be the gcd of a,b . where a = gx, b = gy & gcd(x,y) = 1 
+  - (a-b) = gcd(x-y)
     We need to show that b and (a-b) also have gcd = 1
 
 _Approach 2 (Euclidian algorithm):_
 
 ```js
 const GCD = (a, b) => {
+  //stop when a & b are equal and return either of them
   while (a != b) {
     if (a > b) a = a - b;
     else b = b - a;
@@ -78,10 +81,11 @@ const GCD = (a, b) => {
   return a; // or return b;
 };
 ```
+- Now _instead of doing subtraction_, if we _divide the smaller number_, the algorithm stops when the remainder is found to be 0
 
 _Optimized euclidian algorithm:_
 
-```js
+```js {hl_lines=[2,3]}
 const GCD = (a, b) => {
   if (b == 0) return a;
   else return GCD(b, a % b); //TC :O(log(min(a,b)))
@@ -104,6 +108,7 @@ _Naive approach:_
 
 ```js
 const lcm = (a, b) => {
+  //LCM would >= larger of 2 numbers 
   let res = Math.max(a, b);
   while (res) {
     if (res % a == 0 && res % b == 0) return res;
@@ -119,7 +124,7 @@ _Efficient soln:_
 >
 > - lcm(a,b) = (a\*b) / gcd(a\*b)
 
-```js
+```js {hl_lines=[2]}
 const lcm = (a, b) => {
   return (a * b) / GCD(a, b);
 }; //TC: O(log(min(a,b)))

@@ -1,5 +1,5 @@
 ---
-title: "Basic Math"
+title: "Basic Math Theory"
 date: 2020-09-02T16:04:36+05:30
 draft: false
 tags: ["math", "ds-algo", "programming", "competitive-programming"]
@@ -110,57 +110,19 @@ There are 3 different cases while finding the roots:
 - `D > 0` or `b^2 > 4ac` : roots are real and different
   - for eqn, x^2 - 7x - 12 : r1 =3 and r2 = 4
 
+## Permutations and Combinations
+
+*Permutation:* Permutation is defined as **arrangement** _of 'r' things_ _that can be done out of total 'n' things_
+
+> Denoted by nPr = n!/(n-r)!
+
+*Combination:* Combination is defined as **Selection** _of 'r' things_ _that can be done out of total 'n' things_
+
+> Denoted by nCr = n!/r!(n-r)!
+
+
+## Modular Arithmetic
+
+The remainder obtained after division operation on two operands is known as modulo arithmetic. 
 ---
 
-## Find number of digits in a number
-
-> Given an integral number N. The task is to find the count of digits present in this number. Lets say n = 2020, number of digits in 2020 = 4 and digits are 2,0,2,0
-
-_A simple solution is.._
-
-- Check if number n != 0
-- increment count of digits by 1 if n !=0
-- reduce number by dividing it with 10
-- repeat above steps, until n is reduced to 0
-
-```cpp
-//iterative
-int countDigits(long n){
-    int count = 0;
-    while(n > 0){
-        n = n/10;
-        ++count;
-    }
-    return count;
-} // TC: O(digitsCount), SC: O(1)
-//recursive
-int countDigits(long n){
-    if(n==0) return 1;
-    return 1+ countDigits(n/10);
-} // TC: O(digitsCount), SC: O(digitsCount)
-```
-
-_Another approach_ :
-
-Convert number to string and find string length
-
-```java
-    public static int countDigits(long n) {
-        String num = Long.toString(n);
-        return num.length();
-    }//TC: O(1), SC:O(1)
-```
-
-_A better solution.._
-
-Use Math to solve this problem. This can be easily obtained by using a formula
-
-> number of digits in N = log10(N) + 1.
-
-```java
-    public static long countDigits(long n) {
-        if (n == 0)
-            return 0;
-        return (int) Math.floor(Math.log10(n) + 1);
-    } //TC: O(1), SC:O(1)
-```
