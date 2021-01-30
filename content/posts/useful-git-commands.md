@@ -12,8 +12,7 @@ categories: [ci-cd, devops]
 ---
 
 <!--  Start Typing... -->
-
-There's no doubt In this article lets look at a few Git commands which every developer should be familiar with.
+In this article lets look at a few Git commands which every developer should be familiar with.
 
 ## What is Git?
 

@@ -12,8 +12,7 @@ categories: [misc]
 ---
 
 <!--  Start Typing... -->
-
-Wait, what? Yes you read it right, you can build and host your website in 10 min :sunglasses:.
+Yes you read it right, you can build and host your website in 10 min :sunglasses:.
 
 But how?
 

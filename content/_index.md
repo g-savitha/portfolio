@@ -2,7 +2,7 @@
 title: "Home"
 meta:
   description: |
-    JavaScript Developer  ·  
+    Full stack developer  ·  
     Open-Source Enthusiast  ·  
     Minimalist  ·
 ---
