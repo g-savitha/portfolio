@@ -1,34 +1,40 @@
 {{ $current_url := .Permalink | relURL }}
 <small class="top-nav">
   {{ if eq $current_url "/" }}
-  <a class="active" href="/">~/</a>
+  <a class="active" href="/">~/Home</a>
   {{ else }}
-  <a href="/">~/</a>
+  <a href="/">~/Home</a>
   {{ end }}
   <!--.-->
   {{ if eq $current_url "/work/" }}
-  <a class="active" href="/work/">~/work</a>
+  <a class="active" href="/work/">~/Work</a>
   {{ else }}
-  <a href="/work/">~/work</a>
+  <a href="/work/">~/Work</a>
   {{ end }}
   <!---->
   {{ if eq $current_url "/about/" }}
-  <a class="active" href="/about/">~/about</a>
+  <a class="active" href="/about/">~/About</a>
   {{ else }}
-  <a href="/about/">~/about</a>
+  <a href="/about/">~/About</a>
   {{ end }}
   <!--.-->
   {{ if eq $current_url "/categories/" }}
-  <a class="active" href="/categories/">~/categories</a>
+  <a class="active" href="/categories/">~/Categories</a>
   {{ else }}
-  <a href="/categories/">~/categories</a>
+  <a href="/categories/">~/Categories</a>
   {{ end }}
   <!--.-->
   <!--.-->
   {{ if eq $current_url "/notes/" }}
-  <a class="active" href="/notes/">~/notes</a>
+  <a class="active" href="/notes/">~/Notes</a>
   {{ else }}
-  <a href="/notes/">~/notes</a>
+  <a href="/notes/">~/Notes</a>
+  {{ end }}
+
+  {{ if eq $current_url "/daily-logs/" }}
+  <a class="active" href="https://g-savitha.github.io/Logs/">~/Daily Logs</a>
+  {{ else }}
+  <a href="https://g-savitha.github.io/Logs/">~/Daily Logs</a>
   {{ end }}
   <!--.-->
   <!--.-->
