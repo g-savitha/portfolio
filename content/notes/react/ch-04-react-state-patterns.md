@@ -23,6 +23,8 @@ sources: ["https://www.udemy.com/course/modern-react-bootcamp/"]
 6. em > del (_~~text~~_) - red cross-off
 -->
 
+> Note:  These notes are taken from [Colt steele's](https://github.com/Colt) [Modern React Bootcamp course](https://www.udemy.com/course/modern-react-bootcamp/)
+
 # Setting State Using State
 
 We know that `setState()` is asynchronous…
