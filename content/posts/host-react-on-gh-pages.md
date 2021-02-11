@@ -1,7 +1,7 @@
 ---
 title: "Hosting react projects on GH Pages"
 date: 2020-09-11T12:31:59+05:30
-draft: false
+draft: true
 meta:
   image: # url to image. Important for blog listing and seo
   description: Host react apps for free on Github Pages.

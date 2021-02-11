@@ -6,36 +6,37 @@
   <a href="/">~/Home</a>
   {{ end }}
   <!--.-->
-  {{ if eq $current_url "/work/" }}
+  <!-- {{ if eq $current_url "/work/" }}
   <a class="active" href="/work/">~/Work</a>
   {{ else }}
   <a href="/work/">~/Work</a>
-  {{ end }}
+  {{ end }} -->
   <!---->
-  {{ if eq $current_url "/about/" }}
+  <!-- {{ if eq $current_url "/about/" }}
   <a class="active" href="/about/">~/About</a>
   {{ else }}
   <a href="/about/">~/About</a>
-  {{ end }}
+  {{ end }} -->
   <!--.-->
+
+  {{ if eq $current_url "/notes/" }}
+  <a class="active" href="/notes/">~/Notes</a>
+  {{ else }}
+  <a href="/notes/">~/Notes</a>
+  {{ end }}
+    <!--.-->
   {{ if eq $current_url "/categories/" }}
   <a class="active" href="/categories/">~/Categories</a>
   {{ else }}
   <a href="/categories/">~/Categories</a>
   {{ end }}
   <!--.-->
-  <!--.-->
-  {{ if eq $current_url "/notes/" }}
-  <a class="active" href="/notes/">~/Notes</a>
-  {{ else }}
-  <a href="/notes/">~/Notes</a>
-  {{ end }}
 
-  {{ if eq $current_url "/daily-logs/" }}
+  <!-- {{ if eq $current_url "/daily-logs/" }}
   <a class="active" href="https://g-savitha.github.io/Logs/">~/Daily Logs</a>
   {{ else }}
   <a href="https://g-savitha.github.io/Logs/">~/Daily Logs</a>
-  {{ end }}
+  {{ end }} -->
   <!--.-->
   <!--.-->
 </small>
@@ -45,6 +46,6 @@
   style="text-align: center; display: block; margin-top: 3rem"
 >
   <div class="logo">
-    <span>#"</span><span>Savitha Gollamudi</span><span>"</span>
+    <span>#"</span><span>Savitha's Notes</span><span>"</span>
   </div>
 </a>

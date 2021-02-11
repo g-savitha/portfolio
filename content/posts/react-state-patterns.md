@@ -1,7 +1,7 @@
 ---
 title: "React State Patterns"
 date: 2020-09-01T16:27:52+05:30
-draft: false
+draft: true
 meta:
   image: # url to image. Important for blog listing and seo
   description: # overrides .Summary

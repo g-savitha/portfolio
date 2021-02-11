@@ -1,6 +1,6 @@
-baseURL = "https://www.gsavitha.in/"
+baseURL = "https://g-savitha.github.io/"
 languageCode = "en-us"
-title = "Savitha Gollamudi"
+title = "Savitha's Notes"
 
 theme = "0x32"              # theme name
 disableKinds = []           # disable stuffs

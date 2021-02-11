@@ -1,7 +1,7 @@
 ---
 title: "Syncing Git Fork with Original Repository"
 date: 2020-09-11T11:30:29+05:30
-draft: false
+draft: true
 meta:
   image: # url to image. Important for blog listing and seo
   description: This article helps you in pulling changes into your forked repository from the original one.
