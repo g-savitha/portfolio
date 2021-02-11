@@ -1,0 +1,146 @@
+<!doctype html><html lang=en><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://g-savitha.github.io/css/base.css media=all><link rel=stylesheet href=https://g-savitha.github.io/css/syntax.css media=all><link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel=stylesheet><script async src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=description content="Creating a Web server http module  Gives us networking capability -> such as building a http server.  1const http = require(&#34;http&#34;);   http requires a cb fn which gets fired off whenever a new request comes
+  CB gets access to 2 very imp variables (req and res)
+  Create a server
+  start the server -> by listening on incoming reqs
+  Create a server:"><meta name=title content="Intro to Node - 2 | Savitha's Notes"><meta name=keywords content="tech,programming,javascript,react,rust,nodejs,node,mongodb,postgresql"><meta name=robots content="index, follow"><meta charset=utf-8><meta name=language content="English"><meta name=revisit-after content="2 days"><meta name=author content="Abdus <mail@abdus.xyz>"><meta property="og:type" content="website"><meta property="og:url" content="https://g-savitha.github.io/notes/ch-02-node-intro-2/"><meta property="og:title" content="Intro to Node - 2 | Savitha's Notes"><meta property="og:description" content="Creating a Web server http module  Gives us networking capability -> such as building a http server.  1const http = require(&#34;http&#34;);   http requires a cb fn which gets fired off whenever a new request comes
+  CB gets access to 2 very imp variables (req and res)
+  Create a server
+  start the server -> by listening on incoming reqs
+  Create a server:"><meta property="og:image" content="https://g-savitha.github.io/images/default-meta-img.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://g-savitha.github.io/notes/ch-02-node-intro-2/"><meta property="twitter:title" content="Intro to Node - 2 | Savitha's Notes"><meta property="twitter:description" content="Creating a Web server http module  Gives us networking capability -> such as building a http server.  1const http = require(&#34;http&#34;);   http requires a cb fn which gets fired off whenever a new request comes
+  CB gets access to 2 very imp variables (req and res)
+  Create a server
+  start the server -> by listening on incoming reqs
+  Create a server:"><meta property="twitter:image" content="https://g-savitha.github.io/images/default-meta-img.png"><title>Intro to Node - 2 | Savitha's Notes</title><meta name=google-site-verification content="SaBE4itR48HOEifszgie57M1Y1O9Ayk_rV5cBwah9LY"><body><small class=top-nav><a href=/>~/Home</a>
+<a href=/notes/>~/Notes</a>
+<a href=/categories/>~/Categories</a></small>
+<a href=https://g-savitha.github.io/ style=text-align:center;display:block;margin-top:3rem><div class=logo><span>#"</span><span>Savitha's Notes</span><span>"</span></div></a><div id=content><div style="text-align:center;margin:3rem 0"><h2>Intro to Node - 2</h2><small>22 September, 2020&nbsp;&nbsp;&#183;&nbsp;&nbsp;</small>
+<small><a style=text-decoration:none href=/categories/node>Node</a></small></div><div class=section-content style=color:#252525><h2 id=creating-a-web-server>Creating a Web server</h2><h2 id=http-module><code>http</code> module</h2><ul><li>Gives us <em>networking capability</em> -> such as <em>building a http server</em>.</li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>http</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s2>&#34;http&#34;</span><span class=p>);</span>
+</code></pre></div><ul><li><p><code>http</code> requires a <em>cb fn which gets fired off whenever a new request comes</em></p></li><li><p>CB <em>gets access to</em> <em>2 very imp variables</em> <em><em>(req and res)</em></em></p></li><li><p>Create a server</p></li><li><p>start the server -> by listening on incoming reqs</p></li></ul><p><em>Create a server:</em></p><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=nx>http</span><span class=p>.</span><span class=nx>createServer</span><span class=p>(</span>
+<span class=ln>2</span>  <span class=c1>//whenever a new req comes to server, this callback is called
+</span><span class=ln>3</span><span class=c1></span>  <span class=p>(</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+<span class=ln>4</span>    <span class=nx>res</span><span class=p>.</span><span class=nx>end</span><span class=p>(</span><span class=s2>&#34;Hello from the server!&#34;</span><span class=p>);</span> <span class=c1>// the response we send back
+</span><span class=ln>5</span><span class=c1></span>  <span class=p>}</span>
+<span class=ln>6</span><span class=p>);</span>
+</code></pre></div><p><em>listening on incoming reqs</em> :</p><ul><li><p>store result of server in a new variable to listen on incoming requests.</p></li><li><p>Args: <em>PORT</em>(sub address on a certain host), <em>HOST-ADDRESS</em>(where to go next (by default it is localhost)), <em>CALLBACK</em>(Optional)</p></li><li><p>CB runs right after server is started</p></li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>server</span> <span class=o>=</span> <span class=nx>http</span><span class=p>.</span><span class=nx>createServer</span><span class=p>((</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+<span class=ln>2</span>  <span class=nx>res</span><span class=p>.</span><span class=nx>end</span><span class=p>(</span><span class=s2>&#34;Hello from the server!&#34;</span><span class=p>);</span>
+<span class=ln>3</span><span class=p>});</span>
+<span class=ln>4</span><span class=c1>//listen to incoming requests from client
+</span><span class=ln>5</span><span class=c1></span><span class=nx>server</span><span class=p>.</span><span class=nx>listen</span><span class=p>(</span><span class=mi>8000</span><span class=p>,</span> <span class=s2>&#34;127.0.0.1&#34;</span><span class=p>,</span> <span class=p>()</span> <span class=p>=&gt;</span> <span class=p>{</span>
+<span class=ln>6</span>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;listening to reqs on port: 8000&#34;</span><span class=p>);</span>
+<span class=ln>7</span><span class=p>});</span>
+<span class=ln>8</span><span class=c1>//enter 127.0.0.1 :8000 in browser
+</span></code></pre></div><p><strong>Note :</strong> Node cannot simply exit the process this time -> coz of <em>event loop</em> . It keeps on listening to incoming request on given port.</p><ul><li><a href=https://nodejs.org/dist/latest-v14.x/docs/api/http.html>More about <code>http</code> module</a></li></ul><h3 id=routing>Routing</h3><ul><li><p><em>Routing</em>: Implementing different actions for different URLS</p></li><li><p>Routing in <code>http</code> becomes complicated as the application grows, so use <code>express</code> then.</p></li><li><p>First Step : Analyze the URL. Lets use <code>url</code> module for that</p></li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>url</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s2>&#34;url&#34;</span><span class=p>);</span>
+</code></pre></div><ul><li><em>url module parses</em> urls like <code>/overview/id=23&abc=4d</code> <em>into a nicely formatted object</em>.</li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>server</span> <span class=o>=</span> <span class=nx>http</span><span class=p>.</span><span class=nx>createServer</span><span class=p>((</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+<span class=ln>2</span>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>req</span><span class=p>.</span><span class=nx>url</span><span class=p>);</span> <span class=c1>// we get 2 reqs by default (`/ ` &amp; `/favicon.ico`) -&gt; cb is executed twice
+</span><span class=ln>3</span><span class=c1></span>    <span class=nx>res</span><span class=p>.</span><span class=nx>end</span><span class=p>(</span><span class=s2>&#34;Hello from the server&#34;</span><span class=p>);</span>
+<span class=ln>4</span>  <span class=p>}</span>
+<span class=ln>5</span><span class=p>});</span>
+</code></pre></div><p><em>Routing&mldr;</em></p><ul><li><code>res.writeHead()</code> : Sends a response header to the request.<ul><li>Args: <em>statusCode</em> (3 didgit HTTP code like <code>404</code>), <em>status-msg</em>(optional, for human readabilty), <em>headers</em>(response headers -> [info about response we are sending back])<ul><li><strong>Note</strong> : We can also specify custom header</li></ul></li><li>This method <em>must only be called once on a message</em> and it <em>must be called before</em> <code>response.end()</code> is called.</li><li><em>Returns a reference to the ServerResponse</em>, so that calls can be chained.</li></ul></li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln> 1</span><span class=kr>const</span> <span class=nx>server</span> <span class=o>=</span> <span class=nx>http</span><span class=p>.</span><span class=nx>createServer</span><span class=p>((</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+<span class=hl><span class=ln> 2</span>  <span class=kr>const</span> <span class=nx>pathName</span> <span class=o>=</span> <span class=nx>req</span><span class=p>.</span><span class=nx>url</span><span class=p>;</span>
+</span><span class=ln> 3</span>  <span class=k>if</span> <span class=p>(</span><span class=nx>pathName</span> <span class=o>===</span> <span class=s2>&#34;/&#34;</span> <span class=o>||</span> <span class=nx>pathName</span> <span class=o>===</span> <span class=s2>&#34;/overview&#34;</span><span class=p>)</span> <span class=p>{</span>
+<span class=ln> 4</span>    <span class=nx>res</span><span class=p>.</span><span class=nx>end</span><span class=p>(</span><span class=s2>&#34;This is overview page&#34;</span><span class=p>);</span>
+<span class=ln> 5</span>  <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=nx>pathName</span> <span class=o>===</span> <span class=s2>&#34;/product&#34;</span><span class=p>)</span> <span class=p>{</span>
+<span class=ln> 6</span>    <span class=nx>res</span><span class=p>.</span><span class=nx>end</span><span class=p>(</span><span class=s2>&#34;This is product page&#34;</span><span class=p>);</span>
+<span class=ln> 7</span>  <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+<span class=ln> 8</span>    <span class=c1>// throws a 404 error in browser console. You can also check in network tab
+</span><span class=ln> 9</span><span class=c1></span>    <span class=nx>res</span><span class=p>.</span><span class=nx>writeHead</span><span class=p>(</span><span class=mi>404</span><span class=p>);</span>
+<span class=ln>10</span>    <span class=c1>//there are many header types one of them is content-type
+</span><span class=ln>11</span><span class=c1></span>    <span class=c1>//note all these status codes and headers need to be sent before sending response
+</span><span class=hl><span class=ln>12</span><span class=c1></span>    <span class=nx>res</span><span class=p>.</span><span class=nx>writeHead</span><span class=p>(</span><span class=mi>404</span><span class=p>,</span> <span class=p>{</span>
+</span><span class=hl><span class=ln>13</span>      <span class=s2>&#34;Content-type&#34;</span><span class=o>:</span> <span class=s2>&#34;text/html&#34;</span><span class=p>,</span> <span class=c1>//browser now expects an html to come in
+</span></span><span class=hl><span class=ln>14</span><span class=c1></span>      <span class=c1>// our own made up header
+</span></span><span class=hl><span class=ln>15</span><span class=c1></span>      <span class=s2>&#34;my-own-header&#34;</span><span class=o>:</span> <span class=s2>&#34;hello-world&#34;</span><span class=p>,</span>
+</span><span class=hl><span class=ln>16</span>    <span class=p>});</span>
+</span><span class=ln>17</span>    <span class=nx>res</span><span class=p>.</span><span class=nx>end</span><span class=p>(</span><span class=s2>&#34;Page not found!&#34;</span><span class=p>);</span>
+<span class=ln>18</span>    <span class=c1>//what we can do now is embed a html in response
+</span><span class=hl><span class=ln>19</span><span class=c1></span>    <span class=nx>res</span><span class=p>.</span><span class=nx>end</span><span class=p>(</span><span class=s2>&#34;&lt;h1&gt;Page not found&lt;/h1&gt;&#34;</span><span class=p>);</span> <span class=c1>//output : response in &lt;h1&gt;
+</span></span><span class=ln>20</span><span class=c1></span>  <span class=p>}</span>
+<span class=ln>21</span><span class=p>});</span>
+</code></pre></div><h2 id=build-a-simple-api>Build a simple API</h2><ul><li><p><strong>API</strong> : A service from which we can request data.</p></li><li><p><em>First Way</em>:</p><ul><li>Read data from json file and parse data to JS</li><li>Send result back to client</li></ul></li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=k>if</span> <span class=p>(</span><span class=nx>pathName</span> <span class=o>===</span> <span class=s2>&#34;/api&#34;</span><span class=p>)</span> <span class=p>{</span>
+<span class=ln>2</span>  <span class=c1>//__dirname translates directory in which script that we&#39;re currently executing is located
+</span><span class=hl><span class=ln>3</span><span class=c1></span>  <span class=nx>fs</span><span class=p>.</span><span class=nx>readFile</span><span class=p>(</span><span class=sb>`</span><span class=si>${</span><span class=nx>__dirname</span><span class=si>}</span><span class=sb>/dev-data/data.json`</span><span class=p>,</span> <span class=s2>&#34;utf-8&#34;</span><span class=p>,</span> <span class=p>(</span><span class=nx>err</span><span class=p>,</span> <span class=nx>data</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span><span class=hl><span class=ln>4</span>    <span class=kr>const</span> <span class=nx>productData</span> <span class=o>=</span> <span class=nx>JSON</span><span class=p>.</span><span class=nx>parse</span><span class=p>(</span><span class=nx>data</span><span class=p>);</span> <span class=c1>//Turns JSON string to JS object
+</span></span><span class=ln>5</span><span class=c1></span>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>productData</span><span class=p>);</span>
+<span class=hl><span class=ln>6</span>    <span class=nx>res</span><span class=p>.</span><span class=nx>writeHead</span><span class=p>(</span><span class=mi>200</span><span class=p>,</span> <span class=p>{</span> <span class=s2>&#34;Content-Type&#34;</span><span class=o>:</span> <span class=s2>&#34;application/json&#34;</span> <span class=p>});</span>
+</span><span class=ln>7</span>    <span class=nx>res</span><span class=p>.</span><span class=nx>end</span><span class=p>(</span><span class=nx>data</span><span class=p>);</span>
+<span class=ln>8</span>  <span class=p>});</span>
+<span class=ln>9</span><span class=p>}</span>
+</code></pre></div><p>This is <em>not 100% efficient</em>, because each time a user hits <code>/api</code> file have to be read and then sent back. Instead we can <em>read the file once in the beginning</em> and then each time someone hits this route, <em>simply send back the data without having to read it each time that a user requested</em></p><ul><li><em>Efficient way</em>:<ul><li><em>Use sync version of readFile</em> (But sync version blocks code right?)<ul><li>In this case, its not a problem at all coz top level code gets executed only once in the beginning.</li><li>The code outside callback(so called top-level code) gets executed only once.</li></ul></li></ul></li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=c1>//top-level code
+</span><span class=ln>2</span><span class=c1></span><span class=kr>const</span> <span class=nx>data</span> <span class=o>=</span> <span class=nx>fs</span><span class=p>.</span><span class=nx>readFileSync</span><span class=p>(</span><span class=sb>`</span><span class=si>${</span><span class=nx>__dirname</span><span class=si>}</span><span class=sb>/dev-data/data.json`</span><span class=p>,</span> <span class=s2>&#34;utf-8&#34;</span><span class=p>);</span>
+<span class=ln>3</span>
+<span class=ln>4</span><span class=c1>//inside callback
+</span><span class=ln>5</span><span class=c1></span><span class=k>if</span> <span class=p>(</span><span class=nx>pathName</span> <span class=o>===</span> <span class=s2>&#34;/api&#34;</span><span class=p>)</span> <span class=p>{</span>
+<span class=ln>6</span>  <span class=nx>res</span><span class=p>.</span><span class=nx>writeHead</span><span class=p>(</span><span class=mi>200</span><span class=p>,</span> <span class=p>{</span> <span class=s2>&#34;Content-Type&#34;</span><span class=o>:</span> <span class=s2>&#34;application/json&#34;</span> <span class=p>});</span>
+<span class=ln>7</span>  <span class=nx>res</span><span class=p>.</span><span class=nx>end</span><span class=p>(</span><span class=nx>data</span><span class=p>);</span>
+<span class=ln>8</span><span class=p>}</span>
+</code></pre></div><h3 id=parse-variables-from-url>Parse variables from URL</h3><ul><li>lets say from this url : &lsquo;https://localhost:8080/api&id=0&rsquo; we want to extract query string ie., &lsquo;id=0&rsquo; and pathname = &lsquo;/product&rsquo;</li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>url</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s2>&#34;url&#34;</span><span class=p>);</span>
+<span class=ln>2</span><span class=c1>//pass true here to actually parse the url
+</span><span class=ln>3</span><span class=c1></span><span class=kr>const</span> <span class=p>{</span> <span class=nx>query</span><span class=p>,</span> <span class=nx>pathname</span> <span class=p>}</span> <span class=o>=</span> <span class=nx>url</span><span class=p>.</span><span class=nx>parse</span><span class=p>(</span><span class=nx>req</span><span class=p>.</span><span class=nx>url</span><span class=p>,</span> <span class=kc>true</span><span class=p>);</span>
+</code></pre></div><h3 id=create-your-own-modules>Create your own modules:</h3><p>If you want to use a function or class in multiple files, Make it as a <strong>module</strong>. Export it from that file and import it in another.</p><p><strong>Note</strong>: In Node every single file is a module.</p><p>One of the many ways&mldr;</p><p><em>Steps to create a module:</em></p><ol><li>Extract the piece of code which you want to make it as a module.</li><li>Export it using <code>export.modules</code></li><li>Import it in the file in which you want to use this module using <code>require</code></li></ol><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=c1>//sum.js
+</span><span class=ln>2</span><span class=c1></span><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>(</span><span class=nx>x</span><span class=p>,</span> <span class=nx>y</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+<span class=ln>3</span>  <span class=k>return</span> <span class=nx>x</span> <span class=o>+</span> <span class=nx>y</span><span class=p>;</span>
+<span class=ln>4</span><span class=p>};</span>
+<span class=ln>5</span><span class=c1>//index.js
+</span><span class=ln>6</span><span class=c1></span><span class=kr>const</span> <span class=nx>sum</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s2>&#34;./modules/sum&#34;</span><span class=p>);</span>
+</code></pre></div></div><div style=margin-top:2rem><i class="fas fa-tags" style=font-size:.7em;color:gray></i><a style="border:0;font-size:.8em;padding:0 4px;text-decoration:none" href=/tags/node>&nbsp;node</a>
+<a style="border:0;font-size:.8em;padding:0 4px;text-decoration:none" href=/tags/javascript>&nbsp;javascript</a>
+<a style="border:0;font-size:.8em;padding:0 4px;text-decoration:none" href=/tags/es6>&nbsp;es6</a></div><div style=margin-top:5rem><a href=https://g-savitha.github.io/notes/ch-01-node-intro/ class="prev-next older">Intro to Node&Rarr;</a>
+<a href=https://g-savitha.github.io/notes/dom-manipulation/ class="prev-next newer">&Larr;Intro to DOM Manipulation</a></div><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/g-savitha.github.io\/"},"articleSection":"notes","name":"Intro to Node - 2","headline":"Intro to Node - 2","description":"Creating a Web server http module  Gives us networking capability -\u0026gt; such as building a http server.  1const http = require(\u0026#34;http\u0026#34;);   http requires a cb fn which gets fired off whenever a new request comes\n  CB gets access to 2 very imp variables (req and res)\n  Create a server\n  start the server -\u0026gt; by listening on incoming reqs\n  Create a server:","inLanguage":"en-US","author":"Savitha","creator":"Savitha","publisher":"Savitha","accountablePerson":"Savitha","copyrightHolder":"Savitha","copyrightYear":"22220","datePublished":"2020-09-22 19:00:37 \u002b0530 \u002b0530","dateModified":"2020-09-22 19:00:37 \u002b0530 \u002b0530","url":"https:\/\/g-savitha.github.io\/notes\/ch-02-node-intro-2\/","wordCount":"843","keywords":["node","javascript","es6","Blog"]}</script><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#2196f3");
+    annotateElement("strong", "highlight", "yellow");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "lawngreen");
+    annotateNestedElement("em > em", "circle", "#ff000080");
+    annotateNestedElement("blockquote", "bracket", "#da3bf1");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.section-content em,.section-content strong,.section-content del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer style="padding:6rem 1rem 2rem;text-align:center;color:gray"><small style=display:block><code>ch-02-node-intro-2.md</code> was last updated on
+<code>21 October, 2020</code>. Generated
+from
+<a target=_blank href=https://github.com/g-savitha/portfolio/tree/1740413ef69ff59e0884a4779461d9d7a5080749 style=text-decoration:none><code>1740413</code></a>
+because of <code>📕 more notes on node</code></small>
+<small>built with <a href=https://gohugo.io>hugo</a> and
+<span style=color:red>❤️</span> <span>&#169; 2020</span>
+<a href=https://github.com/g-savitha>Savitha Gollamudi</a></small></footer><script>(()=>{if(document.queryCommandSupported("copy")){const codeBlocks=[...document.querySelectorAll(".highlight")];codeBlocks.forEach((block)=>{block.querySelector("pre.chroma").style.paddingTop="3rem";block.style.position="relative";const handler=document.createElement("button");handler.textContent="COPY";handler.style.position="absolute";handler.style.top="10px";handler.style.right="10px";handler.style.padding="0.25rem 0.5rem";handler.style.background="#272822";handler.style.borderRadius="4px";handler.style.border="1px solid #C9D5DE";handler.style.color="#ffffff";handler.addEventListener("click",()=>{const textarea=document.createElement("textarea");textarea.value=block.querySelector(".chroma > code").textContent;document.body.prepend(textarea);textarea.style.position="absolute";textarea.style.opacity=0;textarea.select();document.execCommand("copy");textarea.remove();handler.textContent="COPIED!";setTimeout(()=>(handler.textContent="COPY"),2000);});const langCard=document.createElement("span");const lang=block.querySelector(".chroma > code").classList.toString().split("language-")[1];langCard.textContent=lang;langCard.style.top="0";langCard.style.left="1rem";langCard.style.color="#ffffff";langCard.style.fontSize="0.7em";langCard.style.position="absolute";langCard.style.background="#3f51b5";langCard.style.padding="0.25rem 0.5rem";langCard.style.textTransform="uppercase";langCard.style.borderRadius="0 0 4px 4px";block.prepend(langCard);block.prepend(handler);});}})();</script></body></html>

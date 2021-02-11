@@ -1,0 +1,285 @@
+<!doctype html><html lang=en><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://g-savitha.github.io/css/base.css media=all><link rel=stylesheet href=https://g-savitha.github.io/css/syntax.css media=all><link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel=stylesheet><script async src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=description content="Properties and Methods of DOM Lets look at some of the important properties and methods which we use regularly
+innerText & textContent innerText  innerText gives the data in between the tags  1const h1 = document.querySelector(&#34;h1&#34;); 2h1.innerText; //My Web page 3const ul = document.querySelector(&#34;ul&#34;); 4ul.innerText; //&#34;First2nd3rd&#34; All the nested content is concatenated and output came as one object 5document.body.innerText; // we get all the text on the webpage, it doesnt matter it is nested or not 6//change the value 7h1."><meta name=title content="Manipulating the DOM | Savitha's Notes"><meta name=keywords content="tech,programming,javascript,react,rust,nodejs,node,mongodb,postgresql"><meta name=robots content="index, follow"><meta charset=utf-8><meta name=language content="English"><meta name=revisit-after content="2 days"><meta name=author content="Abdus <mail@abdus.xyz>"><meta property="og:type" content="website"><meta property="og:url" content="https://g-savitha.github.io/notes/dom-manipulation-02/"><meta property="og:title" content="Manipulating the DOM | Savitha's Notes"><meta property="og:description" content="Properties and Methods of DOM Lets look at some of the important properties and methods which we use regularly
+innerText & textContent innerText  innerText gives the data in between the tags  1const h1 = document.querySelector(&#34;h1&#34;); 2h1.innerText; //My Web page 3const ul = document.querySelector(&#34;ul&#34;); 4ul.innerText; //&#34;First2nd3rd&#34; All the nested content is concatenated and output came as one object 5document.body.innerText; // we get all the text on the webpage, it doesnt matter it is nested or not 6//change the value 7h1."><meta property="og:image" content="https://g-savitha.github.io/images/default-meta-img.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://g-savitha.github.io/notes/dom-manipulation-02/"><meta property="twitter:title" content="Manipulating the DOM | Savitha's Notes"><meta property="twitter:description" content="Properties and Methods of DOM Lets look at some of the important properties and methods which we use regularly
+innerText & textContent innerText  innerText gives the data in between the tags  1const h1 = document.querySelector(&#34;h1&#34;); 2h1.innerText; //My Web page 3const ul = document.querySelector(&#34;ul&#34;); 4ul.innerText; //&#34;First2nd3rd&#34; All the nested content is concatenated and output came as one object 5document.body.innerText; // we get all the text on the webpage, it doesnt matter it is nested or not 6//change the value 7h1."><meta property="twitter:image" content="https://g-savitha.github.io/images/default-meta-img.png"><title>Manipulating the DOM | Savitha's Notes</title><meta name=google-site-verification content="SaBE4itR48HOEifszgie57M1Y1O9Ayk_rV5cBwah9LY"><body><small class=top-nav><a href=/>~/Home</a>
+<a href=/notes/>~/Notes</a>
+<a href=/categories/>~/Categories</a></small>
+<a href=https://g-savitha.github.io/ style=text-align:center;display:block;margin-top:3rem><div class=logo><span>#"</span><span>Savitha's Notes</span><span>"</span></div></a><div id=content><div style="text-align:center;margin:3rem 0"><h2>Manipulating the DOM</h2><small>26 September, 2020&nbsp;&nbsp;&#183;&nbsp;&nbsp;</small>
+<small><a style=text-decoration:none href=/categories/javascript>Javascript</a></small></div><div style=margin-bottom:3rem><a style=display:inline-block;color:gray;text-decoration:none;font-size:.9em;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:100% href=https://www.udemy.com/course/modern-javascript/><i style=font-size:.75em;color:#d3d3d3 class="fas fa-link"></i>&nbsp; https://www.udemy.com/course/modern-javascript/</a></div><div class=section-content style=color:#252525><h1 id=properties-and-methods-of-dom>Properties and Methods of DOM</h1><p>Lets look at some of the important properties and methods which we use regularly</p><h2 id=innertext--textcontent><code>innerText</code> & <code>textContent</code></h2><h3 id=innertext><code>innerText</code></h3><ul><li>innerText gives the <em>data in between the tags</em></li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>h1</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;h1&#34;</span><span class=p>);</span>
+<span class=ln>2</span><span class=nx>h1</span><span class=p>.</span><span class=nx>innerText</span><span class=p>;</span> <span class=c1>//My Web page
+</span><span class=ln>3</span><span class=c1></span><span class=kr>const</span> <span class=nx>ul</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;ul&#34;</span><span class=p>);</span>
+<span class=ln>4</span><span class=nx>ul</span><span class=p>.</span><span class=nx>innerText</span><span class=p>;</span> <span class=c1>//&#34;First2nd3rd&#34; All the nested content is concatenated and output came as one object
+</span><span class=ln>5</span><span class=c1></span><span class=nb>document</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>innerText</span><span class=p>;</span> <span class=c1>// we get all the text on the webpage, it doesnt matter it is nested or not
+</span><span class=ln>6</span><span class=c1>//change the value
+</span><span class=ln>7</span><span class=c1></span><span class=nx>h1</span><span class=p>.</span><span class=nx>innerText</span> <span class=o>=</span> <span class=s2>&#34;Hello world&#34;</span><span class=p>;</span> <span class=c1>// changes value to HW on html page
+</span><span class=ln>8</span><span class=c1></span><span class=nx>ul</span><span class=p>.</span><span class=nx>innerText</span> <span class=o>=</span> <span class=s2>&#34;asjgsakdj&#34;</span><span class=p>;</span> <span class=c1>// all of the lis are gone and replaced with this text
+</span></code></pre></div><h3 id=textcontent><code>textContent</code></h3><ul><li>On surface looks same like innerText</li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>h1</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;h1&#34;</span><span class=p>);</span>
+<span class=ln>2</span><span class=nx>h1</span><span class=p>.</span><span class=nx>textContent</span><span class=p>;</span> <span class=c1>//My Web page
+</span></code></pre></div><p>lets change our html to without any proper formatting and add a script tag</p><div class=highlight><pre class=chroma><code class=language-html data-lang=html><span class=ln>1</span><span class=p>&lt;</span><span class=nt>p</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;main&#34;</span><span class=p>&gt;</span>
+<span class=ln>2</span>  Lorem ipsum d sadkj saldkm olor sit amet consectetur, adipisicing elit.
+<span class=ln>3</span>  <span class=p>&lt;</span><span class=nt>strong</span> <span class=na>style</span><span class=o>=</span><span class=s>&#34;display : none&#34;</span><span class=p>&gt;</span>Minus omnis similikjdsof que itaque!<span class=p>&lt;/</span><span class=nt>strong</span><span class=p>&gt;</span>
+<span class=ln>4</span>  Quas, voluptatum quasi sapiente consectetur cupiditate vel omnis, dolore odit
+<span class=ln>5</span>  sequi, doloribus deleniti est ipsum quo numquam eius.
+<span class=ln>6</span>  <span class=p>&lt;</span><span class=nt>script</span><span class=p>&gt;</span>
+<span class=ln>7</span>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;Hello&#34;</span><span class=p>);</span>
+<span class=ln>8</span>  <span class=p>&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+<span class=ln>9</span><span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
+</code></pre></div><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>p</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;#main&#34;</span><span class=p>);</span>
+<span class=ln>2</span><span class=nx>p</span><span class=p>.</span><span class=nx>innerText</span><span class=p>;</span> <span class=c1>// returns all the text inside main with formatting and no data from script and also it doesnt display the hidden text which is in strong tag
+</span><span class=ln>3</span><span class=c1></span><span class=nx>p</span><span class=p>.</span><span class=nx>textContent</span><span class=p>;</span> <span class=c1>//returns data without formatting and also data inside script tag and hidden data inside strong tag
+</span></code></pre></div><h2 id=innerhtml><code>innerHTML</code></h2><p>innerHTML not only <em>retrieves text inside the tags</em> but also <em>all the elements inside a particular tag</em></p><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>form</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;form&#34;</span><span class=p>);</span>
+<span class=ln>2</span><span class=nx>form</span><span class=p>.</span><span class=nx>innerHTML</span><span class=p>;</span>
+<span class=ln>3</span><span class=cm>/**
+</span><span class=ln>4</span><span class=cm> * &#34;
+</span><span class=ln>5</span><span class=cm>      &lt;input type=&#34;text&#34; name=&#34;&#34; id=&#34;&#34; placeholder=&#34;text&#34;&gt;
+</span><span class=ln>6</span><span class=cm>      &lt;input type=&#34;password&#34; name=&#34;&#34; id=&#34;&#34; placeholder=&#34;password&#34;&gt;
+</span><span class=ln>7</span><span class=cm>      &lt;input type=&#34;submit&#34;&gt;
+</span><span class=ln>8</span><span class=cm>    &#34;
+</span><span class=ln>9</span><span class=cm> */</span>
+</code></pre></div><ul><li>We can <strong>use innerHTML to change content inside tags</strong>.</li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=nx>form</span><span class=p>.</span><span class=nx>innerHTML</span> <span class=o>=</span> <span class=s2>&#34;sadjgd&#34;</span><span class=p>;</span> <span class=c1>// entire form gets replaced by this text
+</span><span class=ln>2</span><span class=c1>// we can also add html data using innerHTML
+</span><span class=ln>3</span><span class=c1></span><span class=nx>form</span><span class=p>.</span><span class=nx>innerHTML</span> <span class=o>=</span> <span class=s2>&#34; &lt;b&gt;i am a bold tag&lt;/b&gt;&#34;</span><span class=p>;</span> <span class=c1>// bolds out the data
+</span></code></pre></div><ul><li><p><code>innerText</code>, <code>textContent</code> and <code>innerHTML</code> all <em><em>return string</em></em> object</p></li><li><p><strong>Note</strong>: <code>innerHTML</code> actually <em>parses the text we pass in</em> and checks whether we have html elements or text, based on that it manipulates the data and reflects on DOM.</p></li></ul><h3 id=innertext-vs-innerhtml><code>innerText</code> vs <code>innerHTML</code></h3><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>h1</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;h1&#34;</span><span class=p>);</span>
+<span class=ln>2</span><span class=nx>h1</span><span class=p>.</span><span class=nx>innerText</span><span class=p>();</span> <span class=c1>// My web page
+</span><span class=ln>3</span><span class=c1></span><span class=nx>h1</span><span class=p>.</span><span class=nx>innerHTML</span><span class=p>();</span> <span class=c1>//My web page
+</span><span class=ln>4</span><span class=c1></span><span class=nx>h1</span><span class=p>.</span><span class=nx>innerHTML</span> <span class=o>+=</span> <span class=s2>&#34;is cool&#34;</span><span class=p>;</span> <span class=c1>//My web page is cool
+</span><span class=ln>5</span><span class=c1></span><span class=nx>h1</span><span class=p>.</span><span class=nx>innerHTML</span> <span class=o>+=</span> <span class=s2>&#34;&lt;b&gt; !!! &lt;/b&gt;&#34;</span><span class=p>;</span> <span class=c1>//My web page is cool !!!
+</span><span class=ln>6</span><span class=c1></span><span class=nx>h1</span><span class=p>.</span><span class=nx>innerText</span> <span class=o>+=</span> <span class=s2>&#34;&lt;b&gt; !!! &lt;/b&gt;&#34;</span><span class=p>;</span> <span class=c1>//My web page is cool !!! &lt;b&gt; !!! &lt;/b&gt;
+</span></code></pre></div><ul><li><code>innerText</code> <em>doesnt parse the tags</em>, it doesnt ignore them and doesnt understand them as actual elements</li></ul><hr><h2 id=important-dom-properties>Important DOM properties</h2><ul><li><strong>Value</strong> : To get or set a value of an attribute.</li><li><strong>checked</strong> : When input type is checkbox, we use checked property to get the value of checkbox</li><li><strong>placehloder</strong> : We can change the text of a placeholder attribute.</li><li><strong>href</strong> : to get the link from the anchor tag</li><li><strong>src</strong> : to get the src of an image</li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln> 1</span><span class=kr>const</span> <span class=nx>inputs</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelectorAll</span><span class=p>(</span><span class=s2>&#34;input&#34;</span><span class=p>);</span>
+<span class=ln> 2</span><span class=nx>inputs</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>value</span><span class=p>;</span> <span class=c1>// value of an attribute, lets say attribute was text box, we get value inside text box
+</span><span class=ln> 3</span><span class=c1>//lets assume inputs[1] is checkbox
+</span><span class=ln> 4</span><span class=c1></span><span class=nx>inputs</span><span class=p>[</span><span class=mi>1</span><span class=p>].</span><span class=nx>value</span><span class=p>;</span> <span class=c1>// always gives output as one, whether it is checked or not
+</span><span class=ln> 5</span><span class=c1></span><span class=nx>inputs</span><span class=p>[</span><span class=mi>1</span><span class=p>].</span><span class=nx>checked</span><span class=p>;</span> <span class=c1>//true or false
+</span><span class=ln> 6</span><span class=c1></span><span class=nx>inputs</span><span class=p>[</span><span class=mi>2</span><span class=p>].</span><span class=nx>placeholder</span><span class=p>;</span> <span class=c1>//password
+</span><span class=ln> 7</span><span class=c1></span><span class=nx>inputs</span><span class=p>[</span><span class=mi>2</span><span class=p>].</span><span class=nx>placeholder</span> <span class=o>=</span> <span class=s2>&#34;Enter your password&#34;</span><span class=p>;</span>
+<span class=ln> 8</span>
+<span class=ln> 9</span><span class=kr>const</span> <span class=nx>a</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;a&#34;</span><span class=p>);</span>
+<span class=ln>10</span><span class=nx>a</span><span class=p>.</span><span class=nx>href</span><span class=p>;</span> <span class=c1>// http:// www.google.com
+</span><span class=ln>11</span><span class=c1></span>
+<span class=ln>12</span><span class=kr>const</span> <span class=nx>img</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;img&#34;</span><span class=p>);</span>
+<span class=ln>13</span><span class=nx>img</span><span class=p>.</span><span class=nx>src</span><span class=p>;</span>
+</code></pre></div><hr><h2 id=getting--setting-attributes>Getting & Setting attributes</h2><p>We have <code>getAttribute</code>() & <code>setAttribute</code>() to access and set other properties of DOM</p><div class=highlight><pre class=chroma><code class=language-html data-lang=html><span class=ln>1</span><span class=p>&lt;</span><span class=nt>input</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;range&#34;</span> <span class=na>min</span><span class=o>=</span><span class=s>&#34;50&#34;</span> <span class=na>max</span><span class=o>=</span><span class=s>&#34;100&#34;</span> <span class=na>step</span><span class=o>=</span><span class=s>&#34;10&#34;</span> <span class=p>/&gt;</span>
+</code></pre></div><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>range</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s1>&#39;input[type=&#34;range&#34;]&#39;</span><span class=p>);</span>
+<span class=ln>2</span><span class=nx>range</span><span class=p>.</span><span class=nx>getAttribute</span><span class=p>(</span><span class=s2>&#34;max&#34;</span><span class=p>);</span> <span class=c1>//100
+</span><span class=ln>3</span><span class=c1></span><span class=nx>range</span><span class=p>.</span><span class=nx>getAttribute</span><span class=p>(</span><span class=s2>&#34;min&#34;</span><span class=p>);</span> <span class=c1>//50
+</span><span class=ln>4</span><span class=c1></span><span class=nx>range</span><span class=p>.</span><span class=nx>getAttribute</span><span class=p>(</span><span class=s2>&#34;type&#34;</span><span class=p>);</span> <span class=c1>//range
+</span><span class=ln>5</span><span class=c1></span><span class=nx>range</span><span class=p>.</span><span class=nx>getAttribute</span><span class=p>(</span><span class=s2>&#34;lol&#34;</span><span class=p>);</span> <span class=c1>//null
+</span><span class=ln>6</span><span class=c1></span><span class=nx>range</span><span class=p>.</span><span class=nx>setAttribute</span><span class=p>(</span><span class=s2>&#34;min&#34;</span><span class=p>,</span> <span class=s2>&#34;-100&#34;</span><span class=p>);</span>
+<span class=ln>7</span><span class=nx>range</span><span class=p>.</span><span class=nx>setAttribute</span><span class=p>(</span><span class=s2>&#34;type&#34;</span><span class=p>,</span> <span class=s2>&#34;radio&#34;</span><span class=p>);</span>
+</code></pre></div><hr><h2 id=finding-parent-children-siblings>Finding parent /children/ siblings</h2><p>Selecting an element based on current element</p><div class=highlight><pre class=chroma><code class=language-html data-lang=html><span class=ln>1</span><span class=p>&lt;</span><span class=nt>ul</span><span class=p>&gt;</span>
+<span class=ln>2</span>  <span class=p>&lt;</span><span class=nt>li</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;special&#34;</span><span class=p>&gt;</span>First<span class=p>&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+<span class=ln>3</span>  <span class=p>&lt;</span><span class=nt>li</span><span class=p>&gt;</span>2nd<span class=p>&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+<span class=ln>4</span>  <span class=p>&lt;</span><span class=nt>li</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;special&#34;</span><span class=p>&gt;</span>3rd<span class=p>&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+<span class=ln>5</span><span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span>
+</code></pre></div><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln> 1</span><span class=kr>const</span> <span class=nx>firstLI</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;li&#34;</span><span class=p>);</span>
+<span class=ln> 2</span><span class=nx>firstLI</span><span class=p>.</span><span class=nx>parentElement</span><span class=p>;</span> <span class=c1>//entire ul currently this li is in.
+</span><span class=ln> 3</span><span class=c1></span><span class=cm>/**
+</span><span class=ln> 4</span><span class=cm> *    &lt;ul&gt;
+</span><span class=ln> 5</span><span class=cm>      &lt;li id=&#34;special&#34;&gt;First&lt;/li&gt;
+</span><span class=ln> 6</span><span class=cm>      &lt;li&gt;2nd&lt;/li&gt;
+</span><span class=ln> 7</span><span class=cm>      &lt;li id=&#34;special&#34;&gt;3rd&lt;/li&gt;
+</span><span class=ln> 8</span><span class=cm>    &lt;/ul&gt;
+</span><span class=ln> 9</span><span class=cm> */</span>
+<span class=ln>10</span><span class=nx>firstLI</span><span class=p>.</span><span class=nx>parentElement</span><span class=p>.</span><span class=nx>parentElement</span><span class=p>;</span> <span class=c1>//entire body
+</span><span class=ln>11</span><span class=c1></span><span class=nx>firstLI</span><span class=p>.</span><span class=nx>parentElement</span><span class=p>.</span><span class=nx>parentElement</span><span class=p>.</span><span class=nx>parentElement</span><span class=p>;</span> <span class=c1>//entire html
+</span><span class=ln>12</span><span class=c1></span><span class=nx>firstLI</span><span class=p>.</span><span class=nx>parentElement</span><span class=p>.</span><span class=nx>parentElement</span><span class=p>.</span><span class=nx>parentElement</span><span class=p>.</span><span class=nx>parentElement</span><span class=p>;</span> <span class=c1>//null
+</span><span class=ln>13</span><span class=c1></span>
+<span class=ln>14</span><span class=kr>const</span> <span class=nx>ul</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;ul&#34;</span><span class=p>);</span>
+<span class=ln>15</span><span class=nx>ul</span><span class=p>.</span><span class=nx>children</span><span class=p>;</span> <span class=c1>//HTMLCOllection(3) [li.special, li, li.special]
+</span><span class=ln>16</span><span class=c1></span><span class=nx>ul</span><span class=p>.</span><span class=nx>children</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>innerText</span><span class=p>;</span> <span class=c1>//First
+</span><span class=ln>17</span><span class=c1></span>
+<span class=ln>18</span><span class=nx>firstLI</span><span class=p>.</span><span class=nx>nextElementSibling</span><span class=p>;</span> <span class=c1>//&lt;li&gt;2nd&lt;/li&gt;
+</span><span class=ln>19</span><span class=c1></span><span class=kr>const</span> <span class=nx>thirdLI</span> <span class=o>=</span> <span class=nx>firstLI</span><span class=p>.</span><span class=nx>nextElementSibling</span><span class=p>.</span><span class=nx>nextElementSibling</span><span class=p>;</span>
+<span class=ln>20</span><span class=nx>thirdLI</span><span class=p>.</span><span class=nx>previousElementSibling</span><span class=p>;</span> <span class=c1>//&lt;li&gt;2nd&lt;/li&gt;
+</span></code></pre></div><hr><h2 id=changing-multiple-elements>Changing multiple elements</h2><p>We know how to select multiple elements, using querySelectorAll(). To manipulate them, <em>iterate over the selected elements and change the property</em></p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=ln>1</span><span class=kr>const</span> <span class=nx>allLis</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelectorAll</span><span class=p>(</span><span class=s2>&#34;li&#34;</span><span class=p>);</span>
+<span class=ln>2</span>
+<span class=ln>3</span><span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;</span> <span class=nx>allLis</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+<span class=ln>4</span>  <span class=nx>allLis</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>innerText</span> <span class=o>=</span> <span class=s2>&#34;We are champions&#34;</span><span class=p>;</span>
+<span class=ln>5</span><span class=p>}</span> <span class=c1>// value of all lis is changed
+</span><span class=ln>6</span><span class=c1></span>
+<span class=ln>7</span><span class=k>for</span> <span class=p>(</span><span class=kr>const</span> <span class=nx>li</span> <span class=k>of</span> <span class=nx>allLis</span><span class=p>)</span> <span class=p>{</span>
+<span class=ln>8</span>  <span class=nx>li</span><span class=p>.</span><span class=nx>innerHTML</span> <span class=o>=</span> <span class=s2>&#34;We are &lt;b&gt; Champions &lt;/b&gt;&#34;</span><span class=p>;</span>
+<span class=ln>9</span><span class=p>}</span>
+</code></pre></div><hr><h2 id=altering-styles>Altering Styles</h2><ul><li><p>Changing CSS properties using DOM</p></li><li><p>Every html element has a style property</p></li><li><blockquote><p><strong>Important:</strong> If we are using <code>style</code> property to read exisiting styles, it wont work unless styles are defined inline. which is not a good idea. But you can change the color using DOM</p></blockquote><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>h1</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;h1&#34;</span><span class=p>);</span>
+<span class=ln>2</span><span class=nx>h1</span><span class=p>.</span><span class=nx>style</span><span class=p>.</span><span class=nx>color</span><span class=p>;</span> <span class=c1>// we get empty string as our style is not inlined.
+</span><span class=ln>3</span><span class=c1>// but you can change the style of it from DOM
+</span><span class=ln>4</span><span class=c1></span><span class=nx>h1</span><span class=p>.</span><span class=nx>style</span><span class=p>.</span><span class=nx>color</span> <span class=o>=</span> <span class=s2>&#34;teal&#34;</span><span class=p>;</span> <span class=c1>// the color of h1 is changed
+</span></code></pre></div></li><li><p>If we look at what it does, it adds inline styling to our element. <strong>Inline styling has more priority than external stylesheet</strong> when manipulating elements</p></li><li><p><strong>Note:</strong> All the styles in js are camel case</p><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=nx>p</span><span class=p>.</span><span class=nx>style</span><span class=p>.</span><span class=nx>background</span> <span class=o>-</span> <span class=nx>color</span><span class=p>;</span> <span class=c1>//throws an error, this is how we declare it in css (kabab case )
+</span><span class=ln>2</span><span class=c1></span><span class=nx>p</span><span class=p>.</span><span class=nx>style</span><span class=p>.</span><span class=nx>backgroundColor</span> <span class=o>=</span> <span class=s2>&#34;black&#34;</span><span class=p>;</span> <span class=c1>//allows us to access and change the bg color
+</span></code></pre></div></li></ul><p>Assigning each li a color..</p><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>allLis</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelectorAll</span><span class=p>(</span><span class=s2>&#34;li&#34;</span><span class=p>);</span>
+<span class=ln>2</span><span class=kr>const</span> <span class=nx>colors</span> <span class=o>=</span> <span class=p>[</span><span class=s2>&#34;red&#34;</span><span class=p>,</span> <span class=s2>&#34;yellow&#34;</span><span class=p>,</span> <span class=s2>&#34;blue&#34;</span><span class=p>,</span> <span class=s2>&#34;green&#34;</span><span class=p>,</span> <span class=s2>&#34;css&#34;</span><span class=p>,</span> <span class=s2>&#34;pink&#34;</span><span class=p>];</span>
+<span class=ln>3</span><span class=nx>allLis</span><span class=p>.</span><span class=nx>forEach</span><span class=p>((</span><span class=nx>li</span><span class=p>,</span> <span class=nx>i</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+<span class=ln>4</span>  <span class=kr>const</span> <span class=nx>color</span> <span class=o>=</span> <span class=nx>colors</span><span class=p>[</span><span class=nx>i</span><span class=p>];</span>
+<span class=ln>5</span>  <span class=nx>li</span><span class=p>.</span><span class=nx>style</span><span class=p>.</span><span class=nx>color</span> <span class=o>=</span> <span class=nx>color</span><span class=p>;</span>
+<span class=ln>6</span><span class=p>});</span>
+</code></pre></div><h2 id=getcomputedstyle><code>getComputedStyle()</code></h2><p>To get the styles we applied in a stylesheet (get the computed values of an element)</p><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>li</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;li&#34;</span><span class=p>);</span>
+<span class=ln>2</span><span class=kr>const</span> <span class=nx>styles</span> <span class=o>=</span> <span class=nx>getComputedStyle</span><span class=p>(</span><span class=nx>li</span><span class=p>);</span> <span class=c1>//RT : CSSSTyleDeclaration. a massive object contains all CSS properties in K,V pairs. values are set to default unless we have mentioned them explicitly in stylesheet .
+</span></code></pre></div><hr><h2 id=manipulating-classes>Manipulating classes</h2><p>Apply <em>style to multiple elements using css classes</em></p><div class=highlight><pre class=chroma><code class=language-html data-lang=html><span class=ln>1</span><span class=p>&lt;</span><span class=nt>ul</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;todos&#34;</span><span class=p>&gt;</span>
+<span class=ln>2</span>  <span class=p>&lt;</span><span class=nt>li</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;todo&#34;</span><span class=p>&gt;</span>Eat breakfast<span class=p>&lt;</span><span class=nt>button</span><span class=p>&gt;</span>x<span class=p>&lt;/</span><span class=nt>button</span><span class=p>&gt;&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+<span class=ln>3</span>  <span class=p>&lt;</span><span class=nt>li</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;todo&#34;</span><span class=p>&gt;</span>Feed the pet<span class=p>&lt;</span><span class=nt>button</span><span class=p>&gt;</span>x<span class=p>&lt;/</span><span class=nt>button</span><span class=p>&gt;&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+<span class=ln>4</span>  <span class=p>&lt;</span><span class=nt>li</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;todo&#34;</span><span class=p>&gt;</span>Drink water <span class=p>&lt;</span><span class=nt>button</span><span class=p>&gt;</span>x<span class=p>&lt;/</span><span class=nt>button</span><span class=p>&gt;&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+<span class=ln>5</span><span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span>
+</code></pre></div><div class=highlight><pre class=chroma><code class=language-css data-lang=css><span class=ln> 1</span><span class=p>.</span><span class=nc>todo</span> <span class=p>{</span>
+<span class=ln> 2</span>  <span class=k>font-size</span><span class=p>:</span> <span class=mi>30</span><span class=kt>px</span><span class=p>;</span>
+<span class=ln> 3</span>  <span class=k>color</span><span class=p>:</span> <span class=kc>olive</span><span class=p>;</span>
+<span class=ln> 4</span><span class=p>}</span>
+<span class=ln> 5</span>
+<span class=ln> 6</span><span class=p>.</span><span class=nc>done</span> <span class=p>{</span>
+<span class=ln> 7</span>  <span class=k>color</span><span class=p>:</span> <span class=kc>gray</span><span class=p>;</span>
+<span class=ln> 8</span>  <span class=k>text-decoration</span><span class=p>:</span> <span class=kc>line-through</span><span class=p>;</span>
+<span class=ln> 9</span>  <span class=k>opacity</span><span class=p>:</span> <span class=mi>50</span><span class=kt>%</span><span class=p>;</span>
+<span class=ln>10</span><span class=p>}</span>
+</code></pre></div><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>todos</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;#todos .todo&#34;</span><span class=p>);</span>
+<span class=ln>2</span><span class=nx>todos</span><span class=p>.</span><span class=nx>getAttribute</span><span class=p>(</span><span class=s2>&#34;class&#34;</span><span class=p>);</span>
+<span class=ln>3</span><span class=nx>todos</span><span class=p>.</span><span class=nx>setAttribute</span><span class=p>(</span><span class=s2>&#34;class&#34;</span><span class=p>,</span> <span class=s2>&#34;done&#34;</span><span class=p>);</span>
+</code></pre></div><ul><li><p>This is <strong>not the correct way</strong> to do as <em>it modifies the inline styling of first element</em>, we cant get back to our prev state unless we manually set it again. We lost our todo class, we completely overridden it. This is one <strong>down side of setAttribute().</strong></p></li><li><p><em><strong>This brings us to new property <code>classList</code></strong></em></p></li></ul><h3 id=classlist><code>classList</code></h3><ul><li><code>classList</code> is an object representation. It <em>contains classes of an element we choose</em> RT : DOMTokenList</li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=c1>//removes existing style on classes
+</span><span class=ln>2</span><span class=c1></span><span class=nx>todos</span><span class=p>.</span><span class=nx>classList</span><span class=p>.</span><span class=nx>remove</span><span class=p>(</span><span class=s2>&#34;done&#34;</span><span class=p>);</span> <span class=c1>// using setAttribute we werent able to remove, now we can remove using classList
+</span><span class=ln>3</span><span class=c1>//adds style on to classes
+</span><span class=ln>4</span><span class=c1></span><span class=nx>todos</span><span class=p>.</span><span class=nx>classList</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=s2>&#34;done&#34;</span><span class=p>);</span> <span class=c1>// add class
+</span><span class=ln>5</span><span class=c1>//adds if we dont have and removes if we have it. toggles between two
+</span><span class=ln>6</span><span class=c1></span><span class=nx>todos</span><span class=p>.</span><span class=nx>classList</span><span class=p>.</span><span class=nx>toggle</span><span class=p>(</span><span class=s2>&#34;done&#34;</span><span class=p>);</span>
+</code></pre></div><hr><h2 id=creating-elements>Creating Elements</h2><ul><li><code>document.createElement()</code> -> returns an object</li><li>add text into the object (optional)</li><li>append the object to the DOM. This <strong>object is going to be appended as the last child of a parent</strong></li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln> 1</span><span class=c1>//create a h2 element and append it to dom
+</span><span class=ln> 2</span><span class=c1></span>
+<span class=ln> 3</span><span class=c1>//create
+</span><span class=ln> 4</span><span class=c1></span><span class=kr>const</span> <span class=nx>newh2</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>createElement</span><span class=p>(</span><span class=s2>&#34;h2&#34;</span><span class=p>);</span> <span class=c1>// creates an object on DOM
+</span><span class=ln> 5</span><span class=c1></span><span class=nx>newh2</span><span class=p>;</span> <span class=c1>// &lt;h2&gt;&lt;/h2&gt;
+</span><span class=ln> 6</span><span class=c1>//add text
+</span><span class=ln> 7</span><span class=c1></span><span class=nx>newh2</span><span class=p>.</span><span class=nx>innerText</span> <span class=o>=</span> <span class=s2>&#34;I love pineapples&#34;</span><span class=p>;</span>
+<span class=ln> 8</span><span class=nx>newh2</span><span class=p>;</span> <span class=c1>//&lt;h2&gt;I love pineapples&lt;/h2&gt;
+</span><span class=ln> 9</span><span class=c1>//lets add style too
+</span><span class=ln>10</span><span class=c1></span><span class=nx>newh2</span><span class=p>.</span><span class=nx>classList</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=s2>&#34;.special&#34;</span><span class=p>);</span>
+<span class=ln>11</span><span class=c1>//append it to DOM
+</span><span class=ln>12</span><span class=c1>//select a parent to attach
+</span><span class=ln>13</span><span class=c1></span><span class=kr>const</span> <span class=nx>section</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;section&#34;</span><span class=p>);</span>
+<span class=ln>14</span><span class=nx>section</span><span class=p>.</span><span class=nx>appendChild</span><span class=p>(</span><span class=nx>newh2</span><span class=p>);</span> <span class=c1>// this child is going to get appended at the end of the section  //&lt;h2 class=&#34;special&#34;&gt;I love pineapples&lt;/h2&gt;
+</span><span class=ln>15</span><span class=c1></span>
+<span class=ln>16</span><span class=c1>//On webpage
+</span><span class=ln>17</span><span class=c1></span><span class=cm>/* &lt;section&gt;
+</span><span class=ln>18</span><span class=cm>  &lt;ul&gt;
+</span><span class=ln>19</span><span class=cm>    &lt;li&gt;carrots&lt;/li&gt;
+</span><span class=ln>20</span><span class=cm>    &lt;li class=&#34;special&#34;&gt;potatoes&lt;/li&gt;
+</span><span class=ln>21</span><span class=cm>    &lt;li&gt;tomatoes&lt;/li&gt;
+</span><span class=ln>22</span><span class=cm>  &lt;/ul&gt;
+</span><span class=ln>23</span><span class=cm>  &lt;h2 class=&#34;special&#34;&gt;I love pineapples&lt;/h2&gt;
+</span><span class=ln>24</span><span class=cm>&lt;/section&gt;; */</span>
+</code></pre></div><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=c1>//Example 2:
+</span><span class=ln>2</span><span class=c1></span><span class=kr>const</span> <span class=nx>newLink</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>createElement</span><span class=p>(</span><span class=s2>&#34;a&#34;</span><span class=p>);</span>
+<span class=ln>3</span><span class=nx>newLink</span><span class=p>.</span><span class=nx>href</span> <span class=o>=</span> <span class=s2>&#34;https://www.youtube.com/watch?v=8Ljgy3pLmmo&#34;</span><span class=p>;</span>
+<span class=ln>4</span><span class=nx>newLink</span><span class=p>.</span><span class=nx>innerText</span> <span class=o>=</span> <span class=s2>&#34;BTS - Dream Glow lyrics&#34;</span><span class=p>;</span>
+<span class=ln>5</span><span class=kr>const</span> <span class=nx>firstP</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;p&#34;</span><span class=p>);</span>
+<span class=ln>6</span><span class=nx>firstP</span><span class=p>.</span><span class=nx>appendChild</span><span class=p>(</span><span class=nx>newLink</span><span class=p>);</span>
+</code></pre></div><h3 id=append-prepend-and-insertbefore>Append, prepend and insertBefore</h3><h4 id=insertbefore><code>insertBefore</code></h4><p>insert an element before a particular element.</p><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln> 1</span><span class=nx>parentEl</span><span class=p>.</span><span class=nx>insertBefore</span><span class=p>(</span><span class=nx>newEl</span><span class=p>,</span> <span class=nx>elBeforeWhichUwantToInsert</span><span class=p>);</span>
+<span class=ln> 2</span><span class=c1>//example.
+</span><span class=ln> 3</span><span class=c1>//insert an li before the first li in an ul
+</span><span class=ln> 4</span><span class=c1></span><span class=kr>const</span> <span class=nx>parentUl</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;ul&#34;</span><span class=p>);</span>
+<span class=ln> 5</span><span class=kr>const</span> <span class=nx>newLi</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>createElement</span><span class=p>(</span><span class=s2>&#34;li&#34;</span><span class=p>);</span>
+<span class=ln> 6</span><span class=nx>newLi</span><span class=p>.</span><span class=nx>innerText</span> <span class=o>=</span> <span class=s2>&#34;I am a new list element&#34;</span><span class=p>;</span>
+<span class=ln> 7</span><span class=kr>const</span> <span class=nx>firstLI</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;li.todo&#34;</span><span class=p>);</span>
+<span class=ln> 8</span><span class=nx>parentUl</span><span class=p>.</span><span class=nx>insertBefore</span><span class=p>(</span><span class=nx>newLi</span><span class=p>,</span> <span class=nx>firstLI</span><span class=p>);</span>
+<span class=ln> 9</span><span class=c1>// insert before last Li
+</span><span class=ln>10</span><span class=c1></span><span class=kr>const</span> <span class=nx>lastLi</span> <span class=o>=</span> <span class=kr>const</span> <span class=nx>firstLI</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelectorAll</span><span class=p>(</span><span class=s2>&#34;li.todo&#34;</span><span class=p>)[</span><span class=mi>2</span><span class=p>];</span>
+<span class=ln>11</span><span class=nx>parentUl</span><span class=p>.</span><span class=nx>insertBefore</span><span class=p>(</span><span class=nx>newLi</span><span class=p>,</span> <span class=nx>lastLi</span><span class=p>);</span>
+</code></pre></div><h4 id=insertadjacentelement><code>insertAdjacentElement</code></h4><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln> 1</span><span class=kr>const</span> <span class=nx>i</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>createElement</span><span class=p>(</span><span class=s2>&#34;i&#34;</span><span class=p>);</span>
+<span class=ln> 2</span><span class=nx>i</span><span class=p>.</span><span class=nx>innerText</span> <span class=o>=</span> <span class=s2>&#34;I am italics&#34;</span><span class=p>;</span>
+<span class=ln> 3</span><span class=kr>const</span> <span class=nx>firstP</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;p&#34;</span><span class=p>);</span>
+<span class=ln> 4</span><span class=nx>firstP</span><span class=p>.</span><span class=nx>insertAdjacentElement</span><span class=p>(</span><span class=s2>&#34;beforebegin&#34;</span><span class=p>,</span> <span class=nx>i</span><span class=p>);</span>
+<span class=ln> 5</span><span class=cm>/**
+</span><span class=ln> 6</span><span class=cm> * i am italics
+</span><span class=ln> 7</span><span class=cm> * I am P tag
+</span><span class=ln> 8</span><span class=cm> */</span>
+<span class=ln> 9</span>
+<span class=ln>10</span><span class=nx>firstP</span><span class=p>.</span><span class=nx>insertAdjacentElement</span><span class=p>(</span><span class=s2>&#34;afterbegin&#34;</span><span class=p>,</span> <span class=nx>i</span><span class=p>);</span>
+<span class=ln>11</span><span class=cm>/**
+</span><span class=ln>12</span><span class=cm> * i am italicsI am P tag
+</span><span class=ln>13</span><span class=cm> */</span>
+<span class=ln>14</span>
+<span class=ln>15</span><span class=nx>firstP</span><span class=p>.</span><span class=nx>insertAdjacentElement</span><span class=p>(</span><span class=s2>&#34;afterend&#34;</span><span class=p>,</span> <span class=nx>i</span><span class=p>);</span>
+<span class=ln>16</span><span class=cm>/**
+</span><span class=ln>17</span><span class=cm> * I am P tag
+</span><span class=ln>18</span><span class=cm> * i am italics
+</span><span class=ln>19</span><span class=cm> */</span>
+<span class=ln>20</span><span class=nx>firstP</span><span class=p>.</span><span class=nx>insertAdjacentElement</span><span class=p>(</span><span class=s2>&#34;beforeend&#34;</span><span class=p>,</span> <span class=nx>i</span><span class=p>);</span>
+<span class=ln>21</span>
+<span class=ln>22</span><span class=cm>/**
+</span><span class=ln>23</span><span class=cm> * I am P tagi am italics
+</span><span class=ln>24</span><span class=cm> */</span>
+</code></pre></div><ul><li>For more info ref : <a href="'https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement'">MDN doc</a></li></ul><h4 id=append--prepend><code>append()</code> & <code>prepend()</code></h4><ul><li><em><del>IE support</del></em></li><li>To insert multiple children at once</li></ul><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln> 1</span><span class=nx>firstP</span><span class=p>.</span><span class=nx>append</span><span class=p>(</span><span class=nx>i</span><span class=p>,</span> <span class=nx>newLi</span><span class=p>);</span>
+<span class=ln> 2</span><span class=cm>/**
+</span><span class=ln> 3</span><span class=cm> * I am P tagi am italics
+</span><span class=ln> 4</span><span class=cm> * i am a new li
+</span><span class=ln> 5</span><span class=cm> */</span>
+<span class=ln> 6</span><span class=nx>firstP</span><span class=p>.</span><span class=nx>prepend</span><span class=p>(</span><span class=nx>i</span><span class=p>,</span> <span class=nx>newLi</span><span class=p>);</span>
+<span class=ln> 7</span><span class=cm>/**
+</span><span class=ln> 8</span><span class=cm> * i am italics
+</span><span class=ln> 9</span><span class=cm> * i am a new li
+</span><span class=ln>10</span><span class=cm> * I am P tag
+</span><span class=ln>11</span><span class=cm> */</span>
+</code></pre></div><h4 id=removechild-and-remove><code>removeChild()</code> and <code>remove</code></h4><p>Similar to appendChild() and append()</p><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=ln>1</span><span class=kr>const</span> <span class=nx>ul</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;secion ul&#34;</span><span class=p>);</span>
+<span class=ln>2</span><span class=kr>const</span> <span class=nx>removeEl</span> <span class=o>=</span> <span class=nx>ul</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;.special&#34;</span><span class=p>);</span>
+<span class=ln>3</span><span class=nx>ul</span><span class=p>.</span><span class=nx>removeChild</span><span class=p>(</span><span class=nx>removeEl</span><span class=p>);</span>
+<span class=ln>4</span>
+<span class=ln>5</span><span class=c1>//for remove u dont need a parent el to remove
+</span><span class=ln>6</span><span class=c1></span><span class=kr>const</span> <span class=nx>h1</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;h1&#34;</span><span class=p>);</span>
+<span class=ln>7</span><span class=nx>h1</span><span class=p>.</span><span class=nx>remove</span><span class=p>();</span>
+</code></pre></div></div><div style=margin-top:2rem><i class="fas fa-tags" style=font-size:.7em;color:gray></i><a style="border:0;font-size:.8em;padding:0 4px;text-decoration:none" href=/tags/javascript>&nbsp;javascript</a>
+<a style="border:0;font-size:.8em;padding:0 4px;text-decoration:none" href=/tags/dom>&nbsp;dom</a>
+<a style="border:0;font-size:.8em;padding:0 4px;text-decoration:none" href=/tags/es6>&nbsp;es6</a></div><div style=margin-top:5rem><a href=https://g-savitha.github.io/notes/dom-manipulation/ class="prev-next older">Intro to DOM Manipulation&Rarr;</a>
+<a href=https://g-savitha.github.io/notes/events/ class="prev-next newer">&Larr;Event Handling</a></div><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/g-savitha.github.io\/"},"articleSection":"notes","name":"Manipulating the DOM","headline":"Manipulating the DOM","description":"Properties and Methods of DOM Lets look at some of the important properties and methods which we use regularly\ninnerText \u0026amp; textContent innerText  innerText gives the data in between the tags  1const h1 = document.querySelector(\u0026#34;h1\u0026#34;); 2h1.innerText; \/\/My Web page 3const ul = document.querySelector(\u0026#34;ul\u0026#34;); 4ul.innerText; \/\/\u0026#34;First2nd3rd\u0026#34; All the nested content is concatenated and output came as one object 5document.body.innerText; \/\/ we get all the text on the webpage, it doesnt matter it is nested or not 6\/\/change the value 7h1.","inLanguage":"en-US","author":"Savitha","creator":"Savitha","publisher":"Savitha","accountablePerson":"Savitha","copyrightHolder":"Savitha","copyrightYear":"26260","datePublished":"2020-09-26 13:03:28 \u002b0530 \u002b0530","dateModified":"2020-09-26 13:03:28 \u002b0530 \u002b0530","url":"https:\/\/g-savitha.github.io\/notes\/dom-manipulation-02\/","wordCount":"1485","keywords":["javascript","DOM","es6","Blog"]}</script><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#2196f3");
+    annotateElement("strong", "highlight", "yellow");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "lawngreen");
+    annotateNestedElement("em > em", "circle", "#ff000080");
+    annotateNestedElement("blockquote", "bracket", "#da3bf1");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.section-content em,.section-content strong,.section-content del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer style="padding:6rem 1rem 2rem;text-align:center;color:gray"><small style=display:block><code>dom-manipulation-02.md</code> was last updated on
+<code>25 October, 2020</code>. Generated
+from
+<a target=_blank href=https://github.com/g-savitha/portfolio/tree/98a1aa8b59d47c02944e588355e6a7473b6721f1 style=text-decoration:none><code>98a1aa8</code></a>
+because of <code>✏ added source</code></small>
+<small>built with <a href=https://gohugo.io>hugo</a> and
+<span style=color:red>❤️</span> <span>&#169; 2020</span>
+<a href=https://github.com/g-savitha>Savitha Gollamudi</a></small></footer><script>(()=>{if(document.queryCommandSupported("copy")){const codeBlocks=[...document.querySelectorAll(".highlight")];codeBlocks.forEach((block)=>{block.querySelector("pre.chroma").style.paddingTop="3rem";block.style.position="relative";const handler=document.createElement("button");handler.textContent="COPY";handler.style.position="absolute";handler.style.top="10px";handler.style.right="10px";handler.style.padding="0.25rem 0.5rem";handler.style.background="#272822";handler.style.borderRadius="4px";handler.style.border="1px solid #C9D5DE";handler.style.color="#ffffff";handler.addEventListener("click",()=>{const textarea=document.createElement("textarea");textarea.value=block.querySelector(".chroma > code").textContent;document.body.prepend(textarea);textarea.style.position="absolute";textarea.style.opacity=0;textarea.select();document.execCommand("copy");textarea.remove();handler.textContent="COPIED!";setTimeout(()=>(handler.textContent="COPY"),2000);});const langCard=document.createElement("span");const lang=block.querySelector(".chroma > code").classList.toString().split("language-")[1];langCard.textContent=lang;langCard.style.top="0";langCard.style.left="1rem";langCard.style.color="#ffffff";langCard.style.fontSize="0.7em";langCard.style.position="absolute";langCard.style.background="#3f51b5";langCard.style.padding="0.25rem 0.5rem";langCard.style.textTransform="uppercase";langCard.style.borderRadius="0 0 4px 4px";block.prepend(langCard);block.prepend(handler);});}})();</script></body></html>
