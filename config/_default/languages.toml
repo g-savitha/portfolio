@@ -1,0 +1,7 @@
+[en]
+  title = "Savitha's Blog"
+  languageName = "English"
+  weight = 1
+  languagedir = "ltr"
+  contentdir = "content/en"
+
