@@ -7,8 +7,8 @@ meta:
   description: # overrides .Summary
 featured: false # feature a post in homepage
 tableofcontents: true # whether to generate ToC
-tags: []
-categories: []
+tags: [react]
+categories: [react]
 ---
 
 <!--  Start Typing... -->

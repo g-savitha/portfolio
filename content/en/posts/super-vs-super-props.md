@@ -1,5 +1,5 @@
 ---
-title: 'WTF is super() vs super(props)'
+title: 'super() vs super(props)'
 date: 2021-01-29T17:52:28+05:30
 draft: false
 meta:
