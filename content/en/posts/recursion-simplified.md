@@ -254,15 +254,15 @@ void fn2(){
 
 Can you guess the reason why would 1st function take lesser time to compile on modern compilers?
 
-If you look at the call stack of fn1()
+If you look at the call stack of `fn1()`
 
 {{< img src="/images/blog-img/callstack.png" alt="callstack" width="400px" position="center" >}}
 
-When fn1(0) finishes, control returns back to fn1(1), fn1(1) doesnt have anything to do it finishes immediately. This is where tail recursion comes into picture.
+When `fn1(0)` finishes, control returns back to `fn1(1)`, `fn1(1)` doesnt have anything to do it finishes immediately. This is where tail recursion comes into picture.
 
 A function is called **Tail recursive** when the parent function has nothing to do when the child finishes the call.
 
-This is not the case with fn2(3). When fn2(0) returns to its parent fn2(1), it still has got work to do (print the output).
+This is not the case with `fn2(3)`. When `fn2(0)` returns to its parent `fn2(1)`, it still has got work to do (print the output).
 
 In very simple words
 
@@ -290,7 +290,7 @@ These changes that modern compilers make are called **Tail call elimination**
 
 Now, the question arises is when given a non tail recursive code, can we convert it tail recursive?
 
-Lets have a look at below examples.
+Lets have a look at the below examples.
 
 {{< codes java java >}}
 {{< code >}}
@@ -321,7 +321,9 @@ void fn2(int n, int k){
 {{< /code >}}
 {{< /codes >}}
 
-Can we convert every non tail recursive to tail recursive by adding few parameters? **No.** Take [merge sort](https://www.geeksforgeeks.org/merge-sort/) and [quick sort](https://www.geeksforgeeks.org/quick-sort/), if you take a closer look at these two algorithms, quick sort is tail recursive and merge sort is not. This is one of the reasons, quick sort is fast.
+Can we convert every non tail recursive to tail recursive by adding few parameters?
+
+**No.** Consider [merge sort](https://www.geeksforgeeks.org/merge-sort/) and [quick sort](https://www.geeksforgeeks.org/quick-sort/), if you take a closer look at these two algorithms, quick sort is tail recursive and merge sort is not. This is one of the reasons, quick sort is fast.
 
 In case of [tree traversals (Inorder,preorder and postorder)](https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/), you can notice that preorder traversal and inorder traversal are tail recursive, but post order traversal is not, thats why when you are given a problem and if you can choose any of the traversals, you should prefer either inorder or preorder over the postorder.
 
@@ -334,7 +336,7 @@ int factorial(int n){
 }
 ```
 
-**No.** The reason is recursion is not the last thing that happens in this function. When you call `factorial(n-1)` you need to know the result of that function and multiply it with `n` and then it need to return. Your parent call cannot finish immediately after the child call, its going to use the result of child call and then multiply the result with `n` and then its going to return.
+**No.** The reason is recursion is not the last thing that happens in this function. When you call `factorial(n-1)` you need to know the result of that function and multiply it with `n` and then it need to return. Parent call doesn't finish immediately after the child call, its going to use the result of child call and then multiply the result with `n` after that its going to return.
 
 #### Equivalent tail recursive code
 
