@@ -1,21 +1,19 @@
 ---
-title: 'Recursion Simplified'
+title: "Recursion Simplified"
 date: 2021-01-31T11:16:15+05:30
-draft: true
+draft: false
 meta:
   image: # url to image. Important for blog listing and seo
   description: # overrides .Summary
 featured: false # feature a post in homepage
 tableofcontents: true # whether to generate ToC
-tags: [dsa]
-categories: []
+tags: [dsa, recursion]
+categories: [dsa]
 ---
 
 <!--  Start Typing... -->
 
-
 ## What is recursion?
-
 
 _Recursion_ : A function calling itself directly or indirectly.
 
@@ -96,15 +94,15 @@ Now the question is if we can write equivalent iterative code for every recursiv
     - _Example:_ Finding diff between two files (solved using LCS approach)
   - **Backtracking**
     - These problems are _inherently recursive_ in nature.
-      - _Example_ : Rat in a maze, n-queens problem. (Its easy to write recursive solns than iterative for problems like this)
+      - _Example_ : [Rat in a maze](https://www.geeksforgeeks.org/rat-in-a-maze-backtracking-2/), [n-queens problem](https://www.geeksforgeeks.org/n-queen-problem-backtracking-3/). (Its easy to write recursive solns than iterative for problems like this)
   - **Divide and conquer**
-    - _Examples:_ Binary search, quicksort and mergesort
+    - _Examples:_ [Binary search](https://www.geeksforgeeks.org/binary-search/), [quicksort](https://www.geeksforgeeks.org/quick-sort/) and [mergesort](https://www.geeksforgeeks.org/merge-sort/)
 - Many problems which are _inherently recursive_ (Easy to write recursive than iterative)
 
   - **Towers of Hanoi**
   - **DFS based travels**
     - Of _Graphs_
-    - Inorder, preorder postorder traversals of _tree_
+    - [Inorder, preorder postorder traversals of tree](https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/)
     - Searching for a file in your pc - solid example of DFS
 
 - _Cons of recursion_
@@ -116,6 +114,9 @@ Now the question is if we can write equivalent iterative code for every recursiv
   - Easy implementation
 
 ## Examples
+
+{{< codes cpp cpp cpp >}}
+{{< code >}}
 
 ```cpp
 void fun1(int n)
@@ -136,6 +137,9 @@ int main(int argc, char const *argv[])
 //Output : 321123
 ```
 
+{{< /code >}}
+{{< code >}}
+
 ```cpp
 void fun1(int n)
 {
@@ -155,6 +159,9 @@ int main(int argc, char const *argv[])
 //Output : 1213121
 ```
 
+{{< /code >}}
+{{< code >}}
+
 ```cpp
 int fn(int n)
 {
@@ -172,6 +179,9 @@ int fn(int n)
 //output remains same until we get to next power of 2.
 ```
 
+{{< /code >}}
+{{< /codes >}}
+
 ### Binary representation of a number(n > 0) using recursion
 
 ```cpp
@@ -184,7 +194,7 @@ int fn(int n)
 }
 ```
 
-### print 1 to N using recursion
+### Print 1 to N using recursion
 
 ```java
 private static void fn(int n) {
@@ -195,7 +205,7 @@ private static void fn(int n) {
 }//TC; O(n) AS: O(n+1)
 ```
 
-### print N to 1 using recursion
+### Print N to 1 using recursion
 
 ```java
 private static void fn(int n) {
@@ -208,7 +218,142 @@ private static void fn(int n) {
 ```
 
 - **Note:** We can reduce the auxillary space using _*tail recursion*_.
-  - The above fn takes less time on modern compilers because of tail recursion
+  - The above function takes less time on modern compilers because of tail recursion
 
 ## Tail Recursion
 
+To understand tail recursion, lets take a closer look at these 2 functions.
+
+{{< codes java java >}}
+{{< code >}}
+
+```java
+//prints from n to 1
+void fn1() {
+    if(n==0) return;
+    System.out.println(n);
+    fn1(n-1);
+}
+//this function takes lesser time
+```
+
+{{< /code >}}
+{{< code >}}
+
+```java
+//prints from 1 to n
+void fn2(){
+    if(n==0) return;
+    fn2(n-1);
+    System.out.println(n);
+}
+```
+
+{{< /code >}}
+{{< /codes >}}
+
+Can you guess the reason why would 1st function take lesser time to compile on modern compilers?
+
+If you look at the call stack of fn1()
+
+{{< img src="/images/blog-img/callstack.png" alt="callstack" width="400px" position="center" >}}
+
+When fn1(0) finishes, control returns back to fn1(1), fn1(1) doesnt have anything to do it finishes immediately. This is where tail recursion comes into picture.
+
+A function is called **Tail recursive** when the parent function has nothing to do when the child finishes the call.
+
+This is not the case with fn2(3). When fn2(0) returns to its parent fn2(1), it still has got work to do (print the output).
+
+In very simple words
+
+> A function is called **tail recursive**, when the last thing that happens in the function is recursive call and nothing happens after that.
+
+### What are the pros of this?
+
+The point is your caller doesn't have to save the state, generally what happens in recursive calls is, caller's state is saved then called function is called and once the called function is finished then the caller resumes its function from the same point. We dont need to resume the execution here at all, there's no point in resuming the execution and thats what the optimisation modern compilers do.
+
+When modern compilers see tail recursive functions they replace the above code with
+
+```java {hl_lines = [3,7,8]}
+void fn1() {
+    //compiler adds this label
+    start:
+        if(n==0) return;
+        System.out.println(n);
+        // and replaces the line fn1(n-1) with below statements
+        n= n-1 ;
+        goto start;
+}
+```
+
+These changes that modern compilers make are called **Tail call elimination**
+
+Now, the question arises is when given a non tail recursive code, can we convert it tail recursive?
+
+Lets have a look at below examples.
+
+{{< codes java java >}}
+{{< code >}}
+
+```java
+//prints from 1 to n
+void fn2(){
+    if(n==0) return;
+    fn2(n-1);
+    System.out.println(n);
+}
+```
+
+{{< /code >}}
+
+{{< code >}}
+
+```java
+//Tail recursive version of the code
+//initially pass k = 1
+void fn2(int n, int k){
+    if(n==0) return;
+    System.out.println(k);
+    fn2(n-1,k+1);
+}
+```
+
+{{< /code >}}
+{{< /codes >}}
+
+Can we convert every non tail recursive to tail recursive by adding few parameters? **No.** Take [merge sort](https://www.geeksforgeeks.org/merge-sort/) and [quick sort](https://www.geeksforgeeks.org/quick-sort/), if you take a closer look at these two algorithms, quick sort is tail recursive and merge sort is not. This is one of the reasons, quick sort is fast.
+
+In case of [tree traversals (Inorder,preorder and postorder)](https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/), you can notice that preorder traversal and inorder traversal are tail recursive, but post order traversal is not, thats why when you are given a problem and if you can choose any of the traversals, you should prefer either inorder or preorder over the postorder.
+
+### Is this tail recursive?
+
+```java
+int factorial(int n){
+    if(n==0 || n== 1) return 1;
+    return n * factorial(n-1);
+}
+```
+
+**No.** The reason is recursion is not the last thing that happens in this function. When you call `factorial(n-1)` you need to know the result of that function and multiply it with `n` and then it need to return. Your parent call cannot finish immediately after the child call, its going to use the result of child call and then multiply the result with `n` and then its going to return.
+
+#### Equivalent tail recursive code
+
+```java
+//initially pass k = 1
+int factorial(int n, int k){
+    if(n==0 || n== 1) return k;
+    return factorial(n-1,k*n);
+}
+```
+
+---
+
+Few problems on recursion worth looking at:
+
+[Rod cutting](https://www.geeksforgeeks.org/cutting-a-rod-dp-13/)
+[Generate subsets of an array](https://www.geeksforgeeks.org/backtracking-to-find-all-subsets/)
+[Josephus Problem](https://www.geeksforgeeks.org/josephus-problem-set-1-a-on-solution/)
+[Print all permutations of a string](https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/)
+[Subset sum problem](https://www.geeksforgeeks.org/subset-sum-problem-dp-25/)
+
+Until next time, happy coding! :tada: :computer:
