@@ -121,7 +121,7 @@ commento = false
 
 [utterances]       # https://utteranc.es/
   owner = "g-savitha"              # Your GitHub ID
-  repo = "https://github.com/g-savitha/portfolio.git"               # The repo to store comments
+  repo = "portfolio"               # The repo to store comments
 
 [gitalk]           # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
   owner = ""              # Your GitHub ID
