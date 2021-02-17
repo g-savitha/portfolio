@@ -84,7 +84,7 @@ tocLevels = ["h2", "h3", "h4"]
 enableSidebarPostsByOrder = false
 
 # footer
-showPoweredBy = false
+showPoweredBy = true
 showFeedLinks = true
 showSocialLinks = true
 enableLangChange = false
