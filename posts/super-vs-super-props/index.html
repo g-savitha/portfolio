@@ -112,7 +112,8 @@ originUl.parentNode.replaceChild(ul,originUl);}});</script><link rel=stylesheet 
 <a href=/posts class="navbar__menu-item navbar__slide-down active" dir=ltr data-ani=true>Posts</a>
 <a href=/archive class="navbar__menu-item navbar__slide-down" dir=ltr data-ani=true>Archive</a></div></nav><main class="single__main main-main"><nav class="breadcrumb hide" aria-label=breadcrumbs><script>document.querySelector('.breadcrumb').classList.remove('hide')</script><ol><li><a href=https://www.gsavitha.in/ class=capitalize>Savitha's Blog</a></li><li><a href=https://www.gsavitha.in/posts/ class=capitalize>Posts</a></li><li class=is-active><span>super() vs super(props)</span></li></ol></nav><div class=single><div class=single__nojs>This page looks best with JavaScript enabled</div><script>document.querySelector('.single').classList.remove('hide');document.querySelector('.single__nojs').classList.add('hide');</script><h2 class=single__title data-ani=true>super() vs super(props)</h2><h3 class=single__subtitle></h3><div class=single__meta><div class=single__infos><time class=single__info title="Written At">📅&nbsp;Jan 29, 2021</time>
 &nbsp;&#183;&nbsp; <span class=single__info title="Reading Time">☕&nbsp;4&nbsp;min read</span>
-<span class=single__info></span></div><ul class="single__tags caption">🏷️<li><a href=https://www.gsavitha.in/tags/react/ class=single__tag title=react>#react</a></li></ul></div><article class=single__contents data-dir=ltr data-ani=true><h2 id=tldr->TL;DR 🚀</h2><blockquote><p>If you want to use <code>this.props</code> inside constructor of derived class, use super(props).</p></blockquote><hr><p>While checking react code, you might have come across a line <code>super(props)</code>, sometimes <code>super()</code>. Ever wondered what&rsquo;s the difference between two?<br>Why do we need to pass <code>props</code> ? Do we always need to pass <code>props</code> ?</p><p>Consider the example below.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+<span class=single__info></span></div><ul class="single__tags caption">🏷️<li><a href=https://www.gsavitha.in/tags/react/ class=single__tag title=react>#react</a></li></ul></div><article class=single__contents data-dir=ltr data-ani=true><div class=expand><button type=button class=expand__button aria-label="Expand Button">
+<span class="expand-icon expand-icon__right"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentcolor" d="M9.29 15.88 13.17 12 9.29 8.12c-.39-.39-.39-1.02.0-1.41.39-.39 1.02-.39 1.41.0l4.59 4.59c.39.39.39 1.02.0 1.41L10.7 17.3c-.39.39-1.02.39-1.41.0-.38-.39-.39-1.03.0-1.42z"/></svg></span>What's on this Page</button><div class="expand__content expand__content--toc"><nav id=TableOfContents><ul><li><a href=#tldr->TL;DR 🚀</a></li><li><a href=#what-does-superprops-do-then>What does super(props) do then?</a></li></ul></nav></div></div><h2 id=tldr->TL;DR 🚀</h2><blockquote><p>If you want to use <code>this.props</code> inside constructor of derived class, use super(props).</p></blockquote><hr><p>While checking react code, you might have come across a line <code>super(props)</code>, sometimes <code>super()</code>. Ever wondered what&rsquo;s the difference between two?<br>Why do we need to pass <code>props</code> ? Do we always need to pass <code>props</code> ?</p><p>Consider the example below.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
 </span><span class=hl><span class=lnt> 2
 </span></span><span class=lnt> 3
 </span><span class=lnt> 4
@@ -132,24 +133,24 @@ originUl.parentNode.replaceChild(ul,originUl);}});</script><link rel=stylesheet 
 </span><span class=lnt>18
 </span><span class=lnt>19
 </span><span class=lnt>20
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-jsx data-lang=jsx><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>Component</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react&#39;</span><span class=p>;</span>
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-jsx data-lang=jsx><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>Component</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&#34;react&#34;</span><span class=p>;</span>
 <span class=hl><span class=kr>class</span> <span class=nx>Game</span> <span class=kr>extends</span> <span class=nx>Component</span> <span class=p>{</span>
-</span>    <span class=nx>constructor</span><span class=p>(</span><span class=nx>props</span><span class=p>)</span> <span class=p>{</span>
-      <span class=kr>super</span><span class=p>(</span><span class=nx>props</span><span class=p>);</span>
-        <span class=k>this</span><span class=p>.</span><span class=nx>state</span> <span class=o>=</span> <span class=p>{</span>
-          <span class=nx>player</span> <span class=o>:</span> <span class=s2>&#34;Robin&#34;</span><span class=p>,</span>
-          <span class=nx>score</span> <span class=o>:</span> <span class=mi>25</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-    <span class=nx>render</span><span class=p>()</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=p>(</span>
-            <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>
-                <span class=p>&lt;</span><span class=nt>h1</span><span class=p>&gt;</span><span class=nx>Cricket</span><span class=p>&lt;/</span><span class=nt>h1</span><span class=p>&gt;</span>
-                <span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span><span class=nx>Current</span> <span class=nx>Player</span> <span class=o>:</span><span class=p>{</span><span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>player</span><span class=p>}&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
-                <span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span><span class=nx>Current</span> <span class=nx>Score</span> <span class=o>:</span> <span class=p>{</span><span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>score</span><span class=p>}&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
-            <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-        <span class=p>);</span>
-    <span class=p>}</span>
+</span>  <span class=nx>constructor</span><span class=p>(</span><span class=nx>props</span><span class=p>)</span> <span class=p>{</span>
+    <span class=kr>super</span><span class=p>(</span><span class=nx>props</span><span class=p>);</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>state</span> <span class=o>=</span> <span class=p>{</span>
+      <span class=nx>player</span><span class=o>:</span> <span class=s2>&#34;Robin&#34;</span><span class=p>,</span>
+      <span class=nx>score</span><span class=o>:</span> <span class=mi>25</span><span class=p>,</span>
+    <span class=p>};</span>
+  <span class=p>}</span>
+  <span class=nx>render</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=p>(</span>
+      <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>
+        <span class=p>&lt;</span><span class=nt>h1</span><span class=p>&gt;</span><span class=nx>Cricket</span><span class=p>&lt;/</span><span class=nt>h1</span><span class=p>&gt;</span>
+        <span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span><span class=nx>Current</span> <span class=nx>Player</span> <span class=o>:</span><span class=p>{</span><span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>player</span><span class=p>}&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
+        <span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span><span class=nx>Current</span> <span class=nx>Score</span> <span class=o>:</span> <span class=p>{</span><span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>score</span><span class=p>}&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
+      <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+    <span class=p>);</span>
+  <span class=p>}</span>
 <span class=p>}</span>
 <span class=kr>export</span> <span class=k>default</span> <span class=nx>Game</span><span class=p>;</span>
 </code></pre></td></tr></table></div></div><p>Every time we are writing a component, we are extending it from React component (The base component class) and that&rsquo;s really important if we don&rsquo;t do that we would be missing a ton of react functionality.</p><p>Let&rsquo;s step out of react world for just a moment and let&rsquo;s mimic our own component class</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
@@ -163,14 +164,14 @@ originUl.parentNode.replaceChild(ul,originUl);}});</script><link rel=stylesheet 
 </span><span class=lnt> 9
 </span><span class=lnt>10
 </span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=kr>class</span> <span class=nx>Component</span> <span class=p>{</span>
-    <span class=nx>constructor</span><span class=p>()</span> <span class=p>{</span>
-        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;INSIDE COMPONENT CONSTRUCTOR&#34;</span><span class=p>)</span>
-    <span class=p>}</span>
+  <span class=nx>constructor</span><span class=p>()</span> <span class=p>{</span>
+    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;INSIDE COMPONENT CONSTRUCTOR&#34;</span><span class=p>);</span>
+  <span class=p>}</span>
 <span class=p>}</span>
 <span class=kr>class</span> <span class=nx>Game</span> <span class=kr>extends</span> <span class=nx>Component</span> <span class=p>{</span>
-    <span class=nx>constructor</span><span class=p>(){</span>
-        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;INSIDE GAME CONSTRUCTOR&#34;</span><span class=p>)</span>
-    <span class=p>}</span>
+  <span class=nx>constructor</span><span class=p>()</span> <span class=p>{</span>
+    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;INSIDE GAME CONSTRUCTOR&#34;</span><span class=p>);</span>
+  <span class=p>}</span>
 <span class=p>}</span>
 </code></pre></td></tr></table></div></div><p>Lets make a new game</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=kd>let</span> <span class=nx>cricket</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Game</span><span class=p>();</span>
@@ -181,10 +182,10 @@ originUl.parentNode.replaceChild(ul,originUl);}});</script><link rel=stylesheet 
 </span><span class=lnt>5
 </span><span class=lnt>6
 </span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=kr>class</span> <span class=nx>Game</span> <span class=kr>extends</span> <span class=nx>Component</span> <span class=p>{</span>
-    <span class=nx>constructor</span><span class=p>(){</span>
-<span class=hl>      <span class=kr>super</span><span class=p>()</span>
-</span>        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;INSIDE GAME CONSTRUCTOR&#34;</span><span class=p>)</span>
-    <span class=p>}</span>
+  <span class=nx>constructor</span><span class=p>()</span> <span class=p>{</span>
+<span class=hl>    <span class=kr>super</span><span class=p>();</span>
+</span>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;INSIDE GAME CONSTRUCTOR&#34;</span><span class=p>);</span>
+  <span class=p>}</span>
 <span class=p>}</span>
 </code></pre></td></tr></table></div></div><p>Now try to instantiate again.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
@@ -192,8 +193,8 @@ originUl.parentNode.replaceChild(ul,originUl);}});</script><link rel=stylesheet 
 </span><span class=lnt>4
 </span></code></pre></td><td class=lntd><pre class=chroma><code class=language-js data-lang=js><span class=kd>let</span> <span class=nx>cricket</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Game</span><span class=p>();</span>
 <span class=c1>//output:
-</span><span class=c1></span>  <span class=c1>//INSIDE COMPONENT CONSTRUCTOR
-</span><span class=c1></span>  <span class=c1>//INSIDE GAME CONSTRUCTOR
+</span><span class=c1>//INSIDE COMPONENT CONSTRUCTOR
+</span><span class=c1>//INSIDE GAME CONSTRUCTOR
 </span></code></pre></td></tr></table></div></div><h2 id=what-does-superprops-do-then>What does super(props) do then?</h2><p>Lets look at this example:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
@@ -205,16 +206,16 @@ originUl.parentNode.replaceChild(ul,originUl);}});</script><link rel=stylesheet 
 </span><span class=lnt> 9
 </span><span class=lnt>10
 </span><span class=lnt>11
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-jsx data-lang=jsx><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>Component</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react&#39;</span><span class=p>;</span>
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-jsx data-lang=jsx><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>Component</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&#34;react&#34;</span><span class=p>;</span>
 
 <span class=kr>export</span> <span class=k>default</span> <span class=kr>class</span> <span class=nx>Food</span> <span class=kr>extends</span> <span class=nx>Component</span> <span class=p>{</span>
-    <span class=nx>render</span><span class=p>()</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=p>(</span>
-            <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>
-                <span class=p>&lt;</span><span class=nt>h1</span><span class=p>&gt;</span><span class=nx>HI</span> <span class=nx>I</span> <span class=nx>AM</span> <span class=nx>FOOD</span> <span class=nx>COMPONENT</span><span class=p>&lt;/</span><span class=nt>h1</span><span class=p>&gt;</span>
-            <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-        <span class=p>);</span>
-    <span class=p>}</span>
+  <span class=nx>render</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=p>(</span>
+      <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>
+        <span class=p>&lt;</span><span class=nt>h1</span><span class=p>&gt;</span><span class=nx>HI</span> <span class=nx>I</span> <span class=nx>AM</span> <span class=nx>FOOD</span> <span class=nx>COMPONENT</span><span class=p>&lt;/</span><span class=nt>h1</span><span class=p>&gt;</span>
+      <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+    <span class=p>);</span>
+  <span class=p>}</span>
 <span class=p>}</span>
 </code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
@@ -228,14 +229,16 @@ originUl.parentNode.replaceChild(ul,originUl);}});</script><link rel=stylesheet 
 </span><span class=lnt>10
 </span><span class=lnt>11
 </span><span class=lnt>12
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-jsx data-lang=jsx><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>Component</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react&#39;</span>
-<span class=kr>import</span> <span class=nx>Food</span> <span class=nx>from</span> <span class=s2>&#34;./Food&#34;</span>
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-jsx data-lang=jsx><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>Component</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&#34;react&#34;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=nx>Food</span> <span class=nx>from</span> <span class=s2>&#34;./Food&#34;</span><span class=p>;</span>
 <span class=kr>class</span> <span class=nx>App</span> <span class=kr>extends</span> <span class=nx>Component</span> <span class=p>{</span>
-  <span class=nx>render</span><span class=p>(){</span>
+  <span class=nx>render</span><span class=p>()</span> <span class=p>{</span>
     <span class=k>return</span> <span class=p>(</span>
-    <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>Food</span> <span class=na>item </span><span class=o>=</span> <span class=s>&#34;PineApple&#34;</span> <span class=na>nutrition</span><span class=o>=</span><span class=s>&#34;10&#34;</span><span class=p>/&gt;</span>
-    <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;);</span>
+      <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>
+        <span class=p>&lt;</span><span class=nt>Food</span> <span class=na>item</span><span class=o>=</span><span class=s>&#34;PineApple&#34;</span> <span class=na>nutrition</span><span class=o>=</span><span class=s>&#34;10&#34;</span> <span class=p>/&gt;</span>
+      <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+    <span class=p>);</span>
   <span class=p>}</span>
 <span class=p>}</span>
 
@@ -255,20 +258,20 @@ originUl.parentNode.replaceChild(ul,originUl);}});</script><link rel=stylesheet 
 </span><span class=lnt>13
 </span><span class=lnt>14
 </span><span class=lnt>15
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-jsx data-lang=jsx><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>Component</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react&#39;</span><span class=p>;</span>
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-jsx data-lang=jsx><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>Component</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&#34;react&#34;</span><span class=p>;</span>
 
 <span class=kr>export</span> <span class=k>default</span> <span class=kr>class</span> <span class=nx>Food</span> <span class=kr>extends</span> <span class=nx>Component</span> <span class=p>{</span>
-    <span class=nx>constructor</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kr>super</span><span class=p>();</span>
-<span class=hl>        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>props</span><span class=p>);</span> <span class=c1>// undefined.
-</span></span><span class=c1></span>    <span class=p>}</span>
-    <span class=nx>render</span><span class=p>()</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=p>(</span>
-            <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>
-                <span class=p>&lt;</span><span class=nt>h1</span><span class=p>&gt;</span><span class=nx>HI</span> <span class=nx>I</span> <span class=nx>AM</span> <span class=nx>FOOD</span> <span class=nx>COMPONENT</span><span class=p>&lt;/</span><span class=nt>h1</span><span class=p>&gt;</span>
-            <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-        <span class=p>);</span>
-    <span class=p>}</span>
+  <span class=nx>constructor</span><span class=p>()</span> <span class=p>{</span>
+    <span class=kr>super</span><span class=p>();</span>
+<span class=hl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>props</span><span class=p>);</span> <span class=c1>// undefined.
+</span></span><span class=c1></span>  <span class=p>}</span>
+  <span class=nx>render</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=p>(</span>
+      <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>
+        <span class=p>&lt;</span><span class=nt>h1</span><span class=p>&gt;</span><span class=nx>HI</span> <span class=nx>I</span> <span class=nx>AM</span> <span class=nx>FOOD</span> <span class=nx>COMPONENT</span><span class=p>&lt;/</span><span class=nt>h1</span><span class=p>&gt;</span>
+      <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+    <span class=p>);</span>
+  <span class=p>}</span>
 <span class=p>}</span>
 </code></pre></td></tr></table></div></div><p>We get output as <em>Undefined</em> even though we have props. OK, what&rsquo;s happening here is if we want to <strong>access <code>this.props</code> in the constructor, we have to pass props in super (<code>super(props)</code>)</strong>. This is kind of bizzare, lets consider this example.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
@@ -286,21 +289,21 @@ originUl.parentNode.replaceChild(ul,originUl);}});</script><link rel=stylesheet 
 </span><span class=lnt>14
 </span><span class=lnt>15
 </span><span class=lnt>16
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-jsx data-lang=jsx><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>Component</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react&#39;</span><span class=p>;</span>
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-jsx data-lang=jsx><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>Component</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&#34;react&#34;</span><span class=p>;</span>
 
 <span class=kr>export</span> <span class=k>default</span> <span class=kr>class</span> <span class=nx>Food</span> <span class=kr>extends</span> <span class=nx>Component</span> <span class=p>{</span>
-    <span class=nx>constructor</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kr>super</span><span class=p>();</span>
-<span class=hl>        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>props</span><span class=p>);</span> <span class=c1>// undefined.
-</span></span><span class=c1></span>        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>props</span><span class=p>)</span> <span class=c1>// {item:&#34;pineapple&#34;, nutrition:10}
-</span><span class=c1></span>    <span class=p>}</span>
-    <span class=nx>render</span><span class=p>()</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=p>(</span>
-<span class=hl>            <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>
-</span>                <span class=p>&lt;</span><span class=nt>h1</span><span class=p>&gt;{</span><span class=k>this</span><span class=p>.</span><span class=nx>props</span><span class=p>.</span><span class=nx>item</span><span class=p>}&lt;/</span><span class=nt>h1</span><span class=p>&gt;</span> <span class=cm>/*Prints out pineapple*/</span>
-            <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-        <span class=p>);</span>
-    <span class=p>}</span>
+  <span class=nx>constructor</span><span class=p>()</span> <span class=p>{</span>
+    <span class=kr>super</span><span class=p>();</span>
+<span class=hl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>props</span><span class=p>);</span> <span class=c1>// undefined.
+</span></span><span class=c1></span>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>props</span><span class=p>);</span> <span class=c1>// {item:&#34;pineapple&#34;, nutrition:10}
+</span><span class=c1></span>  <span class=p>}</span>
+  <span class=nx>render</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=p>(</span>
+<span class=hl>      <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>
+</span>        <span class=p>&lt;</span><span class=nt>h1</span><span class=p>&gt;{</span><span class=k>this</span><span class=p>.</span><span class=nx>props</span><span class=p>.</span><span class=nx>item</span><span class=p>}&lt;/</span><span class=nt>h1</span><span class=p>&gt;</span> <span class=cm>/*Prints out pineapple*/</span>
+      <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+    <span class=p>);</span>
+  <span class=p>}</span>
 <span class=p>}</span>
 </code></pre></td></tr></table></div></div><p>However if you do</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
@@ -317,20 +320,20 @@ originUl.parentNode.replaceChild(ul,originUl);}});</script><link rel=stylesheet 
 </span><span class=lnt>13
 </span><span class=lnt>14
 </span><span class=lnt>15
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-jsx data-lang=jsx><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>Component</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react&#39;</span><span class=p>;</span>
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-jsx data-lang=jsx><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>Component</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&#34;react&#34;</span><span class=p>;</span>
 
 <span class=kr>export</span> <span class=k>default</span> <span class=kr>class</span> <span class=nx>Food</span> <span class=kr>extends</span> <span class=nx>Component</span> <span class=p>{</span>
-    <span class=nx>constructor</span><span class=p>()</span> <span class=p>{</span>
-<span class=hl>        <span class=kr>super</span><span class=p>(</span><span class=nx>props</span><span class=p>);</span>
-</span>        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>props</span><span class=p>);</span> <span class=c1>// {item:&#34;pineapple&#34;, nutrition:10}
-</span><span class=c1></span>    <span class=p>}</span>
-    <span class=nx>render</span><span class=p>()</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=p>(</span>
-            <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>
-                <span class=p>&lt;</span><span class=nt>h1</span><span class=p>&gt;{</span><span class=k>this</span><span class=p>.</span><span class=nx>props</span><span class=p>.</span><span class=nx>item</span><span class=p>}&lt;/</span><span class=nt>h1</span><span class=p>&gt;</span> <span class=cm>/*Prints out pineapple*/</span>
-            <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-        <span class=p>);</span>
-    <span class=p>}</span>
+  <span class=nx>constructor</span><span class=p>()</span> <span class=p>{</span>
+<span class=hl>    <span class=kr>super</span><span class=p>(</span><span class=nx>props</span><span class=p>);</span>
+</span>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>props</span><span class=p>);</span> <span class=c1>// {item:&#34;pineapple&#34;, nutrition:10}
+</span><span class=c1></span>  <span class=p>}</span>
+  <span class=nx>render</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=p>(</span>
+      <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>
+        <span class=p>&lt;</span><span class=nt>h1</span><span class=p>&gt;{</span><span class=k>this</span><span class=p>.</span><span class=nx>props</span><span class=p>.</span><span class=nx>item</span><span class=p>}&lt;/</span><span class=nt>h1</span><span class=p>&gt;</span> <span class=cm>/*Prints out pineapple*/</span>
+      <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+    <span class=p>);</span>
+  <span class=p>}</span>
 <span class=p>}</span>
 </code></pre></td></tr></table></div></div><p>To conclude, If you want to use <code>this.props</code> inside constructor, you need to pass props in <code>super()</code>, otherwise it’s okay to not pass props to super() as we see that irrespective of passing it to super(), <code>this.props</code> is available inside <code>render()</code> function.</p><p>Hopefully that was not convoluted and crazy, until next time. Happy Coding! 🎉 💻</p></article><script defer src=/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js></script><script defer src=/js/helper/prev.min.js></script><script defer src=/js/helper/prop.min.js></script><script>'use strict';document.addEventListener('DOMContentLoaded',function(){var clipInit=false;var preChromaElem=document.querySelectorAll('pre.chroma');var langCodeElem=document.querySelectorAll('.language-code');var dollarCodeElem=document.querySelectorAll('div.language-\\$');var gtCodeElem=document.querySelectorAll('div.language-\\>');var makeClipboard=function(elem){var code=elem,text=elem.textContent;if(text.length>15){if(!clipInit){var text,clip=new ClipboardJS('.copy-to-clipboard',{text:function(trigger){var codeElem=prev(trigger).querySelectorAll('code');if(codeElem.length>1){text=prev(trigger).querySelector('code[class^="language-"]').textContent;}else{text=prev(trigger).querySelector('code').textContent;}
 return text.replace(/^\$\s/gm,'');}});var inPre;clip.on('success',function(e){e.clearSelection();inPre=prop(e.trigger.parentNode,'tagName')=='PRE';e.trigger.setAttribute('aria-label','Copied to clipboard!');e.trigger.classList.add('tooltipped');e.trigger.classList.add('tooltipped-w');});clip.on('error',function(e){inPre=prop(e.trigger.parentNode,'tagName')=='PRE';e.trigger.setAttribute('aria-label',e.action.toString());e.trigger.classList.add('tooltipped');e.trigger.classList.add('tooltipped-w');});clipInit=true;}
