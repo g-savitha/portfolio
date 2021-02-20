@@ -9,6 +9,9 @@ featured: false # feature a post in homepage
 tableofcontents: true # whether to generate ToC
 tags: [ghpages, react, hosting]
 categories: [devops, ci-cd]
+hideToc: false
+enableToc: true
+enableTocContent: true
 ---
 
 <!--  Start Typing... -->

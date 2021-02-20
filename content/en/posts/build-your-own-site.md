@@ -9,9 +9,13 @@ featured: false # feature a post in homepage
 tableofcontents: true # whether to generate ToC
 tags: ["hugo", "website", "portfolio"]
 categories: [misc]
+hideToc: false
+enableToc: true
+enableTocContent: true
 ---
 
 <!--  Start Typing... -->
+
 Yes you read it right, you can build and host your website in 10 min :sunglasses:.
 
 But how?

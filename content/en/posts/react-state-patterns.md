@@ -2,10 +2,9 @@
 title: "React State Patterns"
 date: 2020-09-01T16:27:52+05:30
 draft: false
-meta:
-  image: # url to image. Important for blog listing and seo
-  description: # overrides .Summary
-featured: false # feature a post in homepage
+hideToc: false
+enableToc: true
+enableTocContent: true
 tableofcontents: true # whether to generate ToC
 tags: [react]
 categories: [react]
@@ -176,7 +175,7 @@ _Is the current component stateless?_ _Find out what is rendering it_. There’s
 
 #### Todo Example:
 
-```js
+```jsx
 class TodoList extends Component {
   constructor(props) {
     super(props);

@@ -2,11 +2,10 @@
 title: "Recursion Simplified"
 date: 2021-01-31T11:16:15+05:30
 draft: false
-meta:
-  image: # url to image. Important for blog listing and seo
-  description: # overrides .Summary
-featured: false # feature a post in homepage
-tableofcontents: true # whether to generate ToC
+hideToc: false
+enableToc: true
+enableTocContent: true
+pinned: true
 tags: [dsa, recursion]
 categories: [dsa]
 ---
