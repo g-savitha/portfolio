@@ -46,7 +46,7 @@ void fun2(){
 ```
 
 - If you _dont add a base case_, _recursion never stops_ and we might end up with _stackoverflow_(in case of java) or _segmentation fault_ error(in case of cpp).
-- There should be **one stopping condition atleast**. Such stopping conditions are called _*Base cases*_
+- There should be **one stopping condition atleast**. Such stopping conditions are called _*[Base cases]({{< ref "/posts/recursion-base-cases.md" >}})*_
 
 _Example:_
 
