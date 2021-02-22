@@ -255,7 +255,15 @@ Can you guess the reason why would 1st function take lesser time to compile on m
 
 If you look at the call stack of `fn1()`
 
-{{< img src="/images/blog-img/callstack.png" alt="callstack" width="400px" position="center" >}}
+```tree
++__fn1(3)
+    |__ 3
+    |__fn1(2)
+        |__ 2
+        |__ fn1(1)
+            |__ 1
+            |__ fn1(0)
+```
 
 When `fn1(0)` finishes, control returns back to `fn1(1)`, `fn1(1)` doesnt have anything to do it finishes immediately. This is where tail recursion comes into picture.
 
