@@ -2,11 +2,13 @@
 title: "What is Micro Frontends?"
 date: 2021-03-26T14:45:17+05:30
 draft: false
+description: "A microservice approach to frontend"
 hideToc: false
 enableToc: true
 enableTocContent: true
 tags: [web-architecture]
 categories: [web-architecture]
+image: "https://blog.scottlogic.com/ceberhardt/assets/microfrontends/microfrontends.png"
 ---
 
 Most of the web apps these days are having 90% of front end and only 10% of the backend. As the application grows bigger and bigger having a **monolithic** approach on front end doesn't work. There needs to be a way to break this approach into smaller modules that can work independently.
@@ -115,7 +117,5 @@ That's all folks, that pretty much sums up about micro frontends.
 Here is an interesting thread:
 
 {{< twitter_simple 1132493678730252288 >}}
-
-Also look at [Spotify's work culture](https://engineering.atspotify.com/2014/03/27/spotify-engineering-culture-part-1/)
 
 Until next time, happy learning! :tada: :computer:

@@ -2,6 +2,7 @@
 title: "Useful Git commands for newbies"
 date: 2020-09-01T16:46:33+05:30
 draft: true
+description: "Git commands every developer needs to be familiar with"
 meta:
   image: # url to image. Important for blog listing and seo
   description: # overrides .Summary
@@ -12,6 +13,7 @@ categories: [ci-cd, devops]
 ---
 
 <!--  Start Typing... -->
+
 In this article lets look at a few Git commands which every developer should be familiar with.
 
 ## What is Git?

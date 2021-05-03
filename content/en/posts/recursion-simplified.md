@@ -2,12 +2,14 @@
 title: "Recursion Simplified"
 date: 2021-01-31T11:16:15+05:30
 draft: false
+description: A function calling itself directly or indirectly is known as recursion.
 hideToc: false
 enableToc: true
 enableTocContent: true
 pinned: true
 tags: [dsa, recursion]
 categories: [dsa]
+image: "https://storage.googleapis.com/algodailyrandomassets/curriculum/recursion/cover.jpg"
 ---
 
 <!--  Start Typing... -->

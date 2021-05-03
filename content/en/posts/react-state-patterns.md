@@ -2,12 +2,14 @@
 title: "React State Patterns"
 date: 2020-09-01T16:27:52+05:30
 draft: false
+description: "The right approach to  `state`"
 hideToc: false
 enableToc: true
 enableTocContent: true
 tableofcontents: true # whether to generate ToC
 tags: [react]
 categories: [react]
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
 ---
 
 <!--  Start Typing... -->

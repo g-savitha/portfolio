@@ -2,6 +2,7 @@
 title: "How to write base cases"
 date: 2021-02-20T15:46:57+05:30
 draft: false
+description: "Helps you in writing base cases for recursion"
 hideToc: false
 enableToc: true
 enableTocContent: true

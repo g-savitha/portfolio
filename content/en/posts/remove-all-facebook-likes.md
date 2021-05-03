@@ -2,8 +2,10 @@
 title: "Remove All Your Facebook Likes"
 date: 2021-04-08T21:50:19+05:30
 draft: false
+description: "Remove your facebook likes by using this snippet "
 tags: [gist, javascript, security, scripts]
 categories: [scripts, privacy]
+image: "https://micdn-13a1c.kxcdn.com/images/sg/content-images/broken-like-facebook.jpg"
 ---
 
 Recently came across an interesting code snippet from github gists.

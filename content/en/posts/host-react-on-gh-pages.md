@@ -2,9 +2,7 @@
 title: "Hosting react projects on GH Pages"
 date: 2020-09-11T12:31:59+05:30
 draft: false
-meta:
-  image: # url to image. Important for blog listing and seo
-  description: Host react apps for free on Github Pages.
+description: Host react apps for free on Github Pages.
 featured: false # feature a post in homepage
 tableofcontents: true # whether to generate ToC
 tags: [ghpages, react, hosting]
@@ -12,6 +10,7 @@ categories: [devops, ci-cd]
 hideToc: false
 enableToc: true
 enableTocContent: true
+image: "https://miro.medium.com/max/1000/1*4u4uD5FiSkWdBNkRO6lVtQ.jpeg"
 ---
 
 <!--  Start Typing... -->

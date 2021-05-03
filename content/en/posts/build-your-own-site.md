@@ -12,6 +12,8 @@ categories: [misc]
 hideToc: false
 enableToc: true
 enableTocContent: true
+description: "Build your own website without CMS using SSGs"
+image: "https://avatars.githubusercontent.com/u/29385237?s=280&v=4"
 ---
 
 <!--  Start Typing... -->

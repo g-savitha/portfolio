@@ -2,9 +2,6 @@
 title: "Syncing Git Fork with Original Repository"
 date: 2020-09-11T11:30:29+05:30
 draft: false
-meta:
-  image: # url to image. Important for blog listing and seo
-  description: This article helps you in pulling changes into your forked repository from the original one.
 featured: false # feature a post in homepage
 tableofcontents: true # whether to generate ToC
 tags: [git, tools, ci-cd]
@@ -12,6 +9,8 @@ categories: [ci-cd, devops]
 hideToc: false
 enableToc: true
 enableTocContent: true
+description: This article helps you in pulling changes into your forked repository from the original one.
+image: ""
 ---
 
 <!--  Start Typing... -->
