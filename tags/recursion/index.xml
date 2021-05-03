@@ -4,4 +4,4 @@ What are base cases? Base cases are those inputs, for which we cannot further br
 Directly:
 1 2 3 4 5 void fun1(){ //somecode ... fun1(); //some other code... } Indirectly: Not a very common approach (Mostly direct recursive approach is used)
 fun1() -&amp;gt; fun2() -&amp;gt; fun1()
-1 2 3 4 5 6 7 8 9 10 11 12 void fun1(){ //somecode ... fun2(); //some other code... } void fun2(){ //somecode .</description><dc:creator>Savitha</dc:creator><category>dsa</category><category>recursion</category><category>dsa</category></item></channel></rss>
+1 2 3 4 5 6 7 8 9 10 11 12 void fun1(){ //somecode ... fun2(); //some other code... } void fun2(){ //somecode .</description><dc:creator>Savitha</dc:creator><media:content url="https://www.gsavitha.inhttps://storage.googleapis.com/algodailyrandomassets/curriculum/recursion/cover.jpg" medium="image"><media:title type="html">featured image</media:title></media:content><category>dsa</category><category>recursion</category><category>dsa</category></item></channel></rss>
