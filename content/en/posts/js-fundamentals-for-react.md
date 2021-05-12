@@ -18,7 +18,7 @@ image: https://res.cloudinary.com/practicaldev/image/fetch/s--ohpJlve1--/c_imagg
 
 Hey, there :wave:
 
-Welcome to the 2nd article of the series [Epic React Series]({{< ref "/posts/epic-react-intro.md">}}) which is based on the workshop [EpicReact.dev](https://epicreact.dev/) by [Kent C. Dodds](https://kentcdodds.com/)
+Welcome to the 1st article of the series [Epic React Series]({{< ref "/posts/epic-react-intro.md">}}) which is based on the workshop [EpicReact.dev](https://epicreact.dev/) by [Kent C. Dodds](https://kentcdodds.com/)
 
 In this article lets look at the basics of JS one should know before getting started with React. Feel free to skip the topics you already know.
 
