@@ -21,4 +21,8 @@
   name = "Archive"
   url = "archive"
   weight = 4
-
+[[main]]
+  identifier = "newsletter"
+  name = "Newsletter"
+  url = "https://www.getrevue.co/profile/gsavitha"
+  weight = 5
