@@ -6,7 +6,7 @@
 
 [[main]]
   identifier = "showcase"
-  name = "Showcase"
+  name = "Projects"
   url = "showcase"
   weight = 2
 
@@ -26,3 +26,8 @@
   name = "Newsletter"
   url = "https://www.getrevue.co/profile/gsavitha"
   weight = 5
+[[main]]
+  identifier = "contact"
+  name = "Contact"
+  url = "contact"
+  weight = 6
