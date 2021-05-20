@@ -13,7 +13,7 @@ categories:
   - react
 series:
   - Epic React
-image: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png
+image: https://miro.medium.com/max/5736/1*Th_2G92t3x5mARCCuFE_Dg.jpeg
 ---
 
 Hey, there :wave:
