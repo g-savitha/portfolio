@@ -18,7 +18,7 @@ image: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/
 
 Hey, there :wave:
 
-Welcome to the 2nd post of the series [Epic React Series]({{< ref "/posts/epic-react-intro.md">}}) which is based on the workshop [EpicReact.dev](https://epicreact.dev/) by [Kent C. Dodds](https://kentcdodds.com/). If you haven't read previous article of the series, I recommend you to go and read it first before proceeding further.
+Welcome to the 2nd article of the [Epic React Series]({{< ref "/posts/epic-react-intro.md">}}) which is based on the workshop [EpicReact.dev](https://epicreact.dev/) by [Kent C. Dodds](https://kentcdodds.com/). If you haven't read previous article of the series, I recommend you to go and read it first before proceeding further.
 
 - [JS Fundamentals required to get started with React]({{<ref "/posts/js-fundamentals-for-react.md">}})
 
@@ -177,6 +177,10 @@ That's all for now.
 
 ---
 
-So now you saw how difficult it becomes to write the code when you use RAW APIs. In the next article we will understand a simpler way to create elements using JSX (whose syntax looks similar to HTML) and understand how it works behind the scenes.
+So now you saw how difficult it becomes to write the code when you use RAW APIs. In the next [article]({{<ref "/posts/understanding-jsx.md">}}) we will understand a simpler way to create elements using JSX (whose syntax looks similar to HTML) and understand how it works behind the scenes.
 
 Until next time :wave:, Happy learning :tada: :computer:
+
+---
+
+If this was helpful to you, please Share this article so that it reaches others as well. To get my latest articles straight to your inbox, please subscribe to my [Newsletter](https://www.getrevue.co/profile/gsavitha) . You can also follow me on twitter [@gsavitha\_](https://twitter.com/gsavitha_).

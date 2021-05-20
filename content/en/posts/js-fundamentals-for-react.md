@@ -18,7 +18,7 @@ image: https://res.cloudinary.com/practicaldev/image/fetch/s--ohpJlve1--/c_imagg
 
 Hey, there :wave:
 
-Welcome to the 1st article of the series [Epic React Series]({{< ref "/posts/epic-react-intro.md">}}) which is based on the workshop [EpicReact.dev](https://epicreact.dev/) by [Kent C. Dodds](https://kentcdodds.com/)
+Welcome to the 1st article of the [Epic React Series]({{< ref "/posts/epic-react-intro.md">}}) which is based on the workshop [EpicReact.dev](https://epicreact.dev/) by [Kent C. Dodds](https://kentcdodds.com/)
 
 In this article lets look at the basics of JS one should know before getting started with React. Feel free to skip the topics you already know.
 
@@ -571,3 +571,7 @@ These operators are also known as `short-circuit evaluation` operators
 Thats all for now. In the next article we'll dive into Raw React APIs to understand the underlying structure of React code.
 
 Until next time, Happy learning! :tada: :computer:
+
+---
+
+If this was helpful to you, please Share this article so that it reaches others as well. To get my latest articles straight to your inbox, please subscribe to my [Newsletter](https://www.getrevue.co/profile/gsavitha) . You can also follow me on twitter [@gsavitha\_](https://twitter.com/gsavitha_).

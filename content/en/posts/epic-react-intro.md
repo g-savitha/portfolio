@@ -27,11 +27,11 @@ In this article you can find all the blogposts I will be writing as a part of th
 ## React fundamentals
 
 1. [JS fundamentals for React]({{< ref "/posts/js-fundamentals-for-react.md" >}})
-<!-- 2. [Intro to raw React APIs]({{< ref "#" >}})
-1. [Understanding JSX ]({{< ref "#" >}})
-1. [Creating custom components]({{< ref "#" >}})
-1. [Styling and Forms]({{< ref "#" >}})
-1. [Rendering Arrays]({{< ref "#" >}}) -->
+2. [Intro to raw React APIs]({{< ref "/posts/intro-to-raw-react-apis.md" >}})
+3. [Understanding JSX ]({{< ref "/posts/understanding-jsx.md" >}})
+<!--1. [Creating custom components]({{< ref "#" >}})
+4. [Styling and Forms]({{< ref "#" >}})
+5. [Rendering Arrays]({{< ref "#" >}}) -->
 
 ## React hooks
 

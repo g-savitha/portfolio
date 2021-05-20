@@ -462,3 +462,9 @@ for (let input of [creditCardInput, termszcheckBox, veggiesSelect]) {
 ```
 
 > This type of pattern (using name attribute) is pretty common especially if we get to something like **react** and some of the other frameworks or libraries out there. We use **name of an input as a key to store the value from that input** under, to create a nice object that contains all of our form data at once.
+
+Hope you learnt something, until next time :wave:, happy learning :tada: :computer:
+
+---
+
+If this was helpful to you, please Share this article so that it reaches others as well. To get my latest articles straight to your inbox, please subscribe to my [Newsletter](https://www.getrevue.co/profile/gsavitha) . You can also follow me on twitter [@gsavitha\_](https://twitter.com/gsavitha_).

@@ -119,3 +119,7 @@ Other than Github, you can host your website on [Heroku](), [Vercel](), [Firebas
 For a good next step, try to add custom domains to your deployed application. It’s good to have a distinctive domain for projects.
 
 Until next time, Happy coding! :computer: :tada:
+
+---
+
+If this was helpful to you, please Share this article so that it reaches others as well. To get my latest articles straight to your inbox, please subscribe to my [Newsletter](https://www.getrevue.co/profile/gsavitha) . You can also follow me on twitter [@gsavitha\_](https://twitter.com/gsavitha_).

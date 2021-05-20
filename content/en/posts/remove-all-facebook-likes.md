@@ -32,3 +32,7 @@ Once you are done with this, open console on your webpage (`cmd+shift+J` on mac 
 Based upon your activity history it may take some time or it may throw an API limit Error. Nevertheless, you can try again later may be after a day.
 
 Now go and enjoy some privacy :smile: :tada:
+
+---
+
+If this was helpful to you, please Share this article so that it reaches others as well. To get my latest articles straight to your inbox, please subscribe to my [Newsletter](https://www.getrevue.co/profile/gsavitha) . You can also follow me on twitter [@gsavitha\_](https://twitter.com/gsavitha_).

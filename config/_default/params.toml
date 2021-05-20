@@ -198,6 +198,11 @@ commento = false
 
 [[share]]
   name = "twitter"
+[[share]]
+  name = "reddit"
+[[share]]
+  name = "linkedin"
+
 
 [[footerLinks]]
   name = ""
