@@ -20,7 +20,7 @@
           {{ partial "svgs/share/reddit.svg" (dict "width" 35 "height" 35) }}
         </a>
       {{ else if eq (lower .name) "linkedin" }}
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $ctx.Permalink | absLangURL }}&title={{ $ctx.Title }} &summary={{ $ctx.Description }}&source={{ $site.Params.Description }}" target="_blank" rel="noreferrer" title="{{ i18n "linkedin" | default "LinkedIn" }}" aria-label="LinkedIn Share Button" class="donation__item" data-type="share">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ $ctx.Permalink | absLangURL }}&title={{ $ctx.Title }} &summary={{ $ctx.Description }}&source={{ $site.Params.Description }}" target="_blank" rel="noreferrer" title="{{ i18n "linkedin" | default "LinkedIn" }}" aria-label="LinkedIn Share Button" class="donation__item" data-type="share">
           {{ partial "svgs/share/linkedin.svg" (dict "width" 35 "height" 35) }}
         </a>
       {{ else if eq (lower .name) "tumblr" }}

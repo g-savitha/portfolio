@@ -99,7 +99,7 @@ busuanziSitePV = true
 busuanziPagePV = true
 
 # rss
-updatePeriod = "monthly" # Possible values: 'hourly', 'daily', 'weekly', 'monthly', or 'yearly'.
+updatePeriod = "weekly" # Possible values: 'hourly', 'daily', 'weekly', 'monthly', or 'yearly'.
 updateFrequency = ""
 fullContents = false
 
@@ -191,8 +191,8 @@ commento = false
   enable = false
   alipay = "" 
   wechat = ""
-  paypal = ""
-  patreon = ""
+  paypal = "gsavitha_"
+  patreon = "gsavitha_"
 
 # possible share name: ["facebook","twitter", "reddit", "linkedin", "tumblr", "weibo", "douban", "line", "pocket", "feedly", "hatena", "pinterest", "delicious", "google"]
 
@@ -202,6 +202,12 @@ commento = false
   name = "reddit"
 [[share]]
   name = "linkedin"
+[[share]]
+  name = "facebook"
+[[share]]
+  name = "telegram"
+[[share]]
+  name = "whatsapp"
 
 
 [[footerLinks]]
