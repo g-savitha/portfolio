@@ -27,7 +27,12 @@
   url = "https://www.getrevue.co/profile/gsavitha"
   weight = 5
 [[main]]
+  identifier = "notes"
+  name = "Notes"
+  url = "https://g-savitha.github.io/categories/"
+  weight = 6
+[[main]]
   identifier = "contact"
   name = "Contact"
   url = "contact"
-  weight = 6
+  weight = 7
