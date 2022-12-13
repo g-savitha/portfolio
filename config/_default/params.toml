@@ -57,7 +57,7 @@ typeIcon = "🎯"
 
 # whoami
 myname = "Savitha"
-email = "mailto@gsavitha.in"
+email = "gsavitha@protonmail.com"
 whoami = "📚 Learner 🤓 Nerd 🌐 Web Developer"
 bioImageUrl = "https://avatars.githubusercontent.com/u/31612459?s=460&u=6e1f70165a732dbc18b9ad17712463f9b629c70c&v=4"
 useGravatar = false
@@ -156,7 +156,7 @@ commento = false
   dataAttrs = "" # "data-isso='https://isso.example.com' data-isso-require-author='true'"
 
 [socialOptions]
-  email = "mailto@gsavitha.in"
+  email = "gsavitha@protonmail.com"
   phone = ""
   facebook = ""
   twitter = "https://twitter.com/gsavitha_"
