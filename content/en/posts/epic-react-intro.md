@@ -1,8 +1,8 @@
 ---
-title: "Epic React Series: Introduction"
+title: 'Epic React Series: Introduction'
 date: 2021-05-10T12:45:39+05:30
 draft: false
-description: "Introduction to the series "
+description: 'Introduction to the series '
 hideToc: false
 enableToc: true
 enableTocContent: true
@@ -32,6 +32,7 @@ In this article you can find all the blogposts I will be writing as a part of th
 <!--1. [Creating custom components]({{< ref "#" >}})
 4. [Styling and Forms]({{< ref "#" >}})
 5. [Rendering Arrays]({{< ref "#" >}}) -->
+<!--
 
 ## React hooks
 
@@ -43,4 +44,4 @@ In this article you can find all the blogposts I will be writing as a part of th
 
 ## Testing React Apps
 
-## React Suspense
+## React Suspense -->
