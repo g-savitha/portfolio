@@ -16,6 +16,7 @@ Savitha here. I am a software developer and a nerd from India. I love to try new
 - Next.js
 - Tailwind
 - Mongo / Postgres
+- Jest
 
 Other than coding, in my free time, I play video games and chess (i'm a noob btw :sweat_smile:)at [chess.com](https://www.chess.com/), read some non fiction and listen to some [music](https://open.spotify.com/user/31rsdkn5tx7bs26fsy7nefvcpsda?si=-mcRCEL6RrGXvBafgYk98g).
 

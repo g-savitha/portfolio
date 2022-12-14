@@ -1,7 +1,7 @@
 ---
 title: 'The Pillars of JS Series: Introduction'
 date: 2022-12-13T16:30:47+05:30
-draft: false
+draft: true
 description: 'This series covers the core foundations of JS'
 hideToc: true
 enableToc: true
