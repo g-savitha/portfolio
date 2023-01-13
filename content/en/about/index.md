@@ -13,8 +13,8 @@ Savitha here. I am a software developer and a nerd from India. I love to try new
 
 - Node.js
 - Typescript
-- Next.js
-- Tailwind
+- React
+- Styled Components
 - Mongo / Postgres
 - Jest
 
