@@ -30,3 +30,7 @@ Ok, just kidding...
 - [git log cheatsheet](https://devhints.io/git-log)
 
 I prefer to use git from command line as it gives me more control over what I'm doing than using Github desktop or some other GUI tools. So in this post, I'm going to refer using the git from command line.
+
+---
+
+If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. For more articles like this, subscribe to my [Newsletter](https://www.getrevue.co/profile/gsavitha) and get the latest updates straight to your inbox.

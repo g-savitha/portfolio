@@ -16,7 +16,7 @@ image: https://miro.medium.com/max/1678/1*O_H6XRaDX9FaC4Q9viiRAA.png
 
 Hello world :wave:,
 
-Welcome to the 1st part of [Pillars of JS Series]({{< ref "/posts/pillars-of-js.md">}})
+Welcome to the 1st part of [Pillars of JS Series]({{< ref "/posts/js-hard-parts.md">}})
 
 In this post, you are going to have a look at call stack, execution context, functions and higher order functions, without getting delayed lets get started :rocket:
 
@@ -40,3 +40,7 @@ const res = copyArrayAndAdd2(myArr); // [3,5,7]
 ```
 
 Whenever JS interpreter looks at this code, it first creates a **Global memory**.
+
+---
+
+If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. For more articles like this, subscribe to my [Newsletter](https://www.getrevue.co/profile/gsavitha) and get the latest updates straight to your inbox.

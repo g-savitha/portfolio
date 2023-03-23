@@ -147,4 +147,4 @@ Hopefully that was helpful to some extent. Until next time, Happy coding! :tada:
 
 ---
 
-If this was helpful to you, please Share this article so that it reaches others as well. To get my latest articles straight to your inbox, please subscribe to my [Newsletter](https://www.getrevue.co/profile/gsavitha) . You can also follow me on twitter [@gsavitha\_](https://twitter.com/gsavitha_).
+If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. For more articles like this, subscribe to my [Newsletter](https://www.getrevue.co/profile/gsavitha) and get the latest updates straight to your inbox.
