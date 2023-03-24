@@ -1,6 +1,6 @@
-logoText = "SG"
+logoText = ""
 logoType = "short" # long, short
-description = "Savitha's portfolio"
+description = "Savitha's Blog"
 custom_css = []
 custom_js = []
 useFaviconGenerator = true # https://www.favicon-generator.org/
