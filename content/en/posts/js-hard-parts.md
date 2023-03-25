@@ -1,6 +1,6 @@
 ---
 title: 'JS Hard Parts Demystified: Introduction'
-date: 2021-03-23T12:39:37+05:30
+date: 2023-03-23T12:39:37+05:30
 draft: false
 description: 'This series covers the core foundations of JS in depth'
 hideToc: true
@@ -10,6 +10,7 @@ enableTocContent: false
 tags:
   - javascript
   - foundations
+  - demystified
 categories:
   - javascript
 series:

@@ -1,6 +1,6 @@
 ---
-title: 'Execution Context: Demystified'
-date: 2021-03-25T14:14:58+05:30
+title: 'Execution Context Demystified'
+date: 2023-03-25T14:14:58+05:30
 draft: false
 description: 'Functions, callbacks and execution context'
 hideToc: false
@@ -11,8 +11,11 @@ tags:
   - HOF
   - Higher Order Functions
   - execution context
+  - demystified
 categories:
   - javascript
+series:
+  - JS Hard Parts
 image: https://miro.medium.com/max/1678/1*O_H6XRaDX9FaC4Q9viiRAA.png
 ---
 
