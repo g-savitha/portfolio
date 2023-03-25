@@ -22,7 +22,7 @@ I'm excited to announce the start of a new series on Javascript that aims to pro
 
 This series will cover the following topics:
 
-1.  [Execution Context, Callbacks, and Higher-Order Functions](#) : This topic will cover the fundamental concepts of the execution context in JavaScript, how callbacks are used in higher-order functions, and why they are essential in modern web development.
+1.  [Execution Context, Callbacks, and Higher-Order Functions]({{< ref "/posts/exec-context.md">}}) : This topic will cover the fundamental concepts of the execution context in JavaScript, how callbacks are used in higher-order functions, and why they are essential in modern web development.
 
 2. [Closures](#) : This topic will delve into the inner workings of closures in JavaScript, how they help with encapsulation and privacy, and how to use them effectively in your code.
 
