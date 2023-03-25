@@ -2,13 +2,14 @@
 title: 'Execution Context: Demystified'
 date: 2021-03-25T14:14:58+05:30
 draft: false
-description: ''
+description: 'Functions, callbacks and execution context'
 hideToc: false
 enableToc: true
 enableTocContent: true
 tags:
   - javascript
   - HOF
+  - Higher Order Functions
   - execution context
 categories:
   - javascript
