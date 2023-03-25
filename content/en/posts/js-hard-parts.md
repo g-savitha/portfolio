@@ -1,6 +1,6 @@
 ---
 title: 'JS Hard Parts Demystified: Introduction'
-date: 2023-03-23T12:39:37+05:30
+date: 2021-03-23T12:39:37+05:30
 draft: false
 description: 'This series covers the core foundations of JS in depth'
 hideToc: true
@@ -32,13 +32,13 @@ This series will cover the following topics:
 
 5. [Classes and Prototypes](#) : This topic will explain the concepts of classes and prototypes in JavaScript, how they relate to each other, and how they are used to create reusable code.
 
+6. [Iterators](#):This topic will explore the concept of iterators in JavaScript, how they work, and how they can be used to simplify and streamline code.
+
+7. [Generators](#): This topic will delve into generators in JavaScript, how they differ from regular functions, and how they can be used to create custom iterators.
+  
+<!-- 8. [Functional Programming in JS](#):  -->
+
 > PS: I will be continually updating this series with additional concepts as I explore and delve deeper.
-
-<!-- ## Iterators
-
-## Generators
-
-## Functional Programming in JS -->
 
 I hope you find this series informative and enjoyable. Until, next time. Happy learning! :tada: :computer:
 
