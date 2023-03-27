@@ -8,7 +8,6 @@ enableToc: true
 enableTocContent: true
 tags: [web-architecture]
 categories: [web-architecture]
-image: "https://blog.scottlogic.com/ceberhardt/assets/microfrontends/microfrontends.png"
 ---
 
 Most of the web apps these days are having 90% of front end and only 10% of the backend. As the application grows bigger and bigger having a **monolithic** approach on front end doesn't work. There needs to be a way to break this approach into smaller modules that can work independently.

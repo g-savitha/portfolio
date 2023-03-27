@@ -15,7 +15,6 @@ categories:
   - javascript
 series:
   - JS Hard Parts
-image: https://www.tutorialrepublic.com/lib/images/javascript-illustration.png
 ---
 Hello there! :wave:
 

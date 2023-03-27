@@ -9,7 +9,6 @@ enableTocContent: true
 pinned: true
 tags: [dsa, recursion]
 categories: [dsa]
-image: "https://storage.googleapis.com/algodailyrandomassets/curriculum/recursion/cover.jpg"
 ---
 
 <!--  Start Typing... -->

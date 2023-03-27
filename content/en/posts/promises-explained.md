@@ -11,7 +11,6 @@ tags:
   - async
 categories:
   - javascript
-image: https://www.freecodecamp.org/news/content/images/2020/06/Ekran-Resmi-2020-06-06-12.21.27.png
 ---
 
 Promises are one of the important concepts in javascript one should be familiar with.

@@ -11,7 +11,6 @@ tags:
   - async
 categories:
   - javascript
-image: https://media.ma-no.org/imgr/1280-640/admin-async-await-javascript.png
 ---
 
 Before getting started you need to know..

@@ -11,7 +11,6 @@ tags:
   - async
 categories:
   - javascript
-image: https://miro.medium.com/max/1678/1*O_H6XRaDX9FaC4Q9viiRAA.png
 ---
 
 Hey there :wave:,

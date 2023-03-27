@@ -13,7 +13,6 @@ categories:
   - react
 series:
   - Epic React
-image: https://miro.medium.com/max/5736/1*Th_2G92t3x5mARCCuFE_Dg.jpeg
 ---
 
 Hey, there :wave:

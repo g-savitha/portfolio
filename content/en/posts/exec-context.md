@@ -16,7 +16,6 @@ categories:
   - javascript
 series:
   - JS Hard Parts
-image: https://res.cloudinary.com/practicaldev/image/fetch/s--Wxyjx1Ym--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/i/01ksqw5twx22ilo4pibc.jpg
 ---
 
 Greetings! :wave:,

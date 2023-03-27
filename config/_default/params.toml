@@ -36,9 +36,9 @@ enablePhotoSwipe = true
 enableSearch = true
 enableSearchHighlight = true
 enableGoToTop = true
-enableWhoami = true
-summaryShape = "classic" # card, classic, compact
-searchResultPosition = "main" # side, main
+enableWhoami = false
+summaryShape = "compact" # card, classic, compact
+searchResultPosition = "side" # side, main
 archiveGroupByDate = "2006" # "2006-01": group by month, "2006": group by year
 archivePaginate = 13
 paginateWindow = 1
@@ -66,7 +66,7 @@ location = "India"
 
 # sidebar
 enableBio = true
-enableBioImage = true
+enableBioImage = false
 enableSidebar = true
 enableSidebarTags = true
 enableSidebarSeries = true
@@ -79,7 +79,7 @@ tocFolding = true
 tocPosition = "inner" # inner, outer
 enableTocSwitch = true
 itemsPerCategory = 5
-sidebarPosition = "left"
+sidebarPosition = "right"
 tocLevels = ["h2", "h3", "h4"]
 enableSidebarPostsByOrder = false
 
@@ -104,7 +104,7 @@ updateFrequency = ""
 fullContents = false
 
 # comment
-enableComment = true
+enableComment = false
 disqus_shortname = ""
 commento = false
 

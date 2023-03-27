@@ -10,7 +10,6 @@ categories: [devops, ci-cd]
 hideToc: false
 enableToc: true
 enableTocContent: true
-image: "https://miro.medium.com/max/1000/1*4u4uD5FiSkWdBNkRO6lVtQ.jpeg"
 ---
 
 <!--  Start Typing... -->

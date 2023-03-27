@@ -4,13 +4,13 @@ date: 2020-09-11T11:30:29+05:30
 draft: false
 featured: false # feature a post in homepage
 tableofcontents: true # whether to generate ToC
-tags: [git, tools, ci-cd]
-categories: [ci-cd, devops]
+tags: [git, tools, ci-cd, snippets]
+categories: [ci-cd, devops, snippets]
 hideToc: false
 enableToc: true
 enableTocContent: true
 description: This article helps you in pulling changes into your forked repository from the original one.
-image: ""
+
 ---
 
 <!--  Start Typing... -->
