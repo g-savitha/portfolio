@@ -20,7 +20,7 @@ Hello world :wave:
 
 Today I decided to start a new series on react based on [Kent C. Dodds's](https://kentcdodds.com/) [EpicReact.dev](https://epicreact.dev/) workshop. While I go through the content of this workshop, I decided to share the knowledge I gain from it. Hope you enjoy this journey with me :)
 
-The content of this [workshop](https://epicreact.dev/) is self-paced and it is [open source](https://twitter.com/kentcdodds/status/1280710694640291840?s=20). But I recommended you to [buy the course](https://epicreact.dev/) if you are a visual .
+The content of this [workshop](https://epicreact.dev/) is self-paced and it is [open source](https://twitter.com/kentcdodds/status/1280710694640291840?s=20). But I recommended you to [buy the course](https://epicreact.dev/) if you are a visual learner.
 
 In this article you can find all the blogposts I will be writing as a part of this journey. Feel free to skip if you are familiar with a particular topic.
 
