@@ -9,7 +9,7 @@ pinned: false
 enableTocContent: false
 tags:
  - css
- - snippet
+ - snippets
 categories:
   - css
   - snippets
