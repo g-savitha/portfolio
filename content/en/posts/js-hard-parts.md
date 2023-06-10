@@ -5,7 +5,7 @@ draft: false
 description: 'This series covers the core foundations of JS in depth'
 hideToc: true
 enableToc: false
-pinned: true
+pinned: false
 enableTocContent: false
 tags:
   - javascript
