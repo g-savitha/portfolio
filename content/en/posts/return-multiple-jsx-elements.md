@@ -78,3 +78,8 @@ We still get the same error `Parsing error: Unexpected token ;`. `return` statem
 > `return arr.pop()` :white_check_mark:
 > `return arr.pop() arr.pop() arr.pop() ....` :x:
 
+How can we fix it? Using **[FRAGMENTS](https://react.dev/reference/react/Fragment)**
+
+---
+
+If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. For more articles like this, subscribe to my [Newsletter](https://www.getrevue.co/profile/gsavitha) and get the latest updates straight to your inbox.
