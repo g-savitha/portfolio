@@ -1,5 +1,5 @@
 ---
-title: "Why can't we return Multiple JSX Elements"
+title: "Why can't we return multiple JSX elements"
 date: 2023-06-13T18:33:33+05:30
 draft: false
 description: 'React snippet'

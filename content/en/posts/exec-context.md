@@ -100,7 +100,6 @@ In this case, we pass in a specific instruction (the `multiplyBy2` callback func
 {{< img src="/images/blog-img/cm1.jpeg" alt="copyAndManipulate" width="400px" position="center" >}}
 
 
-
 Interpreter executes this as follows:
 
 {{< img src="/images/blog-img/cm2.jpeg" alt="copyAndManipulate" width="400px" position="center" >}}

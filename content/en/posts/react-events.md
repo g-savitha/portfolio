@@ -1,5 +1,5 @@
 ---
-title: "Event handling in React"
+title: "Efficient Event handling in React"
 date: 2023-06-17T22:33:33+05:30
 draft: false
 description: 'Event Handling in React'
