@@ -16,7 +16,7 @@ categories:
 
 ## Intro
 
-**What is a hook?:**
+**What is a hook?**
 
 A hook is a special function, which lets you to "*hook into*" React internals. `useState()` is one of the hooks.
 
@@ -348,11 +348,39 @@ ReactDOM.render({type : App, props: {}...})
 
 When we invoke this function everytime we are triggering a new render. Inside React we are calling `App()` again and again. The problem here is everytime we re-render the component we are resetting the value to 0. 
 
-What if I move ithe count to outside the component?
+What if I move the count to outside the component?
 
 How do you know, if its a state then if it isn't in the component? How are we going to have multiple instances of this component? So it needs to be defined within a component, so that every instance can have its own dynamic state.
 
-We need to maintain the state value, for the subsequent renders. We use `useState()` because, `useState()` internally uses **closures**. Which helps React in persisting the data even when component re-renders.
+So how are we able to persist the state variable then? Is it because of closures? 
+
+It is easy to get tricked into the assumption of using closures behind the scenes, but in reality it's not the closures.
+
+If you look at the definition of closures according to Kyle Simpson:
+
+> "Closure is when a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope."
+
+Or as Will Sentance calls it as a "backpack".  The function puts the values from the same scope inside the backpack, even after you pass the function off to things like onClick. Function can pull the values out whenever it needs them. By extension, though, this also means that you can't have closure without a function definition.
+
+If you observe this piece of code carefully
+
+```jsx
+const [value, setValue] = useState(0);
+```
+
+there ain't any function definitions involved. We are just calling the function, but we're not creating or defining one. So there's *no chance of Closures to happen*.
+
+What's happening then?
+
+Here comes the interesting part, React has an *internal place* where it stores all the values and those values are accessed via `useState()` hook. That brings us to a concept called ***Component Instances***
+
+## Component instances?
+
+Whenever we render a component for the first time, we “mount” the component. Mounting a component involves two steps:
+   1. We evaluate the returned JSX and pass it onto React, so that React can create the corresponding DOM elements.
+   2. We create a ***component instance***, **a long-lived object that knows all the contextual information about this particular instance of the component.**
+
+So the state, is stored in that particular instance. Whenever we write `React.useState()` this code "hooks into" the instance, setting and getting the state from the instance. Whenever we unmount a component, we lose the state because our component instance gets destroyed. 
 
 That's all folks!
 
