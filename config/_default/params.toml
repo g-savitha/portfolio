@@ -99,12 +99,12 @@ busuanziSitePV = true
 busuanziPagePV = true
 
 # rss
-updatePeriod = "weekly" # Possible values: 'hourly', 'daily', 'weekly', 'monthly', or 'yearly'.
+updatePeriod = "daily" # Possible values: 'hourly', 'daily', 'weekly', 'monthly', or 'yearly'.
 updateFrequency = ""
 fullContents = false
 
 # comment
-enableComment = false
+enableComment = true
 disqus_shortname = ""
 commento = false
 
