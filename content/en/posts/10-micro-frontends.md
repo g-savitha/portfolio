@@ -112,13 +112,9 @@ These are few of the technologies and frameworks that helps us to achieve this.
 
 That's all folks, that pretty much sums up about micro frontends.
 
----
-
-Here is an interesting thread:
-
-{{< twitter_simple 1132493678730252288 >}}
-
 Until next time, happy learning! :tada: :computer:
+
+
 
 ---
 

@@ -16,9 +16,7 @@ series:
   - Epic React
 ---
 
-<!-- Hey, there :wave:
 
-Welcome to the 1st article of the [Epic React Series]({{< ref "/posts/12-epic-react-intro.md">}}) which is based on the workshop [EpicReact.dev](https://epicreact.dev/) by [Kent C. Dodds](https://kentcdodds.com/) -->
 Hey, there :wave:
 
 In this article lets look at the basics of JS one should know before getting started with React. Feel free to skip the topics you already know.
