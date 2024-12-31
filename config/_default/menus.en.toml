@@ -22,17 +22,12 @@
   url = "archive"
   weight = 4
 [[main]]
-  identifier = "newsletter"
-  name = "Newsletter"
-  url = "https://www.getrevue.co/profile/gsavitha"
-  weight = 5
-[[main]]
   identifier = "notes"
   name = "Notes"
   url = "https://g-savitha.github.io/categories/"
-  weight = 6
+  weight = 5
 [[main]]
   identifier = "contact"
   name = "Contact"
   url = "contact"
-  weight = 7
+  weight = 6

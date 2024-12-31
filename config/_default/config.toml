@@ -12,11 +12,13 @@ buildFuture = true
 copyright = "&copy;{year}, All Rights Reserved"
 timeout = 10000
 enableEmoji = true
-paginate = 13
 rssLimit = 100
 
 enableGitInfo = false
 googleAnalytics = ""
+
+[pagination]
+pagerSize = 13
 
 [markup]
   [markup.goldmark]
@@ -39,6 +41,7 @@ googleAnalytics = ""
   section = ["HTML", "RSS", "SearchIndex"]
   taxonomyTerm = ["HTML", "RSS", "SearchIndex"]
   taxonomy = ["HTML", "RSS", "SearchIndex"]
+  page=["HTML","PDF"]
 
 [outputFormats]
   [outputFormats.SearchIndex]
@@ -46,6 +49,12 @@ googleAnalytics = ""
     baseName = "index"
     isPlainText = true
     notAlternative = true
+  [outputFormats.PDF]
+    mediaType = "application/pdf"
+    baseName = "index"
+    isPlainText = false
+    isHTML = false
+    noUgly = true
 
 [taxonomies]
   category = "categories"
