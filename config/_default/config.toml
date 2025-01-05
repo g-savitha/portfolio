@@ -3,7 +3,7 @@ title = "Savitha Gollamudi"
 theme = "zzo"
 
 defaultContentLanguage = "en"
-defaultContentLanguageInSubdir = true
+defaultContentLanguageInSubdir = false
 hasCJKLanguage = false
 
 summaryLength = 70
