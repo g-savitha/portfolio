@@ -14,7 +14,11 @@ categories:
 
 ---
 
-Hello there! :wave:,
+Hello there, fellow engineers! :wave:,
+
+Whether you’re building APIs, handling microservices, or keeping servers humming, there are some concepts you’ve got to get cozy with.
+
+Let's walkthrough a bunch of them
 
 For any Backend Engineer, these are must:
 

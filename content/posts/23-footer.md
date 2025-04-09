@@ -58,5 +58,4 @@ To achieve this, there are a few things to keep in mind:
 By using percentage-based height on the `html` and `body` elements, and flex property on the .main class, the layout can adapt to different screen sizes and resolutions while maintaining a consistent vertical arrangement of header, main content area, and footer. This approach is particularly useful for creating responsive web designs that work well on mobile devices, tablets, and desktops.
 
 ---
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. For more articles like this, subscribe to my [Newsletter](https://www.getrevue.co/profile/gsavitha) and get the latest updates straight to your inbox.
-
+If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 
