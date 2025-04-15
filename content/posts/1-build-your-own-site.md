@@ -164,6 +164,3 @@ If you have hosted it on github pages.
 
 [Learn more about SSGs here](https://www.netguru.com/blog/what-are-static-site-generators)
 
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 

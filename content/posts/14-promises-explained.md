@@ -418,6 +418,3 @@ Is there any other better way other than promises? Checkout [Async and Await]({{
 
 Until next time :wave:, happy learning :tada: :computer:
 
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others.

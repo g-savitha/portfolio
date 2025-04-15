@@ -81,6 +81,3 @@ We still get the same error `Parsing error: Unexpected token ;`. `return` statem
 
 How can we fix it? Using **[FRAGMENTS](https://react.dev/reference/react/Fragment)**
 
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others.

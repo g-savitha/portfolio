@@ -66,6 +66,3 @@ This error was confusing lots of new developers, starting from `React` 17, Babel
 
 So from React 17, you don't need to import `React`, but in certain cases if we want to use hooks, importing `React` will be handy.
 
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 

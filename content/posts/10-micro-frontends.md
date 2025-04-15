@@ -115,7 +115,3 @@ That's all folks, that pretty much sums up about micro frontends.
 Until next time, happy learning! :tada: :computer:
 
 
-
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 

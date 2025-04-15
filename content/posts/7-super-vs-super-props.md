@@ -192,6 +192,3 @@ To conclude, If you want to use `this.props` inside constructor, you need to pas
 
 Hopefully that was not convoluted and crazy, until next time. Happy Coding! :tada: :computer:
 
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 

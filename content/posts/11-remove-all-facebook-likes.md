@@ -33,6 +33,3 @@ Based upon your activity history it may take some time or it may throw an API li
 
 Now go and enjoy some privacy :smile: :tada:
 
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 

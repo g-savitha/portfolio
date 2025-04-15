@@ -181,6 +181,3 @@ So now you saw how difficult it becomes to write the code when you use RAW APIs.
 
 Until next time :wave:, Happy learning :tada: :computer:
 
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others.

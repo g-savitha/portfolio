@@ -121,6 +121,3 @@ Yes, using  the `bind` method:
 
 This is a much less conventional way in React community. People mostly prefer to use the previously suggested method.
 
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 

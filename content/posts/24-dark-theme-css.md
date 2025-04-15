@@ -73,6 +73,3 @@ This will toggle the values of the CSS variables when the button is clicked, whi
 
 In conclusion, `prefers-color-scheme` media query sets the theme automatically based on the user's device settings, while the `.dark-theme` class allows for manual toggling between light and dark modes.
 
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 

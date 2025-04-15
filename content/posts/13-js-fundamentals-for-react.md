@@ -571,6 +571,3 @@ Thats all for now. In the next article we'll dive into Raw React APIs to underst
 
 Until next time, Happy learning! :tada: :computer:
 
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others.

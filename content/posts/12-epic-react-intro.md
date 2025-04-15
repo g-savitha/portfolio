@@ -46,6 +46,3 @@ In this article you can find all the blogposts I will be writing as a part of th
 
 ## React Suspense -->
 
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 

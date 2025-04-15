@@ -120,6 +120,4 @@ For a good next step, try to add custom domains to your deployed application. It
 
 Until next time, Happy coding! :computer: :tada:
 
----
 
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 

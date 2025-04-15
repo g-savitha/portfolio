@@ -122,6 +122,3 @@ HOFs and callbacks make the code simpler, readable, and **D.R.Y**
 
 Until next time, Happy coding! :tada: :computer:
 
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 

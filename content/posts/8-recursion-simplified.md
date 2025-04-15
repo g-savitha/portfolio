@@ -369,6 +369,3 @@ Few problems on recursion worth looking at:
 
 Until next time, happy coding! :tada: :computer:
 
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 

@@ -43,5 +43,3 @@ This series will cover the following topics:
 
 I hope you find this series informative and enjoyable. Until, next time. Happy learning! :tada: :computer:
 
----
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 

@@ -303,6 +303,3 @@ If you want to know more about promises, refer [Promises Explained]({{< ref "/po
 
 Hope that was not convoluted and crazy. Until next time, Happy learning :tada: :computer:
 
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 
