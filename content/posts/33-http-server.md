@@ -369,7 +369,3 @@ Here's the full source code: https://github.com/g-savitha/http-server
 Have you built your own HTTP server or completed a similar challenge? What did you learn from the experience? Let me know in the comments below!
 
 Until next time, happy coding! :computer: :tada:
-
----
-
-If you found this helpful, please give a shoutout to [@gsavitha_](https://twitter.com/gsavitha_) and share this article to help others. 
