@@ -1,6 +1,6 @@
 ---
 title: "Implementing RBAC and ABAC in Node.js ☕️"
-url: "/posts/rbac"
+url: "/posts/rbac-abac"
 date: 2025-04-09T18:39:17+05:30
 draft: false
 hideToc: false
@@ -15,7 +15,6 @@ categories:
   - fullstack
   - frontend
   - backend
-  - authorization
 ---
 
 
