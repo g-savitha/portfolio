@@ -12,8 +12,7 @@ tags:
  - node
  - mongo 
 categories:
-  - typescript
-  - node
+  - backend
 ---
 
 Hello there! :wave:,

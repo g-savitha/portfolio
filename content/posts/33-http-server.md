@@ -10,11 +10,10 @@ enableTocContent: true
 tags:
  - typescript
  - node
- - backend
  - http 
+ - build-your-own-x
 categories:
   - backend
-  - build-your-own-x
 ---
 
 Have you ever wondered what happens behind the scenes when you browse the web? How does your browser communicate with servers to fetch websites and data? Recently, I completed the "Build Your Own HTTP Server" challenge on [codecrafters.io](https://codecrafters.io), and I want to share what I learned through this hands-on experience.

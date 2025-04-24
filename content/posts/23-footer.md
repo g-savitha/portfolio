@@ -12,8 +12,7 @@ tags:
  - css
  - snippets
 categories:
-  - css
-  - snippets
+  - frontend
 ---
 If you want to fix the position of your footer at the center bottom of your webpage using flexbox layout, you can use the following code:
 

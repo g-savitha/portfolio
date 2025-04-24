@@ -9,7 +9,7 @@ enableToc: true
 enableTocContent: true
 pinned: false
 tags: [dsa, recursion]
-categories: [dsa]
+categories: [backend]
 ---
 
 <!--  Start Typing... -->

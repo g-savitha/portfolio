@@ -13,8 +13,7 @@ tags:
  - snippets
  - css-grid
 categories:
-  - css
-  - snippets
+  - frontend
 ---
 
 ## How to implement fluid grids?

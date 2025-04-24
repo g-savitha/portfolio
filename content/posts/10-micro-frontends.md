@@ -7,8 +7,8 @@ description: "A microservice approach to frontend"
 hideToc: false
 enableToc: true
 enableTocContent: true
-tags: [web-architecture]
-categories: [web-architecture]
+tags: [web-architecture, design]
+categories: [frontend]
 ---
 
 Most of the web apps these days are having 90% of front end and only 10% of the backend. As the application grows bigger and bigger having a **monolithic** approach on front end doesn't work. There needs to be a way to break this approach into smaller modules that can work independently.

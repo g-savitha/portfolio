@@ -11,7 +11,7 @@ tags:
   - javascript
   - react
 categories:
-  - react
+  - frontend
 series:
   - Epic React
 ---

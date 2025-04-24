@@ -11,7 +11,8 @@ tags:
   - javascript
   - async
 categories:
-  - javascript
+  - frontend
+  - backend
 ---
 
 Hey there :wave:,

@@ -6,7 +6,7 @@ draft: false
 featured: false # feature a post in homepage
 tableofcontents: true # whether to generate ToC
 tags: [git, tools, ci-cd, snippets]
-categories: [ci-cd, devops, snippets]
+categories: [devops]
 hideToc: false
 enableToc: true
 enableTocContent: true

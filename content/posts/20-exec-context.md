@@ -14,7 +14,8 @@ tags:
   - execution context
   - demystified
 categories:
-  - javascript
+  - frontend
+  - backend
 series:
   - JS Hard Parts
 ---

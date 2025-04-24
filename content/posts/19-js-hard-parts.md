@@ -13,7 +13,8 @@ tags:
   - foundations
   - demystified
 categories:
-  - javascript
+  - frontend
+  - backend
 series:
   - JS Hard Parts
 ---

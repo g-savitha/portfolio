@@ -8,7 +8,7 @@ hideToc: false
 enableToc: true
 enableTocContent: true
 tags: [dsa, recursion]
-categories: [dsa]
+categories: [backend]
 ---
 
 This post requires knowledge of [Recursion]({{< ref "/posts/8-recursion-simplified.md" >}}). If you are new here, its recommended to have a look at that post first.

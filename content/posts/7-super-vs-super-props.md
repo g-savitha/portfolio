@@ -5,7 +5,7 @@ date: 2021-01-29T17:52:28+05:30
 draft: false
 description: "If you want to use `this.props` inside constructor of derived class, use super(props)...."
 tags: [react]
-categories: [react]
+categories: [frontend]
 hideToc: false
 enableToc: true
 enableTocContent: true

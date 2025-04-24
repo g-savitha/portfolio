@@ -13,7 +13,7 @@ tags:
  - jsx
  - event handling
 categories:
-  - react
+  - frontend
 ---
 
 ## Intro

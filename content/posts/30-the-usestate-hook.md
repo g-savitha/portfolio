@@ -6,13 +6,13 @@ draft: false
 description: 'Unpacking the useState hook'
 hideToc: false
 enableToc: true
-pinned: false
+pinned: true
 enableTocContent: true
 tags:
  - react
  - hooks
 categories:
-  - react
+  - frontend
 ---
 
 ## Intro

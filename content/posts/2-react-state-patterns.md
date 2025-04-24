@@ -9,7 +9,7 @@ enableToc: true
 enableTocContent: true
 tableofcontents: true # whether to generate ToC
 tags: [react]
-categories: [react]
+categories: [frontend]
 ---
 
 <!--  Start Typing... -->

@@ -13,8 +13,7 @@ tags:
  - javascript
  - legacy 
 categories:
-  - css
-  - javascript
+  - frontend
 ---
 
 

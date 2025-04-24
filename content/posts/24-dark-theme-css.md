@@ -12,8 +12,7 @@ tags:
  - css
  - snippets
 categories:
-  - css
-  - snippets
+  - frontend
 ---
 
 ## Dark mode in your website

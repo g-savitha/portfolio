@@ -11,7 +11,8 @@ tags:
   - javascript
   - async
 categories:
-  - javascript
+  - frontend
+  - backend
 ---
 
 Promises are one of the important concepts in javascript one should be familiar with.

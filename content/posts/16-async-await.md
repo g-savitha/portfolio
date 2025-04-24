@@ -11,7 +11,8 @@ tags:
   - javascript
   - async
 categories:
-  - javascript
+  - frontend
+  - backend
 ---
 
 Before getting started you need to know..

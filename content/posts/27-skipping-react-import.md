@@ -13,9 +13,7 @@ tags:
  - jsx
  - snippets
 categories:
-  - react
-  - jsx
-  - snippets
+  - frontend
 ---
 
 Let's have a look at this snippet:

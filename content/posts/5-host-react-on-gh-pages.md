@@ -6,8 +6,8 @@ draft: false
 description: Host react apps for free on Github Pages.
 featured: false # feature a post in homepage
 tableofcontents: true # whether to generate ToC
-tags: [ghpages, react, hosting]
-categories: [devops, ci-cd]
+tags: [ci-cd, ghpages, react]
+categories: [devops]
 hideToc: false
 enableToc: true
 enableTocContent: true

@@ -10,7 +10,7 @@ meta:
 featured: false # feature a post in homepage
 tableofcontents: true # whether to generate ToC
 tags: [git, tools, ci-cd]
-categories: [ci-cd, devops]
+categories: [devops]
 ---
 
 <!--  Start Typing... -->

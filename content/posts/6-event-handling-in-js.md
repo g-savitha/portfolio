@@ -5,7 +5,7 @@ date: 2020-09-26T15:18:15+05:30
 draft: false
 description: "Types of events and how to use them"
 tags: ["javascript", "DOM", "es6", "events"]
-categories: ["javascript"]
+categories: ["frontend"]
 sources: ["https://www.udemy.com/course/modern-javascript/"]
 hideToc: false
 enableToc: true
