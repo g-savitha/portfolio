@@ -5,7 +5,7 @@ date: 2023-06-09T18:28:23+05:30
 draft: false
 hideToc: false
 enableToc: true
-pinned: true
+pinned: false
 enableTocContent: true
 tags:
  - typescript
