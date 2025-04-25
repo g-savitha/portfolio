@@ -3,6 +3,16 @@ em, i {
   font-style: normal;
 }
 
-strong, b {
-  font-weight: 700;
+
+
+body {
+  font-family: $font-primary;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: $text-color;
+  background-color: $background-color;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 } 

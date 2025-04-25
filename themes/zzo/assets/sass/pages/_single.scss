@@ -99,6 +99,7 @@
 
     margin: 1rem 0;
     font-size: 1.125rem;
+    font-weight: 300;
     line-height: 1.7;
     width: inherit;
     max-width: inherit;
@@ -436,9 +437,7 @@
       font-style: normal;
     }
 
-    strong, b {
-      font-weight: 700;
-    }
+   
   }
 
   &__tags {
