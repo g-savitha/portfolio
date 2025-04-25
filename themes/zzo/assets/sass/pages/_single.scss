@@ -448,7 +448,10 @@ code, pre {
   padding: .5rem 0;
   line-height: 1.5;
   font-size: 13.8px;
-  font-family: $code-font-stack;
+  font-family: 'Operator Mono', $code-font-stack;
+  font-feature-settings: "liga" 1, "calt" 1;
+  -webkit-font-feature-settings: "liga" 1, "calt" 1;
+  -moz-font-feature-settings: "liga" 1, "calt" 1;
   overflow: auto;
 
   a {
@@ -467,6 +470,55 @@ code, pre {
   code {
     padding: 0;
   }
+}
+
+// Remove previous Chroma classes and add new styles
+pre code {
+  font-family: 'Operator Mono', $code-font-stack;
+}
+
+pre code .c, 
+pre code .c1, 
+pre code .cm, 
+pre code .cp, 
+pre code .cs,
+pre code .k, 
+pre code .kc, 
+pre code .kd, 
+pre code .kn, 
+pre code .kp, 
+pre code .kr, 
+pre code .kt,
+pre code .s, 
+pre code .s1, 
+pre code .s2, 
+pre code .sb, 
+pre code .sc, 
+pre code .sd, 
+pre code .se, 
+pre code .sh, 
+pre code .si, 
+pre code .sx, 
+pre code .sr, 
+pre code .ss,
+pre code .o,  // All operators
+pre code .ow, // Word operators
+pre code .o-eq, // Equality operators
+pre code .o-ne, // Inequality operators
+pre code .o-arrow, // Arrow operators
+pre code .o-assign, // Assignment operators
+pre code .o-compare { // Comparison operators
+  font-family: 'Operator Mono Italic', 'Operator Mono', $code-font-stack;
+  font-style: italic;
+}
+
+// Exclude specific punctuation
+pre code .p,
+pre code .o-brace,
+pre code .o-bracket,
+pre code .o-paren {
+  font-family: 'Operator Mono', $code-font-stack;
+  font-style: normal;
 }
 
 code:not([class^=language]) {  
