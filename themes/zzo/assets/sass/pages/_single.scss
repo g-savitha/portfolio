@@ -98,9 +98,9 @@
     }
 
     margin: 1rem 0;
-    font-size: 1rem;
+    font-size: 1.125rem;
     line-height: 1.7;
-    width: inheirt;
+    width: inherit;
     max-width: inherit;
     h1,
     h2,
@@ -135,32 +135,32 @@
     }
 
     h1 {
-      font-size: 2.6rem;
+      font-size: calc(41.6 / 16 * 1rem);
       margin: 3.5rem 0 1.75rem 0;
     }
 
     h2 {
-      font-size: 2.2rem;
+      font-size: calc(35.2 / 16 * 1rem);
       margin: 3.2rem 0 1.5rem 0;
     }
 
     h3 {
-      font-size: 1.8rem;
+      font-size: calc(28.8 / 16 * 1rem);
       margin: 2.8rem 0 1.25rem 0;
     }
 
     h4 {
-      font-size: 1.5rem;
+      font-size: calc(24 / 16 * 1rem);
       margin: 2.4rem 0 1rem 0;
     }
 
     h5 {
-      font-size: 1.2rem;
+      font-size: calc(19.2 / 16 * 1rem);
       margin: 2rem 0 0.8rem 0;
     }
 
     h6 {
-      font-size: 1rem;
+      font-size: calc(16 / 16 * 1rem);
       margin: 1.5rem 0 0.5rem 0;
     }
 
@@ -169,7 +169,7 @@
       overflow: auto;
       border-radius: 0.34rem;
       line-height: 1.5;
-      font-size: 13.8px;
+      font-size: calc(15 / 16 * 1rem);
       direction: ltr;
       
       @include themify($themes) {
@@ -202,7 +202,7 @@
         height: 30px;
         z-index: z('content');
         line-height: 30px;
-        font-size: 13.8px;
+        font-size: calc(15 / 16 * 1rem);
         font-family: $title-font;
         font-weight: bold;
         display: inline-block;
@@ -457,7 +457,7 @@
 code, pre {  
   padding: .5rem 0;
   line-height: 1.5;
-  font-size: 13.8px;
+  font-size: calc(15 / 16 * 1rem);
   font-family: 'Operator Mono', $code-font-stack;
   font-feature-settings: "liga" 1, "calt" 1;
   -webkit-font-feature-settings: "liga" 1, "calt" 1;
@@ -613,7 +613,7 @@ pre:not(.chroma) {
       width: 100%;
       height: 30px;
       line-height: 1.9;
-      font-size: 13.8px;
+      font-size: calc(15 / 16 * 1rem);
       font-family: $title-font;
       font-weight: bold;
       display: inline-block;      
