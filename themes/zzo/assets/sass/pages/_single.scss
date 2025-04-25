@@ -430,6 +430,15 @@
         }
       }
     }
+
+    em, i {
+      font-family: $cursive-font;
+      font-style: normal;
+    }
+
+    strong, b {
+      font-weight: 700;
+    }
   }
 
   &__tags {
