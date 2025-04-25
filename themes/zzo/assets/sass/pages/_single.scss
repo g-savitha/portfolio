@@ -6,12 +6,13 @@
 
   &__title {
     font-size: 2.5rem;
-    font-weight: 900;
+    font-weight: 700;
     font-family: $title-font;
     line-height: 3rem;
     overflow-wrap: break-word;
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
     
     @include themify($themes) {
       color: themed("single-header-title-color");
@@ -23,11 +24,12 @@
   }
 
   &__subtitle {
-    margin-bottom: 1.75rem;
+    font-size: 1.5rem;
+    font-weight: 600;
     font-family: $title-font;
-    
+    margin-bottom: 1rem;
     @include themify($themes) {
-      color: themed("toc-title-color");
+      color: themed("single-subtitle-color");
     }
 
     &[data-ani="true"] {
@@ -36,14 +38,13 @@
   }
 
   &__shorttitle {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
     font-family: $title-font;
     overflow-wrap: break-word;
-    margin-bottom: 0.25rem;
-    opacity: 0.7;
-
+    margin-bottom: 1rem;
     @include themify($themes) {
-      color: themed("single-header-title-color");
+      color: themed("single-shorttitle-color");
     }
   }
 
