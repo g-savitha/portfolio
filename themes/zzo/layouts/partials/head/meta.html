@@ -64,6 +64,7 @@
 {{ else }}
 <link rel="canonical" href="{{ .Permalink | absLangURL }}">
 {{ end }}
+<!-- Favicon code commented out - uncomment when adding new favicon
 <link rel="manifest" href="{{ "manifest.json" | relURL }}">
 {{ if $.Site.Params.useFaviconGenerator }}
   <link rel="apple-touch-icon" sizes="57x57" href="{{ "favicon/apple-icon-57x57.png" | relURL }}">
@@ -92,3 +93,4 @@
   <link rel="icon" href="{{ "logo.svg" | relURL }}" sizes="any" type="image/svg+xml" />
   {{- end }}
 {{ end }}
+-->

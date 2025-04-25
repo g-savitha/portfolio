@@ -3,7 +3,7 @@ logoType = "short" # long, short
 description = "Savitha's Blog"
 custom_css = []
 custom_js = []
-useFaviconGenerator = true # https://www.favicon-generator.org/
+useFaviconGenerator = false # https://www.favicon-generator.org/
 meta_image = ""
 themecolor = "dark"
 
