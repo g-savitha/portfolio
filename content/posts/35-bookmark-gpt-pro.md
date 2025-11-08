@@ -15,8 +15,6 @@ categories:
   - ai
 ---
 
-# Building Bookmark GPT Pro: An AI-Powered Chrome Extension for Intelligent Bookmark Management
-
 *How I built a Chrome extension that transforms your bookmarks into a searchable, AI-powered knowledge base using local LLMs and advanced content extraction*
 
 ---
