@@ -2,7 +2,7 @@
 title: "How Did I build Bookmark GPT Pro"
 url: "/posts/bookmark-gpt-pro"
 date: 2025-11-08T08:48:46+05:30
-draft: false
+draft: true
 hideToc: false
 enableToc: true
 pinned: false
