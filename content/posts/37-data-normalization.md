@@ -312,7 +312,11 @@ export const {
 ### Other State Management Libraries
 
 **Flux**
-The original Flux architecture doesn't prescribe a specific data structure, but the Facebook team's examples often demonstrated normalized patterns. The Flux documentation emphasized keeping stores flat and relational.
+While Facebook's official Flux documentation doesn't explicitly prescribe normalization, the pattern emerged as a community best practice through practical experience. *Dan Abramov (creator of Redux and Normalizr)* notably advised: 
+
+> "Flux is only hard if your data isn't normalized. Treat your Stores as database tables, use global unique IDs to reference related entities." 
+
+This approach—separating concerns by entity type and using ID references—became widely adopted in the Flux community, with stores managing state for specific domains (UserStore, PostStore, CommentStore) rather than nested hierarchies.
 
 **MobX**
 While MobX uses observable objects rather than immutable updates, normalization is still beneficial:
