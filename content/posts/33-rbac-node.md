@@ -581,4 +581,4 @@ If you'd like to explore the complete implementation, check out the GitHub repos
 
 ---
 
-*Hope this was not convoluted and crazy, until next time. Happy coding 💻 🎉*
+*Until next time. Happy coding 💻 🎉*

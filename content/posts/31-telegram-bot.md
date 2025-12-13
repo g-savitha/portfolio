@@ -89,4 +89,6 @@ Wanna check out the code? here's the link to the repo:  [GitHub](https://github.
 
 I have also documented my journey on my Twitter while building it, do follow me [@gsavitha_](https://twitter.com/gsavitha_) for more updates. 
 
-Until next time, happy coding and financial navigating!
+---
+
+*Until next time, happy coding and financial navigating!*

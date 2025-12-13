@@ -385,5 +385,7 @@ So the state, is stored in that particular instance. Whenever we write `React.us
 
 That's all folks!
 
-Hope that was not convoluted and crazy! Until next time, happy coding :computer: :tada:
+---
+
+*Hope that was not convoluted and crazy! Until next time, happy coding :computer: :tada:*
 

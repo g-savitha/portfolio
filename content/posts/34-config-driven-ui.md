@@ -233,4 +233,4 @@ You'll be surprised how quickly it comes together—and how much power it gives 
 
 ---
 
-*Hope this was not convoluted and crazy, until next time. Happy coding 💻 🎉*
+*Until next time. Happy coding 💻 🎉*

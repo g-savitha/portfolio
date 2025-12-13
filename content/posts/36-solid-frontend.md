@@ -230,3 +230,6 @@ function Test() {
 
 Applying SOLID principles in frontend development improves the modularity, reusability, testability, and scalability of your codebase—especially as applications grow in complexity.
 
+---
+
+*Until next time. Happy coding 💻 🎉*
