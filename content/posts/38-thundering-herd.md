@@ -335,52 +335,51 @@ Use SWR where eventual consistency is acceptable. Don't use it where stale data 
 
 Jitter and SWR still have a blind spot: **one very hot key under extreme traffic.**
 
-Imagine `match:ind-pak:score` has a 60-second TTL with `staleTTL = 120s`. At second 119, you have 100,000 concurrent users all reading stale-but-usable data. At second 121, `staleTTL` runs out. Now all 100,000 requests need a blocking fresh fetch simultaneously. Thundering herd - just delayed by one TTL window.
+Think about it this way. Your cache key expires at 11:00 PM. At 10:59:59, you have 100,000 users reading that key. One second later - it's gone. All 100,000 hit the DB at the same time. You've done everything right, and you still get a thundering herd. Just a punctual one.
 
-PER asks a simple question before serving cached data: *should I be the one to refresh this right now, before it expires?* The older the entry, the higher the probability of answering yes. In practice, one random request triggers a background refresh well before the TTL runs out - and the key gets a new TTL before the old one ever expires. **The expiry deadline never actually arrives.**
+PER's answer to this is almost too simple: **refresh the key before it dies, not after.**
+
+Instead of waiting for the TTL to run out, each incoming request quietly asks - *is this entry old enough that I should go refresh it in the background?* When the entry is fresh, the answer is almost always no. But as it ages and gets closer to expiry, the answer becomes more and more likely to be yes. Eventually, one request wins that coin flip, kicks off a background refresh, and the key gets a new TTL - while everyone else keeps reading the old value without waiting at all.
+
+The key word is *probabilistic*. The refresh doesn't happen at a fixed age. It happens randomly, weighted by how old the entry is. This is what makes it work - if it refreshed at a fixed threshold like "80% of TTL consumed", every single request hitting at that threshold would trigger a refresh simultaneously. Same problem, earlier timestamp. Randomness is what breaks the synchronization.
 
 ```mermaid
 xychart-beta
-    title "Probability of Triggering an Early Refresh vs Cache Age"
-    x-axis "Cache Age (% of TTL consumed)" [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-    y-axis "Refresh Probability (%)" 0 --> 100
+    title "Chance of triggering a background refresh as the cache entry ages"
+    x-axis "Cache age (% of TTL consumed)" [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+    y-axis "Refresh probability (%)" 0 --> 100
     line [0, 0, 0, 0, 0, 2, 8, 20, 45, 78, 100]
 ```
 
-Near the start of a TTL - probability is essentially zero. Nobody refreshes fresh data. As the key ages past 50%, probability climbs. By 80–90% of TTL, most requests will trigger a refresh. In practice, one of the earliest requests in that window wins and refreshes quietly in the background. All 100,000 users keep getting served from cache throughout. The DB gets one query. Nobody waits.
-
 ```js
-function shouldRefreshEarly(cachedAt, ttl, beta = 1.0) {
-  const age = (Date.now() - cachedAt) / 1000
-  // XFetch: probability grows exponentially as TTL runs out
-  return age - beta * Math.log(Math.random()) * (ttl * 0.1) > ttl
-}
-
 async function getWithPER(key, fetchFn, ttl = 60) {
   const entry = await cache.get(key)
   if (!entry) return fetchAndStore(key, fetchFn, ttl)
 
-  if (shouldRefreshEarly(entry.cachedAt, ttl)) {
-    fetchAndStore(key, fetchFn, ttl) // fire and forget - user still gets cached data
+  const age = (Date.now() - entry.cachedAt) / 1000
+  const refreshProbability = Math.max(0, (age / ttl - 0.5) * 2) // 0% for first half, ramps to 100% by expiry
+
+  if (Math.random() < refreshProbability) {
+    fetchAndStore(key, fetchFn, ttl) // background refresh - user gets cached data regardless
   }
 
   return entry.data
 }
 ```
 
-The math that makes this work is called **XFetch** - published in a 2015 academic paper. The probability isn't linear; it grows exponentially as remaining TTL shrinks. You control how aggressive it is with a `beta` parameter: higher beta = refreshes start earlier and more often. The default (beta = 1.0) is a safe starting point for most use cases.
+In practice: somewhere in the last 20–30% of the TTL window, one request triggers a quiet background refresh. The key never actually expires under traffic. The DB gets one query. All 100,000 users got served without waiting.
 
-**Why not just "refresh when 80% of TTL is consumed"?** A fixed threshold creates its own thundering herd - every request arriving at the 80% mark triggers a refresh simultaneously. You've moved the spike earlier in the TTL window, not eliminated it. Randomness is the whole mechanism. PER spreads early refreshes stochastically so the DB sees a trickle, never a spike.
-
-**Trade-off:** Occasionally a request triggers an early background refresh that wasn't strictly necessary - a few extra DB queries near the end of a TTL window. At scale, this is negligible compared to the alternative: a synchronized stampede when TTL actually expires.
+**Trade-off:** A few requests near the end of a TTL window trigger a background refresh that wasn't strictly necessary. At scale, a handful of extra DB queries is a price you'll happily pay.
 
 ---
 
 ### 5. Exponential Backoff with Jitter (Retry Logic)
 
-This one isn't about preventing the first spike. It's about stopping retries from turning a recoverable incident into a catastrophe.
+This one is different from the rest. It's not about preventing the thundering herd - it's about stopping your retry logic from **creating a second one** while you're still recovering from the first.
 
-When requests time out, client retry logic fires. If every client retries at the same fixed interval - "retry after 1 second" - they all retry at the same time. You've scheduled a **second thundering herd**, 1 second into the future. Then a third. Then a fourth. Each wave arrives before the DB has recovered from the last.
+Here's what happens. Your DB gets overwhelmed. Requests start timing out. Every client has retry logic - so naturally, they all try again. If that retry is set to a fixed interval, say "wait 1 second and try again," here's the problem: they all failed at the same time. So they all retry at the same time. Your DB, which was just starting to breathe, gets hit with the exact same wave again. And again. And again - once per second, like clockwork, until someone manually intervenes.
+
+You didn't have one thundering herd. You accidentally scheduled ten of them back to back.
 
 ```mermaid
 sequenceDiagram
@@ -398,24 +397,22 @@ sequenceDiagram
     C1->>DB: Retry at T=1s
     C2->>DB: Retry at T=1s
     CN->>DB: Retry at T=1s
-    Note over DB: 💀 Second thundering herd at T=1s
+    Note over DB: 💀 Second thundering herd. DB never recovers.
 ```
 
-The fix: don't retry at fixed intervals. Use exponential backoff with jitter.
+The fix has two parts working together.
+
+**Exponential backoff** means each failed attempt waits longer than the last - 200ms, then 400ms, then 800ms, then 1600ms. This gives the DB progressively more breathing room with each retry wave instead of hammering it every second.
+
+**Jitter** adds a small random offset to each wait. So instead of every client retrying at exactly T=1s, one retries at 820ms, another at 1.1s, another at 1.4s. They naturally spread out. What was a synchronized wall becomes a trickle the DB can handle.
 
 ```js
-// ❌ Fixed interval - all clients retry at exactly the same time
-setTimeout(retry, 1000)
-
-// ✅ Exponential backoff + jitter - clients spread out naturally
 for (let attempt = 0; attempt < maxRetries; attempt++) {
   try { return await fetch() } catch {}
-  const base = 200 * Math.pow(2, attempt)            // 200 → 400 → 800 → 1600ms
-  await sleep(base + Math.random() * base * 0.5)     // + up to 50% jitter
+  const base = 200 * Math.pow(2, attempt)         // 200 → 400 → 800 → 1600ms
+  await sleep(base + Math.random() * base * 0.5)  // + random 0–50% on top
 }
 ```
-
-The exponential delay means each retry wave backs off further. The jitter means clients don't all retry in the same millisecond window - they're spread out. The DB gets breathing room to recover instead of absorbing another synchronized hit every second.
 
 ```mermaid
 gantt
@@ -437,7 +434,7 @@ gantt
     Client 2 second retry     :done, 3.6, 0.1s
 ```
 
-Braintree (PayPal's payment processor) traced a major outage to exactly this. Failed jobs retrying on fixed intervals, stacking on top of new traffic, overwhelming their services every N seconds like clockwork. Adding jitter broke the synchronization. Problem disappeared.
+Braintree (PayPal's payment processor) traced a major outage to exactly this. Failed jobs retrying on fixed intervals, stacking perfectly on top of new traffic, overwhelming their services every N seconds like clockwork. Adding jitter broke the synchronization. Problem disappeared.
 
 ---
 
