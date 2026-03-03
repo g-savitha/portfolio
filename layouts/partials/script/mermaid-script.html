@@ -1,0 +1,61 @@
+{{- if strings.Contains .Content "language-mermaid" -}}
+<script>
+  (function () {
+    'use strict';
+
+    var siteDefaultTheme = {{ index .Site.Params.themeOptions 0 | jsonify
+  }};
+
+  function initMermaid() {
+    if (!window._mermaid) {
+      setTimeout(initMermaid, 80);
+      return;
+    }
+
+    var mermaid = window._mermaid;
+
+    // Pick theme based on user preference or site default
+    var activeTheme = (typeof localStorage !== 'undefined' && localStorage.getItem('theme'))
+      || siteDefaultTheme;
+    var mermaidTheme = (activeTheme === 'dark' || activeTheme === 'hacker') ? 'dark' : 'default';
+
+    // Convert Hugo's <code class="language-mermaid"> elements into
+    // <div class="mermaid"> elements that Mermaid v10 can render.
+    var codeBlocks = Array.from(document.getElementsByClassName('language-mermaid'));
+    codeBlocks.forEach(function (code) {
+      var pre = code.parentNode;
+
+      // Get raw text content — textContent auto-decodes HTML entities
+      var rawText = (code.textContent || code.innerText || '');
+
+      var div = document.createElement('div');
+      div.classList.add('mermaid');
+      div.style.cssText = 'padding:16px 4px;background:transparent;text-align:center;overflow:auto;';
+      div.textContent = rawText;
+
+      // Replace the <pre><code> pair with our <div>
+      if (pre && pre.tagName === 'PRE') {
+        pre.parentNode.replaceChild(div, pre);
+      } else {
+        code.parentNode.replaceChild(div, code);
+      }
+    });
+
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: mermaidTheme,
+      securityLevel: 'loose',
+    });
+
+    mermaid.run({ querySelector: '.mermaid' });
+  }
+
+  // Run after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMermaid);
+  } else {
+    initMermaid();
+  }
+}) ();
+</script>
+{{- end -}}

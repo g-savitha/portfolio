@@ -1,0 +1,79 @@
+{{- if strings.Contains .Content "language-mermaid" -}}
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  // Expose as window.mermaid so the zzo theme's built-in theme-switch handler
+  // (scripts.html) detects it and calls location.reload() on theme change.
+  window.mermaid = mermaid;
+
+
+  var siteDefault = {{ index .Site.Params.themeOptions 0 | jsonify }};
+  var activeTheme = (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) || siteDefault;
+  var mermaidTheme = (activeTheme === 'dark' || activeTheme === 'hacker') ? 'dark' : 'default';
+
+  function renderMermaid() {
+    // Convert Hugo's <code class="language-mermaid"> inside <pre> into <div class="mermaid">
+    var codeBlocks = Array.from(document.getElementsByClassName('language-mermaid'));
+    codeBlocks.forEach(function (code) {
+      var pre = code.parentNode;
+      // textContent auto-decodes HTML entities
+      var rawText = code.textContent || code.innerText || '';
+
+      var div = document.createElement('div');
+      div.classList.add('mermaid');
+      div.style.cssText = 'padding:16px 4px;background:transparent;text-align:center;overflow:auto;';
+      div.textContent = rawText;
+
+      if (pre && pre.tagName === 'PRE') {
+        pre.parentNode.replaceChild(div, pre);
+      } else {
+        code.parentNode.replaceChild(div, code);
+      }
+    });
+
+    mermaid.initialize({ startOnLoad: false, theme: mermaidTheme, securityLevel: 'loose' });
+    mermaid.run({ querySelector: '.mermaid' }).then(function () {
+      // In dark mode, fix label contrast on nodes with light custom fills.
+      // Mermaid v10 uses rgb() for computed fills and <foreignObject><span.nodeLabel>
+      // for label text — not SVG <text> elements like v8 did.
+      if (mermaidTheme !== 'dark') return;
+
+      function luminance(r, g, b) {
+        return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      }
+
+      function isLight(fill) {
+        var m;
+        if ((m = fill.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)/i))) {
+          return luminance(+m[1], +m[2], +m[3]) > 0.45;
+        }
+        if (fill.charAt(0) === '#') {
+          var c = fill.slice(1);
+          if (c.length === 3) { c = c[0] + c[0] + c[1] + c[1] + c[2] + c[2]; }
+          return luminance(parseInt(c.slice(0, 2), 16), parseInt(c.slice(2, 4), 16), parseInt(c.slice(4, 6), 16)) > 0.45;
+        }
+        return false;
+      }
+
+      document.querySelectorAll('.mermaid svg g.node, .mermaid svg g[class*="node"]').forEach(function (node) {
+        var shape = node.querySelector('rect, circle, polygon, ellipse');
+        if (!shape) return;
+        var fill = shape.style.fill || shape.getAttribute('fill') || '';
+        if (!fill || fill === 'none' || !isLight(fill)) return;
+        // Mermaid v10: labels are in <foreignObject> > div > span.nodeLabel
+        node.querySelectorAll('span.nodeLabel, div.label-container, .label div')
+          .forEach(function (el) { el.style.setProperty('color', '#111', 'important'); });
+        // Fallback: SVG <text> elements (sequence diagrams etc.)
+        node.querySelectorAll('text')
+          .forEach(function (t) { t.style.setProperty('fill', '#111', 'important'); });
+      });
+    });
+
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderMermaid);
+  } else {
+    renderMermaid();
+  }
+</script>
+{{- end -}}
