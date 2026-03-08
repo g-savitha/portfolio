@@ -434,10 +434,6 @@ Every strategy makes a different bet on freshness vs latency vs safety.
 
 There is no universally correct answer. A payments service and a recommendation engine have very different requirements. The right combination depends on what your users actually feel and what your database can actually handle.
 
-What I have seen consistently: teams reach for basic TTL because it works, and then do nothing else until something breaks in production. The time to add jitter and stale-while-revalidate is when you first build the caching layer. Not at 3am during an incident.
-
-Your cache is not just a performance layer. It is load-bearing infrastructure. Treat it accordingly.
 
 ---
 
-*Part of a series on distributed systems patterns. Next: consistent hashing and how to avoid hot shards.*
