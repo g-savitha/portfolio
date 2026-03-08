@@ -211,26 +211,23 @@ cache.set('match:score', data, 3600 + jitter)
 
 Visually, the difference is stark:
 
-```mermaid
-gantt
-    title Cache Expiry: No Jitter vs With Jitter
-    dateFormat HH:mm
-    axisFormat %H:%M
+```text
+Time (min) | 00   02   04   06   08   10   12   14   16
+---------------------------------------------------------
+❌ No Jitter (All expire at 00:00)
+user-101   |[X]
+user-102   |[X]
+user-103   |[X]
+user-104   |[X]
+           | ⚠️ All miss simultaneously! DB stampede.
 
-    section ❌ No Jitter - all expire at midnight
-    key user-101     :done, 00:00, 1m
-    key user-102     :done, 00:00, 1m
-    key user-103     :done, 00:00, 1m
-    key user-104     :done, 00:00, 1m
-    key user-105     :done, 00:00, 1m
-    ⚠️ All miss simultaneously :crit, 00:00, 15m
-
-    section ✅ With Jitter - spread over ~15 minutes
-    key user-101     :done, 00:02, 1m
-    key user-102     :done, 00:08, 1m
-    key user-103     :done, 00:12, 1m
-    key user-104     :done, 00:05, 1m
-    key user-105     :done, 00:14, 1m
+✅ With Jitter (Expiries spread over 15 mins)
+user-101   |    [X]
+user-104   |         [X]
+user-102   |              [X]
+user-103   |                        [X]
+user-105   |                                  [X]
+           | ✅ DB handles gradual misses comfortably.
 ```
 
 Instead of a vertical wall of DB queries at midnight, you get a gentle slope the database handles comfortably.
@@ -346,24 +343,20 @@ for (let attempt = 0; attempt < maxRetries; attempt++) {
 }
 ```
 
-```mermaid
-gantt
-    title Retry Timing: Fixed Interval vs Exponential Backoff with Jitter
-    dateFormat s
-    axisFormat %Ss
+```text
+Time (sec) | 0.0    0.5    1.0    1.5    2.0    2.5    3.0    3.5
+------------------------------------------------------------------
+❌ Fixed 1s interval 
+Client 1   |               [Retry]
+Client 2   |               [Retry]
+Client 3   |               [Retry]
+           |               ⚠️ Second herd forms exactly at 1.0s
 
-    section ❌ Fixed 1s interval - all retry simultaneously
-    Client 1 retry      :crit, 1, 0.1s
-    Client 2 retry      :crit, 1, 0.1s
-    Client 3 retry      :crit, 1, 0.1s
-    Second herd         :crit, 1, 2s
-
-    section ✅ Exponential + Jitter - spread out
-    Client 1 first retry      :done, 0.8, 0.1s
-    Client 2 first retry      :done, 1.3, 0.1s
-    Client 3 first retry      :done, 2.1, 0.1s
-    Client 1 second retry     :done, 2.4, 0.1s
-    Client 2 second retry     :done, 3.6, 0.1s
+✅ Exponential Backoff + Jitter
+Client 1   |           [R1]                        [R2]
+Client 2   |                  [R1]                                [R2]
+Client 3   |                                [R1]
+           | ✅ Retries are scattered. DB is protected.
 ```
 
 Braintree (PayPal's payment processor) traced a major outage to exactly this. Failed jobs retrying on fixed intervals, stacking perfectly on top of new traffic, overwhelming their services every N seconds like clockwork. Adding jitter broke the synchronization. Problem disappeared.

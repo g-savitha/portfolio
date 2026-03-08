@@ -32,19 +32,15 @@ When you cache something, you give it a time-to-live. Say 60 seconds. Seems fine
 
 But here is the subtle trap: in a high-traffic system, many users hit your service at the same time. Your cache fills up with entries that were all set at roughly the same moment. Which means they all expire at roughly the same moment too.
 
-```mermaid
-gantt
-    title Synchronized TTL — All Keys Expire Together
-    dateFormat  ss
-    axisFormat %Ss
-
-    section Cache Keys
-    Key A (live)    :active, 00, 60s
-    Key B (live)    :active, 00, 60s
-    Key C (live)    :active, 00, 60s
-
-    section What Happens at t=60
-    Stampede hits DB     :crit, 60, 5s
+```text
+Time (sec) | 00        15        30        45        60        75
+-----------------------------------------------------------------
+Cache Keys |
+Key A      |[=======================================] (expires)
+Key B      |[=======================================] (expires)
+Key C      |[=======================================] (expires)
+           | 
+DB Load    |                                         ⚠️ DB Stampede
 ```
 
 At second 60, every key is gone. Every request that arrives finds an empty cache. Every single one of them goes straight to your database. Your database, which was handling maybe 10 queries per second (because 99% of traffic was cached), is now handling 50,000 queries per second. It cannot keep up. Timeouts start. Services back up. What began as a cache expiry becomes a full outage.
@@ -78,20 +74,16 @@ There is nothing obviously wrong with this code. But at scale, it is a time bomb
 
 This is the simplest fix and honestly you should just always do it. The idea is to stop giving every key the exact same TTL. Add a small random offset so keys expire at slightly different times.
 
-```mermaid
-gantt
-    title Jittered TTL — Keys Expire Spread Out
-    dateFormat  ss
-    axisFormat %Ss
-
-    section Cache Keys
-    Key A (55s TTL)     :active, 00, 55s
-    Key B (60s TTL)     :active, 00, 60s
-    Key C (67s TTL)     :active, 00, 67s
-    Key D (73s TTL)     :active, 00, 73s
-
-    section DB Load
-    Queries spread out  :55, 20s
+```text
+Time (sec) | 00        15        30        45        60        75
+-----------------------------------------------------------------
+Cache Keys |
+Key A      |[==================================] (expires at 55s)
+Key B      |[=======================================] (expires at 60s)
+Key C      |[=============================================] (expires at 67s)
+Key D      |[===================================================] (expires at 73s)
+           | 
+DB Load    |                                   ✅ Queries spread out
 ```
 
 Instead of a spike at second 60, you get a gentle trickle of cache misses spread over 15 to 20 seconds. Your database handles it comfortably.
