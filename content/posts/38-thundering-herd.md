@@ -17,7 +17,7 @@ categories:
   - system-design
 ---
 
-## Analogy: The Store Rush 
+## Analogy: The Store Rush
 
 Before we touch anything technical, let me paint you a picture.
 
@@ -158,13 +158,47 @@ The retry death spiral is what turns "our site was slow for 30 seconds" into "we
 
 ---
 
-## The 6 Techniques That Actually Work
+## Impact - What's Actually Breaking
+
+When a thundering herd hits, the damage isn't random. It follows a predictable pattern across every layer of your stack.
+
+_**CPU**_ - the database CPU is the first thing to spike. Normally, most queries hit the buffer pool (data cached in memory) and return fast. When thousands of identical queries arrive simultaneously, they all miss the buffer pool, go to disk, and compete for the same CPU cycles. What's usually 5% CPU becomes 100% in seconds - before any other metric has even moved.
+
+_**Database**_ - connection pool exhaustion is what finishes it off. Most databases cap at 200–500 connections. When all slots are occupied by in-flight queries, every new request queues. Queries that normally take 5ms now take 8 seconds because they spent 7.9 seconds just waiting for a free connection slot.
+
+_**Cache**_ - didn't fail. It did exactly what it was told. But now it's being hammered with thousands of simultaneous writes as every app server races to repopulate the same keys at once, adding write pressure on top of the read storm.
+
+_**App Servers**_ - threads block waiting for DB responses that aren't coming. Thread pools fill. Memory climbs. Servers start dying from OOM errors, get pulled from the load balancer, and push their load onto the surviving servers - which accelerates the collapse.
+
+_**Latency**_ - P50 (what most users experience) looks almost normal at first since some requests still hit warm cache on other keys. But P99 goes from 200ms to 30 seconds instantly. As the cascade deepens, P50 catches up to P99. By that point, everyone is affected.
+
+---
+
+## Where This Commonly Occurs
+
+Caching is the obvious trigger, but not the only one.
+
+_**Cache TTL expiry**_ - the most common cause. A key expires under high traffic and every server rushes to rebuild it simultaneously. This is what the diagrams above show.
+
+_**Scheduled jobs**_ - 500 background workers all fire at midnight. They hit the same tables, fight for the same connections. A thundering herd with zero users involved - your own infrastructure hammering itself.
+
+_**Cold cache after deploy**_ - new servers spin up with empty local caches. If multiple servers restart simultaneously, every request they receive is a miss. You've built a thundering herd into your deploy pipeline.
+
+_**Reconnect storms**_ - your WebSocket server restarts. Every connected client tries to reconnect at the same moment. Without jitter in the client retry logic, you're sending a synchronized burst to a server that just came back online.
+
+_**Load balancer recovery**_ - a server flaps back online after a health check failure. The balancer starts routing traffic to it. Its cache is cold. All incoming traffic is a miss until it warms up.
+
+The thread connecting all of them: **synchronized behaviour in distributed systems is almost always dangerous.** When many things wake up at the same moment and reach for the same resource - that's where systems break.
+
+---
+
+## Techniques to Prevent It
 
 ### 1. Staggered Expiry (TTL Jitter)
 
 The cheapest fix. Should be the default everywhere.
 
-The problem is that all your keys expire at the same time. So the fix is: don't let them. Add randomness to every TTL so expiries are spread across a window instead of synchronized to the same second.
+The problem is that all your keys expire at the same time. The fix: don't let them. Add randomness to every TTL so expiries are spread across a window instead of synchronized to the same second.
 
 ```js
 // ❌ Every key expires at the exact same second
@@ -182,35 +216,32 @@ gantt
     title Cache Expiry: No Jitter vs With Jitter
     dateFormat HH:mm
     axisFormat %H:%M
-    tickInterval 2m
 
-    section ❌ No Jitter
-    user-101         :done, 00:00, 2m
-    user-102         :done, 00:00, 2m
-    user-103         :done, 00:00, 2m
-    user-104         :done, 00:00, 2m
-    user-105         :done, 00:00, 2m
-    ⚠️ All miss      :crit, 00:00, 16m
+    section ❌ No Jitter - all expire at midnight
+    key user-101     :done, 00:00, 1m
+    key user-102     :done, 00:00, 1m
+    key user-103     :done, 00:00, 1m
+    key user-104     :done, 00:00, 1m
+    key user-105     :done, 00:00, 1m
+    ⚠️ All miss simultaneously :crit, 00:00, 15m
 
-    section ✅ Jitter (15m window)
-    user-101         :done, 00:02, 2m
-    user-104         :done, 00:05, 2m
-    user-102         :done, 00:08, 2m
-    user-103         :done, 00:12, 2m
-    user-105         :done, 00:14, 2m
+    section ✅ With Jitter - spread over ~15 minutes
+    key user-101     :done, 00:02, 1m
+    key user-102     :done, 00:08, 1m
+    key user-103     :done, 00:12, 1m
+    key user-104     :done, 00:05, 1m
+    key user-105     :done, 00:14, 1m
 ```
 
 Instead of a vertical wall of DB queries at midnight, you get a gentle slope the database handles comfortably.
 
-**The trap nobody warns you about:** jitter doesn't help if you warm the cache centrally. A warming script that runs at 11 PM and sets all 500K keys with `TTL = 3600` will have all of them expiring around midnight regardless of jitter. You need to anchor TTLs to data freshness - when the data was last updated - not to when you happened to cache it.
-
-**Trade-off:** Some data lives in cache 6–15 minutes longer than strictly necessary. For match scores, product listings, user profiles - completely fine.
+**Trade-off:** Some data lives in cache 6–15 minutes longer than strictly necessary. For most use cases - completely fine.
 
 ---
 
 ### 2. Request Coalescing (Mutex / Single-Flight)
 
-Jitter solves the *timing* problem across many different keys. But what about one very popular key? `match:ind-pak:live-score` expires during peak traffic - 50,000 concurrent requests all miss cache at the same time and rush to the DB simultaneously.
+Jitter spreads expiries across different keys. But what about one very popular key? `match:ind-pak:live-score` expires during peak traffic - 50,000 concurrent requests all miss cache at the same time.
 
 The solution: when a key is missing, only let **one** request go to the database. Everyone else waits for that single result and shares it.
 
@@ -255,130 +286,30 @@ async function getScore(matchId) {
   const cached = await cache.get(matchId)
   if (cached) return cached
 
-  // Already being fetched? Wait for that result instead of hitting DB again
   if (inFlight.has(matchId)) return inFlight.get(matchId)
 
-  // First request - register the promise so others can share it
   const promise = db.fetchScore(matchId)
     .then(data => { cache.set(matchId, data, 30); return data })
-    .finally(() => inFlight.delete(matchId)) // always clean up, success or failure
+    .finally(() => inFlight.delete(matchId)) // clean up on success or failure
 
   inFlight.set(matchId, promise)
   return promise
 }
 ```
 
-**The failure case you must handle:** if the DB query fails, remove the in-flight entry immediately - don't leave it registered. If you do, every subsequent request inherits the same failed result and the key never recovers. Always clean up on both success and failure.
+_**The failure case you must handle:**_ if the DB query fails, the `.finally()` block removes the in-flight entry immediately. If you skip this, every subsequent request inherits the same failed Promise and the key never recovers.
 
-Instagram took this a step further: instead of a separate registry, they cache the Promise itself. First miss creates a Promise and stores it in cache. Requests 2 through N find the Promise in cache and await it directly. One DB call, the cache is the coordinator, no extra infrastructure needed.
+Instagram took this a step further: instead of a separate registry, they cache the Promise itself. First miss creates a Promise and stores it in cache. Requests 2 through N find the Promise in cache and await it directly. One DB call, zero extra infrastructure.
 
-**Trade-off:** Requests that arrive during a cache miss wait one DB round-trip instead of getting an instant response. For a 50ms query, that's nothing. For a slow query on a struggling DB, you're choosing: wait 3 seconds or get an error? Usually waiting is better.
-
----
-
-### 3. Stale-While-Revalidate (SWR)
-
-Single-flight still makes some users wait on a cache miss. SWR takes a different philosophy: **never make the user wait at all.** Serve whatever is in cache - even if it's slightly old - and refresh in the background.
-
-```mermaid
-stateDiagram-v2
-    direction LR
-
-    [*] --> Fresh: Data cached
-    Fresh --> Stale: freshTTL elapsed
-    Stale --> Expired: staleTTL elapsed
-
-    Fresh: 🟢 FRESH\nServe immediately. No extra work.
-    Stale: 🟡 STALE\nServe immediately.\nTrigger 1 background refresh.
-    Expired: 🔴 EXPIRED\nBlocking fetch. User waits.
-
-    Stale --> Fresh: Background refresh completes
-    Expired --> Fresh: Blocking fetch completes
-```
-
-The key idea: instead of one TTL, you manage two.
-
-- **freshTTL** - data is perfectly current, serve it and do nothing else
-- **staleTTL** - data is old but still usable, serve it immediately and kick off one background refresh
-
-```js
-async function getWithSWR(key, fetchFn, freshTTL = 30, staleTTL = 120) {
-  const entry = await cache.get(key)
-  const age = entry ? (Date.now() - entry.cachedAt) / 1000 : Infinity
-
-  if (!entry || age > staleTTL) return fetchAndStore(key, fetchFn) // must wait
-
-  if (age > freshTTL) fetchAndStore(key, fetchFn) // refresh quietly in background
-
-  return entry.data // user never waits
-}
-```
-
-The user always gets a response without waiting. The database gets one refresh query in the background, not one per user.
-
-During a live Hotstar stream, users see the score in under 100ms - always. The data might be 15 seconds old. Nobody notices. At 40 million concurrent viewers, this is the difference between a healthy database and a crater.
-
-**But SWR is not always appropriate:**
-
-| Data | Use SWR? | Why |
-|---|---|---|
-| Live cricket score | ✅ Yes | 30s lag is invisible to fans |
-| Trending content, product listings | ✅ Yes | Slow-changing, staleness acceptable |
-| User's account balance | ❌ No | Stale data leads to wrong decisions |
-| "Only 2 left in stock" | ❌ No | Stale availability = overselling |
-| Auth tokens / permissions | ❌ No | Stale permissions = security hole |
-
-Use SWR where eventual consistency is acceptable. Don't use it where stale data causes real harm.
+_**Trade-off:**_ Requests that arrive during a cache miss wait one DB round-trip. For a 50ms query, that's nothing. For a slow query on a struggling DB, waiting beats getting an error.
 
 ---
 
-### 4. Probabilistic Early Expiration (PER)
-
-Jitter and SWR still have a blind spot: **one very hot key under extreme traffic.**
-
-Think about it this way. Your cache key expires at 11:00 PM. At 10:59:59, you have 100,000 users reading that key. One second later - it's gone. All 100,000 hit the DB at the same time. You've done everything right, and you still get a thundering herd. Just a punctual one.
-
-PER's answer to this is almost too simple: **refresh the key before it dies, not after.**
-
-Instead of waiting for the TTL to run out, each incoming request quietly asks - *is this entry old enough that I should go refresh it in the background?* When the entry is fresh, the answer is almost always no. But as it ages and gets closer to expiry, the answer becomes more and more likely to be yes. Eventually, one request wins that coin flip, kicks off a background refresh, and the key gets a new TTL - while everyone else keeps reading the old value without waiting at all.
-
-The key word is *probabilistic*. The refresh doesn't happen at a fixed age. It happens randomly, weighted by how old the entry is. This is what makes it work - if it refreshed at a fixed threshold like "80% of TTL consumed", every single request hitting at that threshold would trigger a refresh simultaneously. Same problem, earlier timestamp. Randomness is what breaks the synchronization.
-
-```mermaid
-xychart-beta
-    title "Chance of triggering a background refresh as the cache entry ages"
-    x-axis "Cache age (% of TTL consumed)" [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-    y-axis "Refresh probability (%)" 0 --> 100
-    line [0, 0, 0, 0, 0, 2, 8, 20, 45, 78, 100]
-```
-
-```js
-async function getWithPER(key, fetchFn, ttl = 60) {
-  const entry = await cache.get(key)
-  if (!entry) return fetchAndStore(key, fetchFn, ttl)
-
-  const age = (Date.now() - entry.cachedAt) / 1000
-  const refreshProbability = Math.max(0, (age / ttl - 0.5) * 2) // 0% for first half, ramps to 100% by expiry
-
-  if (Math.random() < refreshProbability) {
-    fetchAndStore(key, fetchFn, ttl) // background refresh - user gets cached data regardless
-  }
-
-  return entry.data
-}
-```
-
-In practice: somewhere in the last 20–30% of the TTL window, one request triggers a quiet background refresh. The key never actually expires under traffic. The DB gets one query. All 100,000 users got served without waiting.
-
-**Trade-off:** A few requests near the end of a TTL window trigger a background refresh that wasn't strictly necessary. At scale, a handful of extra DB queries is a price you'll happily pay.
-
----
-
-### 5. Exponential Backoff with Jitter (Retry Logic)
+### 3. Exponential Backoff with Jitter (Retry Logic)
 
 This one is different from the rest. It's not about preventing the thundering herd - it's about stopping your retry logic from **creating a second one** while you're still recovering from the first.
 
-Here's what happens. Your DB gets overwhelmed. Requests start timing out. Every client has retry logic - so naturally, they all try again. If that retry is set to a fixed interval, say "wait 1 second and try again," here's the problem: they all failed at the same time. So they all retry at the same time. Your DB, which was just starting to breathe, gets hit with the exact same wave again. And again. And again - once per second, like clockwork, until someone manually intervenes.
+Here's what happens. Your DB gets overwhelmed. Requests start timing out. Every client has retry logic - so they all try again. If that retry is fixed at "wait 1 second", here's the problem: they all failed at the same time, so they all retry at the same time. Your DB, which was just starting to breathe, gets hit with the exact same wave again. And again. Once per second, like clockwork, until someone manually intervenes.
 
 You didn't have one thundering herd. You accidentally scheduled ten of them back to back.
 
@@ -403,9 +334,9 @@ sequenceDiagram
 
 The fix has two parts working together.
 
-**Exponential backoff** means each failed attempt waits longer than the last - 200ms, then 400ms, then 800ms, then 1600ms. This gives the DB progressively more breathing room with each retry wave instead of hammering it every second.
+**Exponential backoff** means each failed attempt waits longer than the last - 200ms, then 400ms, then 800ms, then 1600ms. This gives the DB progressively more breathing room instead of hammering it every second.
 
-**Jitter** adds a small random offset to each wait. So instead of every client retrying at exactly T=1s, one retries at 820ms, another at 1.1s, another at 1.4s. They naturally spread out. What was a synchronized wall becomes a trickle the DB can handle.
+**Jitter** adds a small random offset to each wait. So instead of every client retrying at exactly T=1s, one retries at 820ms, another at 1.1s, another at 1.4s. What was a synchronized wall becomes a trickle the DB can handle.
 
 ```js
 for (let attempt = 0; attempt < maxRetries; attempt++) {
@@ -419,132 +350,116 @@ for (let attempt = 0; attempt < maxRetries; attempt++) {
 gantt
     title Retry Timing: Fixed Interval vs Exponential Backoff with Jitter
     dateFormat s
-    axisFormat %S
-    tickInterval 1s
+    axisFormat %Ss
 
-    section ❌ Fixed interval
-    Client 1 retry      :crit, 1, 1s
-    Client 2 retry      :crit, 1, 1s
-    Client 3 retry      :crit, 1, 1s
-    Second herd         :crit, 1, 3s
+    section ❌ Fixed 1s interval - all retry simultaneously
+    Client 1 retry      :crit, 1, 0.1s
+    Client 2 retry      :crit, 1, 0.1s
+    Client 3 retry      :crit, 1, 0.1s
+    Second herd         :crit, 1, 2s
 
-    section ✅ Exp + Jitter
-    Client 1 retry 1      :done, 0, 1s
-    Client 2 retry 1      :done, 1, 1s
-    Client 3 retry 1      :done, 2, 1s
-    Client 1 retry 2      :done, 2, 1s
-    Client 2 retry 2      :done, 3, 1s
+    section ✅ Exponential + Jitter - spread out
+    Client 1 first retry      :done, 0.8, 0.1s
+    Client 2 first retry      :done, 1.3, 0.1s
+    Client 3 first retry      :done, 2.1, 0.1s
+    Client 1 second retry     :done, 2.4, 0.1s
+    Client 2 second retry     :done, 3.6, 0.1s
 ```
 
 Braintree (PayPal's payment processor) traced a major outage to exactly this. Failed jobs retrying on fixed intervals, stacking perfectly on top of new traffic, overwhelming their services every N seconds like clockwork. Adding jitter broke the synchronization. Problem disappeared.
 
 ---
 
-### 6. Cache Warming
+### 4. Rate Limiting
 
-The most powerful technique is making sure the cache is never empty when traffic arrives. If you can predict when a spike is coming, pre-load the cache before it hits.
+The three techniques above spread load out. Rate limiting does the opposite - it puts a hard ceiling on how much load ever reaches your backend in the first place.
 
-This is the only proactive technique in this list. Everything else is reactive - it handles cache misses gracefully. Cache warming eliminates the miss entirely.
+When a thundering herd hits, your DB doesn't fail because the requests are illegitimate. It fails because there are too many of them at once. Rate limiting at the edge - on your API gateway or load balancer - means you decide how many requests per second your backend will accept. Everything above that threshold gets rejected with a `429 Too Many Requests` before it ever touches your cache or DB.
 
 ```mermaid
-timeline
-    title BookMyShow - Friday 9 AM Movie Release
+flowchart LR
+    Users["👥 10,000 req/s\n(thundering herd)"] --> LB["Load Balancer\nRate Limiter"]
+    LB -->|"✅ 500 req/s allowed"| App["App Servers"]
+    LB -->|"❌ 9,500 req/s rejected\n429 Too Many Requests"| Drop["Clients back off\nand retry with jitter"]
+    App --> Cache["Cache (Redis)"]
+    Cache --> DB["Database\n(protected)"]
 
-    section 8-00 AM
-        Warming job starts : Fetch new release data from DB
-        Pre-compute showtimes : Cache all theatre × movie combinations
-
-    section 8-30 AM
-        Seat availability cached : By class, by theatre, by city
-        CDN edge nodes warmed : Push to Mumbai, Delhi, Bangalore
-
-    section 8-55 AM
-        Health check : Verify cache hit rate above 95%
-        On-call alert if not ready : Page team if warming incomplete
-
-    section 9-00 AM
-        Bookings open : First wave hits fully warm cache
-        DB barely notices : Only confirmation writes hit DB
+    style LB fill:#1565c0,color:#fff
+    style Drop fill:#b71c1c,color:#fff
+    style DB fill:#2e7d32,color:#fff
 ```
 
-```js
-// Run 30 minutes before the event - in small batches, not all at once
-for (let i = 0; i < hotKeys.length; i += 50) {
-  const batch = hotKeys.slice(i, i + 50)
-  await Promise.all(batch.map(async ({ key, fetch, ttl }) => {
-    const data = await fetch()
-    const jitter = ttl * (0.05 + Math.random() * 0.10) // don't let warmed keys all expire together either
-    cache.set(key, data, ttl + jitter)
-  }))
-  await sleep(200) // breathe between batches - don't DDoS your own DB
-}
-```
+**Rate limiting alone doesn't prevent the thundering herd** - it just caps the blast radius. The herd still arrives; you're turning it away at the door rather than letting it flood the DB. The clients that get rejected need exponential backoff with jitter (technique 3) so they don't immediately form another synchronized retry wave.
 
-**The trap that kills warming jobs:** fetching 100K keys in parallel to warm the cache is itself a thundering herd - you've just aimed it at your own DB from the inside. Always fetch in small batches with a pause between each batch.
+The two most common algorithms:
 
-Also: always add jitter to warmed keys. If every key gets `TTL = 3600` during warming and warming ran at 8 PM, they all expire at 9 PM. You've just moved the thundering herd one hour into the future.
+_**Token bucket**_ - a bucket refills at a fixed rate (say, 500 tokens/second). Each request consumes one token. When the bucket is empty, requests are rejected. Short bursts above the rate are absorbed as long as tokens are available. Good for APIs that need to tolerate occasional spikes without dropping them.
 
-IRCTC does this before every 10 AM Tatkal window - train schedules, fares, quotas all pre-loaded by 9:45 AM. And yet they still struggle at exactly 10 AM. Because seat booking *writes* also spike simultaneously, and caching can't help with writes. That's a different problem entirely: distributed locking and optimistic concurrency control.
+_**Sliding window**_ - count requests across a rolling time window. If the count exceeds the limit, reject until the window moves forward. More accurate than a fixed window, which can be gamed by sending traffic right at the boundary of two windows.
+
+Rate limiting is the last line of defense - not the first. You still want jitter and single-flight in place. But if something unexpected causes a stampede those techniques don't catch, the rate limiter is what stops your database from receiving 10,000 simultaneous connections.
 
 ---
 
-## How These Layer Together
+## Before vs After: What Protection Looks Like
 
-No single technique covers everything. In production, you combine them:
+Without any mitigation, a cache miss under high traffic goes straight to DB stampede:
+
+```mermaid
+flowchart LR
+    Users["👥 Thousands\nof requests"] --> App["App Servers"]
+    App -->|"❌ All MISS"| Cache["Cache\n(expired)"]
+    Cache --> DB["💀 Database\n(overloaded)"]
+    App -->|"All hit DB directly"| DB
+
+    style Cache fill:#b71c1c,color:#fff
+    style DB fill:#b71c1c,color:#fff
+```
+
+With techniques layered together:
 
 ```mermaid
 flowchart TD
-    REQ["📥 Request arrives"] --> WARM{"Key exists\nin cache?"}
+    Users["👥 Thousands of requests"] --> RL["Rate Limiter\n(cap at threshold)"]
+    RL -->|"✅ Allowed"| App["App Servers"]
+    RL -->|"429 - retry with jitter"| Backoff["Clients back off\n(exponential + jitter)"]
 
-    WARM -->|"Yes"| AGE{"How fresh is it?"}
-    WARM -->|"No - cold miss"| INFLIGHT{"Already being\nfetched?"}
+    App --> Cache{"Cache hit?"}
+    Cache -->|"✅ HIT"| Response["⚡ Fast response"]
+    Cache -->|"❌ MISS"| Flight{"Already\nfetching?"}
 
-    AGE -->|"Fresh"| FAST["⚡ Serve immediately"]
-    AGE -->|"Stale but usable"| SWR_SERVE["🟡 Serve immediately\n+ 1 background refresh\n(PER decides this)"]
-    AGE -->|"Too stale"| INFLIGHT
+    Flight -->|"Yes"| Wait["Wait for\nshared result"]
+    Flight -->|"No - first miss"| DB["Database\n(1 query only)"]
 
-    INFLIGHT -->|"Yes"| WAIT["⏳ Subscribe and wait\nfor in-flight result"]
-    INFLIGHT -->|"No - I'm first"| DB_FETCH["🗄️ Fetch from DB\nRegister as in-flight"]
+    DB -->|"Result + TTL jitter"| CacheWrite["Cache repopulated\n(staggered expiry)"]
+    CacheWrite --> Broadcast["All waiting\nrequests served"]
 
-    DB_FETCH --> JITTER["Cache result\nwith TTL + jitter"]
-    JITTER --> BROADCAST["Broadcast to\nall waiting requests"]
-
-    FAST --> DONE["✅ Response sent"]
-    SWR_SERVE --> DONE
-    WAIT --> DONE
-    BROADCAST --> DONE
-
-    style FAST fill:#2e7d32,color:#fff
-    style SWR_SERVE fill:#558b2f,color:#fff
-    style DONE fill:#1565c0,color:#fff
-    style DB_FETCH fill:#e65100,color:#fff
+    style RL fill:#1565c0,color:#fff
+    style DB fill:#2e7d32,color:#fff
+    style Response fill:#2e7d32,color:#fff
 ```
 
-The combinations in practice:
-
-| Scenario | Techniques |
-|---|---|
-| Known event (IPL, product launch) | Cache warming + Jitter on all warmed keys |
-| Live score, trending feed | SWR + PER + Single-flight |
-| Unpredictable traffic, fresh data required | Single-flight + Jitter |
-| System already struggling, retries firing | Exponential backoff + Circuit breaker |
-
-You don't need all six everywhere. A live match score needs SWR + PER + single-flight. A product listing needs jitter + warming. An auth token shouldn't be cached at all.
+Every layer has a job. Rate limiter caps volume. Single-flight ensures one DB query per miss. Jitter prevents the next synchronized expiry. Backoff with jitter prevents retry storms from forming.
 
 ---
 
 ## Real Incidents Worth Learning From
 
-**Instagram** - Instead of caching the *result* of a DB query, they cache the *Promise* representing it. First miss creates a Promise and stores it in cache. Every other request finds the Promise and awaits it. One DB query. Zero extra coordination. The cache itself is the synchronization mechanism.
+**Facebook 2010** - A bad config value propagated through every layer of their Memcached infrastructure. Every cache lookup failed simultaneously. Hundreds of millions of requests hit a database never designed for direct traffic at that scale. Their fix: **lease tokens** - when a cache miss fires, the server issues a lease to exactly one request to fetch from DB. All others wait for the leaseholder. Single-flight, at the cache infrastructure level.
 
-**IRCTC - The 10:00:00 AM Wall** - Tatkal booking opens at exactly 10 AM. Millions refresh simultaneously. Seats are scarce. IRCTC pre-warms train and fare data from 9:45 AM, runs quota logic on in-memory data structures, uses circuit breakers on writes. And they still struggle - because booking *confirmation writes* spike at 10 AM and caching can't help you there. Different problem. Different solution.
+**Instagram** - Instead of caching the *result* of a DB query, they cache the *Promise* representing it. First miss creates a Promise and stores it in cache. Every subsequent request finds the Promise and awaits it. One DB query. Zero extra coordination. The cache is the synchronization mechanism.
+
+**IRCTC - The 10:00:00 AM Wall** - Tatkal booking opens at exactly 10 AM. Millions refresh simultaneously. IRCTC pre-warms train and fare data by 9:45 AM and uses circuit breakers on writes. And they still struggle - because booking *confirmation writes* also spike at 10 AM, and caching can't help with writes. That's a different problem: distributed locking and optimistic concurrency control.
+
+**Braintree** - Failed jobs retrying on fixed intervals stacked perfectly on top of new traffic, overwhelming services every N seconds like clockwork. Adding jitter to retry logic broke the synchronization. The outage stopped.
+
 
 ---
 
 ## Further Reading
-
+- [Caching Strategies to Prevent Thundering Herd](https://gsavitha.in/posts/caching-strategies/) - SWR, probabilistic early expiration, cache warming and more - techniques that pick up where this post leaves off
+  
 - [Instagram Engineering: Thundering Herds & Promises](https://instagram-engineering.com/thundering-herds-promises-82191c8af57d) - The Promise-caching approach, by the people who built it
-- [Netflix Tech Blog: Caching for a Global Netflix](https://netflixtechblog.com/caching-for-a-global-netflix-7bcc457012f1) - How they handle cold caches when traffic shifts between regions
 - [Braintree/PayPal: Fixing the Retry Storm](https://www.infoq.com/news/2022/05/braintree-thundering-herd/) - Real incident, real fix with backoff + jitter
 - [Go's `singleflight` package](https://pkg.go.dev/golang.org/x/sync/singleflight) - Worth reading even if you don't write Go. The abstraction is clean and instructive.
-- [XFetch Paper: Probabilistic Cache Stampede Prevention](https://cseweb.ucsd.edu/~avattani/papers/cache_stampede.pdf) - The math behind PER if you want to go deep
+- [AWS: Exponential Backoff and Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/) - Practical guidance with benchmarks from AWS engineers
